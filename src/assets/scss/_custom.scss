@@ -11,32 +11,32 @@
   --bs-muted-2: #444c55;
   --bs-body-color-rgb: 43, 43, 43;
   --bs-dark-text: #212529;
-  --bs-primary: #c71f37;
-  --bs-light: #f7f7f7;
-  --bs-light-gray: #ffffffa8;
-  --bs-dark: #212529;
-  --bs-primary-rgb: 226, 55, 68;
-  --bs-light-rgb: 247, 247, 247;
-  --bs-dark-rgb: 33, 37, 41;
-  --bs-primary-2: #d02b38;
-  --bs-primary-text-emphasis: #c71f37;
-  --bs-primary-bg-subtle: #fae8eb;
-  --bs-primary-bg-dark: #dd2e3b;
-  --bs-primary-border-subtle: #ffdee2;
-  --bs-danger-bg-subtle:#ffdee2;
+  --bs-primary: #ffcc00;
+  --bs-light: #f5f5f5;
+  --bs-light-gray: #e0e0e0;
+  --bs-dark: #000000;
+  --bs-primary-rgb: 255, 204, 0;
+  --bs-light-rgb: 245, 245, 245;
+  --bs-dark-rgb: 0, 0, 0;
+  --bs-primary-2: #ffd633;
+  --bs-primary-text-emphasis: #ffcc00;
+  --bs-primary-bg-subtle: #fff8e1;
+  --bs-primary-bg-dark: #e6b800;
+  --bs-primary-border-subtle: #ffecb3;
+  --bs-danger-bg-subtle:#ffecb3;
   --headingColor: #2b2b2b;
   --bs-link-color: #212529;
   --bs-link-color-rgb: 28, 28, 28;
-  --bs-link-hover-color: #c71f37;
-  --bs-link-hover-color-rgb: 226, 55, 68;
+  --bs-link-hover-color: #ffcc00;
+  --bs-link-hover-color-rgb: 255, 204, 0;
   --bs-link-decoration: underline;
-  --bs-code-color: #c71f37;
+  --bs-code-color: #ffcc00;
   --bs-highlight-color: #212529;
-  --bs-highlight-bg: #fff3cd;
-  --bs-border-color: #efefef;
+  --bs-highlight-bg: #fff8e1;
+  --bs-border-color: #e0e0e0;
   --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
   --bs-nav-color: #212529;
-  --bs-dashboard-bg: #2e3338;
+  --bs-dashboard-bg: #1a1a1a;
 
   --body-font-family: 'Jost', sans-serif;
 }
@@ -46,8 +46,8 @@
 
 // Custom Navigation Dropdown Styles
 .nav-dropdown.nav-submenu {
-  background-color: #f8f9fa !important; // Light grey background
-  border: 1px solid #e9ecef !important;
+  background-color: #f5f5f5 !important; // Light grey background
+  border: 1px solid #e0e0e0 !important;
   border-radius: 0.375rem !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   padding: 0.5rem 0 !important;
@@ -67,14 +67,14 @@
 
 .nav-dropdown.nav-submenu li a:hover,
 .nav-dropdown.nav-submenu li.active a {
-  background-color: #e9ecef !important;
+  background-color: #e0e0e0 !important;
   color: var(--bs-primary) !important;
 }
 
 // Mobile navigation dropdown styles
 @media (max-width: 991px) {
   .nav-menus-wrapper .nav-dropdown.nav-submenu {
-    background-color: #f8f9fa !important;
+    background-color: #f5f5f5 !important;
     margin-left: 1rem !important;
     margin-top: 0.5rem !important;
     border-radius: 0.375rem !important;
