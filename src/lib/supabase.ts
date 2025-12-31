@@ -1,14 +1,60 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { Database } from '../types/supabase'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
+// Flag to check if Supabase is properly configured
+export const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey)
+
+// Log warning in development if Supabase is not configured
+if (!isSupabaseConfigured && import.meta.env.DEV) {
+  console.warn('⚠️ Supabase environment variables not configured. Running in demo mode with mock data.')
 }
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+// Create a mock client for when Supabase is not configured
+const createMockClient = () => {
+  const mockAuth = {
+    getSession: async () => ({ data: { session: null }, error: null }),
+    getUser: async () => ({ data: { user: null }, error: null }),
+    onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
+    signInWithPassword: async () => { throw new Error('Supabase not configured') },
+    signInWithOAuth: async () => { throw new Error('Supabase not configured') },
+    signUp: async () => { throw new Error('Supabase not configured') },
+    signOut: async () => ({ error: null }),
+    resetPasswordForEmail: async () => { throw new Error('Supabase not configured') },
+    updateUser: async () => { throw new Error('Supabase not configured') },
+  }
+
+  const mockFrom = () => ({
+    select: () => ({
+      eq: () => ({
+        single: async () => ({ data: null, error: null }),
+        order: () => ({ limit: async () => ({ data: [], error: null }) }),
+      }),
+      order: () => ({ limit: async () => ({ data: [], error: null }) }),
+    }),
+    insert: () => ({ select: () => ({ single: async () => ({ data: null, error: null }) }) }),
+    update: () => ({ eq: () => ({ select: () => ({ single: async () => ({ data: null, error: null }) }) }) }),
+    delete: () => ({ eq: async () => ({ error: null }) }),
+  })
+
+  return {
+    auth: mockAuth,
+    from: mockFrom,
+    storage: {
+      from: () => ({
+        upload: async () => ({ error: new Error('Supabase not configured') }),
+        remove: async () => ({ error: new Error('Supabase not configured') }),
+        getPublicUrl: () => ({ data: { publicUrl: '' } }),
+      }),
+    },
+  } as unknown as SupabaseClient<Database>
+}
+
+// Create real client only if configured, otherwise use mock
+export const supabase: SupabaseClient<Database> = isSupabaseConfigured
+  ? createClient<Database>(supabaseUrl!, supabaseAnonKey!, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
@@ -28,6 +74,7 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
     },
   },
 })
+  : createMockClient()
 
 // Helper types
 export type Profile = Database['public']['Tables']['profiles']['Row']
@@ -542,9 +589,15 @@ export const getUserRecentMessages = async () => {
 
 // Public Listings Functions (for website display)
 export const getPublicListings = async (limit: number = 50) => {
+  // Return empty array if Supabase is not configured (demo mode)
+  if (!isSupabaseConfigured) {
+    console.log('Supabase not configured - returning empty listings (demo mode)')
+    return []
+  }
+
   try {
     console.log('Loading contractor listings from Supabase...')
-    
+
     // Try direct REST API call to bypass potential Supabase client timeout issues
     try {
       const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/business_listings?status=eq.active&order=created_at.desc&limit=${limit}&select=*`, {
@@ -554,17 +607,17 @@ export const getPublicListings = async (limit: number = 50) => {
           'Content-Type': 'application/json'
         }
       })
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
-      
+
       const data = await response.json()
       console.log(`Successfully loaded ${data?.length || 0} contractor listings via REST API`)
       return data || []
     } catch (fetchError) {
       console.warn('Direct REST API failed, trying Supabase client:', fetchError)
-      
+
       // Fallback to Supabase client
       const { data, error } = await supabase
         .from('business_listings')
@@ -577,7 +630,7 @@ export const getPublicListings = async (limit: number = 50) => {
         console.error('Supabase client query failed:', error)
         throw new Error(`Database query failed: ${error.message}`)
       }
-      
+
       console.log(`Successfully loaded ${data?.length || 0} contractor listings via Supabase client`)
       return data || []
     }
