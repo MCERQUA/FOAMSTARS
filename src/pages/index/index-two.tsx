@@ -33,6 +33,34 @@ export default function IndexTwo() {
             position: 'relative',
             overflow: 'hidden'
         }}>
+            {/* Background spray foam worker - left side */}
+            <div style={{
+                position: 'absolute',
+                left: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '45%',
+                height: '100%',
+                backgroundImage: 'url(/backgorund mike spray.png)',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'left center',
+                opacity: 0.15,
+                zIndex: 0,
+                pointerEvents: 'none'
+            }} />
+            {/* Gradient overlay to fade image to center */}
+            <div style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: '50%',
+                height: '100%',
+                background: 'linear-gradient(to right, transparent 0%, transparent 40%, #000000 100%)',
+                zIndex: 0,
+                pointerEvents: 'none'
+            }} />
+
             {/* Yellow glow effect behind logo */}
             <div style={{
                 position: 'absolute',
