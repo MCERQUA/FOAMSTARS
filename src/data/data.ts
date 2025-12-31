@@ -94,6 +94,8 @@ import blog1 from '../assets/img/banner-1.jpg'
 import blog2 from '../assets/img/banner-2.jpg'
 import blog3 from '../assets/img/banner-4.jpg'
 
+import blog4 from '../assets/img/banner-5.jpg'
+
 export const blogData = [
     {
         id: 1,
@@ -118,6 +120,14 @@ export const blogData = [
         desc: 'Learn how polyurethane foam injection can raise and level sunken concrete slabs. A cost-effective alternative to replacement for driveways, patios, and foundations.',
         date: 'December 5, 2024',
         views: '3.2k views'
+    },
+    {
+        id: 4,
+        image: blog4,
+        title: 'SEO Tips for Spray Foam Contractors: Grow Your Online Presence',
+        desc: 'Essential search engine optimization strategies for spray foam companies. Learn how to rank higher in local searches, optimize your Google Business Profile, and attract more leads online.',
+        date: 'December 20, 2024',
+        views: '1.2k views'
     }
 ];
 

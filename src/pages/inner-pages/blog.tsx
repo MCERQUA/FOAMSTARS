@@ -108,10 +108,10 @@ export default function Blog() {
                                 <div className="card-body">
                                     <div className="d-flex align-items-center justify-content-start gap-2 mb-3">
                                         <span className="badge badge-xs badge-success rounded-pill">Featured</span>
-                                        <span className="badge badge-xs badge-primary rounded-pill">Spray Foam</span>
+                                        <span className="badge badge-xs badge-primary rounded-pill">SEO & Marketing</span>
                                     </div>
-                                    <Link to="/blog-detail"><h4 className="fw-semibold fs-5 lh-base mb-2">Energy Efficiency: How Spray Foam Insulation Reduces Your Utility Bills</h4></Link>
-                                    <p>Discover how spray foam insulation creates an airtight seal that dramatically reduces heating and cooling costs. Learn about R-values, air barrier properties, and the long-term savings of upgrading your insulation.</p>
+                                    <Link to="/blog-detail"><h4 className="fw-semibold fs-5 lh-base mb-2">Boost Your Spray Foam Company's Website Performance with These SEO Tips</h4></Link>
+                                    <p>Learn how to optimize your spray foam insulation business website for better search rankings and more leads. Discover essential SEO strategies, local search optimization, and performance tips specifically designed for spray foam contractors looking to grow their online presence.</p>
                                     <div className="d-flex align-items-center justify-content-start mt-4">
                                         <Link to="/blog-detail" className="badge badge-primary rounded-pill">Continue Reading</Link>
                                     </div>
