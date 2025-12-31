@@ -95,6 +95,40 @@ body {
 h1, h2, h3, h4, h5, h6,
 .sectionHeading {
   color: var(--headingColor) !important;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+// Yellow text in headings - also needs outline
+.text-primary,
+.sectionHeading .text-primary {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 0 15px rgba(255, 204, 0, 0.3) !important;
+}
+
+// No contractors message - fix visibility
+.alert,
+.no-listings-message,
+.empty-state,
+[class*="no-"] {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
+  border-color: #2a2a2a !important;
+}
+
+// Generic empty/placeholder text
+p:empty,
+.text-muted,
+.text-secondary {
+  color: #888888 !important;
 }
 
 // Primary Button with Glow
@@ -667,5 +701,25 @@ footer,
     background: linear-gradient(135deg, #e6b800 0%, #d4a800 100%) !important;
     box-shadow: 0 4px 20px rgba(255, 204, 0, 0.3) !important;
     color: #000000 !important;
+  }
+}
+
+// ===== EMPTY STATE BOX =====
+.empty-state-box {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+
+  h4 {
+    color: var(--bs-primary) !important;
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      0 0 10px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  p {
+    color: #b0b0b0 !important;
   }
 }

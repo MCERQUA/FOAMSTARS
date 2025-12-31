@@ -138,8 +138,11 @@ export default function PopularListingTwo() {
   if (!loading && listings.length === 0) {
     return (
       <div className="row align-items-center justify-content-center">
-        <div className="col-xl-12 text-center py-5">
-          <p className="text-muted">No contractors available at the moment. Check back soon!</p>
+        <div className="col-xl-8 text-center py-5">
+          <div className="empty-state-box p-5 rounded-4">
+            <h4 className="mb-3">No Spray Foam Companies Listed Yet</h4>
+            <p className="text-light opacity-75 mb-0">Check back soon or be the first to list your company!</p>
+          </div>
         </div>
       </div>
     )
