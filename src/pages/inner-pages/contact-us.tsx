@@ -1,73 +1,110 @@
 import { Link } from 'react-router-dom'
 
-import bg from '../../assets/img/title-banner.jpg'
-
-import NavbarDark from '../../components/navbar/navbar-dark'
+import NavbarLight from '../../components/navbar/navbar-light'
 import FooterTop from '../../components/footer-top'
 import Footer from '../../components/footer'
 import BackToTop from '../../components/back-to-top'
 
-import { FaBriefcase, FaDribbble, FaFacebookF, FaGlobe, FaHeadset, FaInstagram, FaPaperPlane, FaTwitter } from 'react-icons/fa'
+import { FaBriefcase, FaFacebookF, FaGlobe, FaHeadset, FaInstagram, FaPaperPlane, FaTwitter } from 'react-icons/fa'
 
 export default function ContactUs() {
   return (
     <>
-        <NavbarDark/>
+        <NavbarLight/>
 
-        <section className="bg-cover position-relative" style={{backgroundImage:`url(${bg})`}} data-overlay="6">
-            <div className="container">
+        {/* Hero Section - Following FOAMSTARS Style Guide */}
+        <div className="hero-header" style={{
+            background: '#000000',
+            position: 'relative',
+            overflow: 'hidden',
+            paddingTop: '120px',
+            paddingBottom: '60px'
+        }}>
+            {/* Spray worker images - USE CSS CLASSES */}
+            <img src="/backgorund mike spray.png" alt="" className="hero-spray-worker hero-spray-left" />
+            <img src="/backgorund-mike-spray-rv.png" alt="" className="hero-spray-worker hero-spray-right" />
+
+            {/* Black vignette overlay */}
+            <div style={{
+                position: 'absolute',
+                left: 0, top: 0, width: '100%', height: '100%',
+                background: 'radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.85) 75%, #000000 100%)',
+                zIndex: 2, pointerEvents: 'none'
+            }} />
+
+            {/* Yellow glow effect */}
+            <div style={{
+                position: 'absolute',
+                top: '45%', left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '700px', height: '700px',
+                background: 'radial-gradient(circle, rgba(255, 200, 0, 0.35) 0%, rgba(255, 165, 0, 0.2) 25%, rgba(255, 140, 0, 0.1) 45%, transparent 65%)',
+                filter: 'blur(50px)',
+                zIndex: 3, pointerEvents: 'none'
+            }} />
+
+            <div className="container" style={{ position: 'relative', zIndex: 10 }}>
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-9 col-md-12">
-                        <div className="fpc-capstion text-center my-4">
-                            <div className="fpc-captions">
-                                <h1 className="xl-heading text-light">Contact Us</h1>
-                                <p className="text-lg text-light">Cicero famously orated against his political opponent Lucius Sergius Catilina.</p>
-                            </div>
+                        <div className="text-center my-4">
+                            {/* FOAMSTARS Logo */}
+                            <img
+                                src="/FOAMSTARS_logo.png"
+                                alt="FOAMSTARS"
+                                style={{
+                                    maxWidth: '300px',
+                                    width: '100%',
+                                    height: 'auto',
+                                    marginBottom: '20px',
+                                    display: 'block',
+                                    marginLeft: 'auto',
+                                    marginRight: 'auto',
+                                    filter: 'drop-shadow(0 0 30px rgba(255, 200, 0, 0.5))'
+                                }}
+                            />
+                            <h1 className="xl-heading text-white">Contact Us</h1>
+                            <p className="text-lg text-white-50">Get in touch with FOAMSTARS - we're here to help connect you with spray foam professionals.</p>
                         </div>
                     </div>
                 </div>
-                
-                <div className="row justify-content-between g-4 mt-lg-5 mt-4">
+
+                <div className="row justify-content-center g-4 mt-4 pb-4">
                     <div className="col-xl-4 col-lg-4 col-md-6">
-                        <div className="card p-4 rounded-4 bg-transparents border-0 text-center h-100">
-                            <div className="crds-icons d-inline-flex mx-auto mb-3 text-light fs-2"><FaBriefcase className=""/>
-                            </div>
+                        <div className="card p-4 rounded-4 border-0 text-center h-100" style={{ background: 'rgba(255, 255, 255, 0.05)', backdropFilter: 'blur(10px)' }}>
+                            <div className="crds-icons d-inline-flex mx-auto mb-3 fs-2 text-warning"><FaBriefcase /></div>
                             <div className="crds-desc">
-                                <h5 className="text-light">Drop a Mail</h5>
-                                <p className="fs-6 text-md lh-2 text-light opacity-75 mb-0">contact@foamstars.com<br/>support@foamstars.com</p>
+                                <h5 className="text-white">Drop a Mail</h5>
+                                <p className="fs-6 text-white-50 mb-0">contact@foamstars.com<br/>support@foamstars.com</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-4 col-lg-4 col-md-6">
-                        <div className="card p-4 rounded-4 bg-transparents border-0 text-center h-100">
-                            <div className="crds-icons d-inline-flex mx-auto mb-3 text-light fs-2"><FaHeadset className=""/>
-                            </div>
+                        <div className="card p-4 rounded-4 border-0 text-center h-100" style={{ background: 'rgba(255, 255, 255, 0.05)', backdropFilter: 'blur(10px)' }}>
+                            <div className="crds-icons d-inline-flex mx-auto mb-3 fs-2 text-warning"><FaHeadset /></div>
                             <div className="crds-desc">
-                                <h5 className="text-light">Call Us</h5>
-                                <p className="fs-6 text-md lh-2 text-light opacity-75 mb-0">(0522) 2563568<br/>+91 256 6548 457</p>
+                                <h5 className="text-white">Call Us</h5>
+                                <p className="fs-6 text-white-50 mb-0">Coming Soon</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-4 col-lg-4 col-md-6">
-                        <div className="card p-4 rounded-4 bg-transparents border-0 text-center h-100">
-                            <div className="crds-icons d-inline-flex mx-auto mb-3 text-light fs-2"><FaGlobe className=""/>
-                            </div>
+                        <div className="card p-4 rounded-4 border-0 text-center h-100" style={{ background: 'rgba(255, 255, 255, 0.05)', backdropFilter: 'blur(10px)' }}>
+                            <div className="crds-icons d-inline-flex mx-auto mb-3 fs-2 text-warning"><FaGlobe /></div>
                             <div className="crds-desc">
-                                <h5 className="text-light">Connect with Social</h5>
-                                <p className="text-md text-light opacity-75 lh-2">Let's Connect with Us via social media</p>
+                                <h5 className="text-white">Connect with Social</h5>
+                                <p className="text-white-50 mb-2">Follow us on social media</p>
                                 <ul className="list-inline mb-0">
-                                    <li className="list-inline-item"><Link className="square--40 circle bg-transparents text-light" to="#"><FaFacebookF/></Link> </li>
-                                    <li className="list-inline-item"><Link className="square--40 circle bg-transparents text-light" to="#"><FaInstagram/></Link> </li>
-                                    <li className="list-inline-item"><Link className="square--40 circle bg-transparents text-light" to="#"><FaTwitter/></Link> </li>
-                                    <li className="list-inline-item"><Link className="square--40 circle bg-transparents text-light" to="#"><FaDribbble/></Link> </li>
+                                    <li className="list-inline-item"><Link className="square--40 circle text-white" style={{ background: 'rgba(255, 255, 255, 0.1)' }} to="#"><FaFacebookF/></Link></li>
+                                    <li className="list-inline-item"><Link className="square--40 circle text-white" style={{ background: 'rgba(255, 255, 255, 0.1)' }} to="#"><FaInstagram/></Link></li>
+                                    <li className="list-inline-item"><Link className="square--40 circle text-white" style={{ background: 'rgba(255, 255, 255, 0.1)' }} to="#"><FaTwitter/></Link></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-        </section>
+        </div>
 
         <section>
             <div className="container">
@@ -82,7 +119,7 @@ export default function ContactUs() {
                                     <div className="col-xl-12 col-lg-12 col-md-12">
                                         <div className="touch-block d-flex flex-column mb-4">
                                             <h2>Drop Us a Line</h2>
-                                            <p>Get in touch via form below and we will reply as soos as we can. </p>
+                                            <p>Get in touch via the form below and we will reply as soon as we can.</p>
                                         </div>
                                     </div>
 
@@ -95,14 +132,14 @@ export default function ContactUs() {
 
                                     <div className="col-xl-6 col-lg-6 col-md-6">
                                         <div className="form-group form-border">
-                                            <label className="form-label">eMail ID</label>
+                                            <label className="form-label">Email Address</label>
                                             <input type="email" className="form-control bg-light"/>
                                         </div>
                                     </div>
 
                                     <div className="col-xl-6 col-lg-6 col-md-6">
                                         <div className="form-group form-border">
-                                            <label className="form-label">Phone No.</label>
+                                            <label className="form-label">Phone Number</label>
                                             <input type="text" className="form-control bg-light"/>
                                         </div>
                                     </div>
@@ -116,7 +153,7 @@ export default function ContactUs() {
 
                                     <div className="col-xl-12 col-lg-12 col-md-12">
                                         <div className="form-group form-border">
-                                            <label className="form-label">Your Query</label>
+                                            <label className="form-label">Your Message</label>
                                             <textarea className="form-control ht-120 bg-light"></textarea>
                                         </div>
                                     </div>
@@ -124,12 +161,6 @@ export default function ContactUs() {
                                     <div className="col-xl-12 col-lg-12 col-md-12">
                                         <div className="form-group form-border">
                                             <button type="button" className="btn fw-medium btn-primary">Send Message<FaPaperPlane className="ms-2"/></button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="">
-                                        <div className="">
-                                            <div className="alert alert-success" role="alert">Message Sent Successfully To RealScout. You Will Get Response Soon.</div>
                                         </div>
                                     </div>
                                 </div>
