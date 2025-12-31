@@ -509,7 +509,16 @@ footer,
   border-color: rgba(0, 168, 255, 0.3) !important;
 }
 
-// Yellow Glass Button (Navigation CTA)
+// Yellow Glass Button (Navigation CTA) - Override all specificity
+.nav-menu.nav-menu-social > li.list-buttons a,
+.nav-menu.nav-menu-social > li.list-buttons.light a,
+.header .nav-menu.nav-menu-social > li.list-buttons a,
+.header .nav-menu.nav-menu-social > li.list-buttons.light a,
+.header-transparent .nav-menu.nav-menu-social > li.list-buttons a,
+.header-transparent .nav-menu.nav-menu-social > li.list-buttons.light a,
+.header-transparent.dark .nav-menu.nav-menu-social > li.list-buttons.light a,
+.header-fixed .nav-menu.nav-menu-social > li.list-buttons.light a,
+.header-transparent.dark.header-fixed .nav-menu.nav-menu-social > li.list-buttons.light a,
 .list-buttons a,
 .list-buttons.light a {
   background: linear-gradient(135deg, rgba(255, 204, 0, 0.9) 0%, rgba(255, 180, 0, 0.85) 100%) !important;
