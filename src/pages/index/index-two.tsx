@@ -86,6 +86,9 @@ export default function IndexTwo() {
                                     width: '100%',
                                     height: 'auto',
                                     marginBottom: '20px',
+                                    marginLeft: 'auto',
+                                    marginRight: 'auto',
+                                    display: 'block',
                                     filter: 'drop-shadow(0 0 30px rgba(255, 200, 0, 0.5))'
                                 }}
                             />
