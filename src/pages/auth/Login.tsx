@@ -70,7 +70,7 @@ export default function Login() {
                   <div className="card rounded-4 p-sm-5 p-4">
                     <div className="card-body p-0">
                       <div className="text-center">
-                        <h1 className="mb-2 fs-2">Welcome To ListingHub!</h1>
+                        <h1 className="mb-2 fs-2">Welcome To FOAMSTARS!</h1>
                       </div>
                       
                       {error && (

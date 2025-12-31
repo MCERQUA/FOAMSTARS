@@ -15,7 +15,7 @@ export default function AboutOne() {
                 <div className="col-xl-5 col-lg-6 col-md-6">
                     <div className="featuresCaption">
                         <div className="fstsTitle mb-4">
-                            <h3 className="fw-medium lh-base">Why People Love & Select ListingHub Platform?</h3>
+                            <h3 className="fw-medium lh-base">Why People Love & Select FOAMSTARS Platform?</h3>
                         </div>
                         <div className="fstsFeatures mb-4">
                             <div className="d-flex flex-column gap-4">

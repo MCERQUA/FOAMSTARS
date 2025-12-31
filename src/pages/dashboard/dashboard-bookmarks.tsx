@@ -7,7 +7,6 @@ import BackToTop from '../../components/back-to-top'
 import { adminListing } from '../../data/data'
 
 import { BsStarFill, BsStarHalf, BsX } from 'react-icons/bs'
-import { FaHeart } from 'react-icons/fa'
 
 interface listData{
     image: string;
@@ -92,7 +91,7 @@ export default function DashboardBookmarks() {
                                 
                                 <div className="row align-items-start g-4">
                                     <div className="col-xl-12 col-lg-12 col-md-12">
-                                        <p className="text-muted m-0">© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p>
+                                        <p className="text-muted m-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p>
                                     </div>
                                 </div>
                                 

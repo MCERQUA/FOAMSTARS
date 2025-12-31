@@ -14,7 +14,7 @@ export default function WorkingProcess() {
                 <div className="col-xl-6 col-lg-6 col-md-6">
                     <div className="workingCaption">
                         <div className="workingDescribe mb-lg-5 mb-4">
-                            <h3 className="fw-semibold lh-base">Explore ListingHub Working Process Step By Step with Easy Way.</h3>
+                            <h3 className="fw-semibold lh-base">Explore FOAMSTARS Working Process Step By Step with Easy Way.</h3>
                             <p className="lead">In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready.</p>
                         </div>
                         <div className="workingDemo mb-lg-5 mb-4">
@@ -36,7 +36,7 @@ export default function WorkingProcess() {
                             <div className="workingVideobox">
                                 <Link to="#" className="d-inline-flex align-items-center justify-content-start gap-3">
                                     <span className="square--50 circle bg-white text-primary shadow-sm"><BsPlayFill className="fs-4"/></span>
-                                    <span className="fw-semibold text-dark">See how ListingHub work online</span>
+                                    <span className="fw-semibold text-dark">See how FOAMSTARS work online</span>
                                 </Link>
                             </div>
                         </div>

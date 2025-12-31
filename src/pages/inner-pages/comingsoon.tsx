@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import bg from '../../assets/img/banner-2.jpg'
-import logo from '../../assets/img/logo-light.svg'
+const logo = '/FOAMSTARS_logo.png'
 
 import { FaHome } from 'react-icons/fa'
 

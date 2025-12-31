@@ -268,7 +268,7 @@ export default function AuthorProfile() {
                                             <div className="square--40 rounded bg-light-primary"><BsBrowserChrome className="text-primary"/></div>
                                             <div className="infoDetails">
                                                 <p className="text-muted lh-base mb-0">Website</p>
-                                                <p className="text-dark lh-base fw-semibold fs-6 mb-0">www.ListingHub.co.in</p>
+                                                <p className="text-dark lh-base fw-semibold fs-6 mb-0">foamstars.com</p>
                                             </div>
                                         </div>
                                     </div>

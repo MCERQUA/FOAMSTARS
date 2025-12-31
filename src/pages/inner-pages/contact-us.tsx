@@ -34,7 +34,7 @@ export default function ContactUs() {
                             </div>
                             <div className="crds-desc">
                                 <h5 className="text-light">Drop a Mail</h5>
-                                <p className="fs-6 text-md lh-2 text-light opacity-75 mb-0">Shreethemes@gmail.com<br/>Shreethemes@gmail.com</p>
+                                <p className="fs-6 text-md lh-2 text-light opacity-75 mb-0">contact@foamstars.com<br/>support@foamstars.com</p>
                             </div>
                         </div>
                     </div>

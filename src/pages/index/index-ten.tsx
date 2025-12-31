@@ -143,7 +143,7 @@ export default function IndexTen() {
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
                             <h3 className="sectionHeading">Latest Updates <span className="text-primary">News</span></h3>
-                            <p>Join ListingHub and get latest & trending updates about listing</p>
+                            <p>Join FOAMSTARS and get latest & trending updates about listing</p>
                         </div>
                     </div>
                 </div>

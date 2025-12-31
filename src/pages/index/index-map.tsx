@@ -88,8 +88,8 @@ export default function IndexMap() {
 				<div className="row align-items-center justify-content-center">
 					<div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
 						<div className="secHeading-wrap text-center">
-							<h3 className="sectionHeading">How ListingHub <span className="text-primary">Work?</span></h3>
-							<p>Let's see ListingHub work process and create an account.</p>
+							<h3 className="sectionHeading">How FOAMSTARS <span className="text-primary">Work?</span></h3>
+							<p>Let's see FOAMSTARS work process and create an account.</p>
 						</div>
 					</div>
 				</div>
@@ -119,7 +119,7 @@ export default function IndexMap() {
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
                             <h3 className="sectionHeading">Latest Updates <span className="text-primary">News</span></h3>
-                            <p>Join ListingHub and get latest & trending updates about listing</p>
+                            <p>Join FOAMSTARS and get latest & trending updates about listing</p>
                         </div>
                     </div>
                 </div>

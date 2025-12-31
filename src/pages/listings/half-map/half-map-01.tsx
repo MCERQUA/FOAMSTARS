@@ -10,7 +10,6 @@ import { listData } from '../../../data/data'
 
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 import { BsGeoAlt, BsPatchCheckFill, BsStar, BsSuitHeart, BsTelephone } from 'react-icons/bs'
-import { FaHeart } from 'react-icons/fa'
 import { IconType } from 'react-icons'
 
 // Import fallback images
@@ -301,7 +300,7 @@ export default function HalfMap1() {
 						
 						<div className="row align-items-center justify-content-center mt-5">
 							<div className="col-lg-12 col-md-12 col-sm-12">
-								<div className="copyrightbox text-center"> <p className="mb-0">© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p></div>
+								<div className="copyrightbox text-center"> <p className="mb-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p></div>
 							</div>
 						</div>
 							

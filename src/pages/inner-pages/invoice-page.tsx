@@ -107,7 +107,7 @@ export default function InvoicePage() {
 									<div className="text-small">
 										<div><h4 className="fw-semibold">Thank you!</h4></div>
 										<div><p>If you have any questions concerning this invoice, use the following contact information:</p></div>
-										<div>© {new Date().getFullYear()} ListingHub Limited.</div>
+										<div>© {new Date().getFullYear()} FOAMSTARS Limited.</div>
 									</div>
 								</div>
 							</div>

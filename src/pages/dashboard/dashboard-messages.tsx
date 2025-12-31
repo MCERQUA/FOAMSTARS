@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 
 import AdminNavbar from '../../components/navbar/admin-navbar'
@@ -9,7 +9,6 @@ import { getUserBookings, getBookingMessages, sendMessage, markMessagesAsRead, B
 import { useAuth } from '../../contexts/AuthContext'
 
 import { BsSend, BsClock, BsCheckAll } from 'react-icons/bs'
-import { FaHeart } from 'react-icons/fa'
 
 interface BookingMessage {
   id: string;
@@ -328,7 +327,7 @@ export default function DashboardMessages() {
                                     
                                     <div className="row align-items-start g-4">
                                         <div className="col-xl-12 col-lg-12 col-md-12">
-                                            <p className="text-muted m-0">© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p>
+                                            <p className="text-muted m-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p>
                                         </div>
                                     </div>
                                 </div>

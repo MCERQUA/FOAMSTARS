@@ -31,7 +31,7 @@ export default function SingleSidebarThree() {
         {
           icon: BsBrowserChrome,
           title:'Website',
-          desc:'www.ListingHub.co.in'  
+          desc:'foamstars.com'  
         },
     ]
     const social = [

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import AdminNavbar from '../../components/navbar/admin-navbar'
@@ -10,7 +10,6 @@ import { getUserListings, deleteListing, BusinessListing } from '../../lib/supab
 import { useAuth } from '../../contexts/AuthContext'
 
 import { BsStarFill, BsStarHalf, BsPencil, BsTrash, BsPlus } from 'react-icons/bs'
-import { FaHeart } from 'react-icons/fa'
 
 export default function DashboardMyListings() {
   const { profile } = useAuth()
@@ -259,7 +258,7 @@ export default function DashboardMyListings() {
                                 
                                 <div className="row align-items-start g-4">
                                     <div className="col-xl-12 col-lg-12 col-md-12">
-                                        <p className="text-muted m-0">© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p>
+                                        <p className="text-muted m-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p>
                                     </div>
                                 </div>
                                 

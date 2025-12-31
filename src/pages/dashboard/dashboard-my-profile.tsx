@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+// Link removed - not used
 
 import AdminNavbar from '../../components/navbar/admin-navbar'
 import AdminSidebar from '../../components/admin/admin-sidebar'
@@ -13,7 +13,6 @@ const getDefaultAvatar = (name?: string | null) => {
   return `https://ui-avatars.com/api/?name=${encodeURIComponent(initials)}&background=c71f37&color=fff&size=200`
 }
 
-import { FaHeart } from 'react-icons/fa'
 import { useAuth } from '../../contexts/AuthContext'
 
 export default function DashboardMyProfile() {
@@ -93,7 +92,7 @@ export default function DashboardMyProfile() {
                             
                             <div className="row align-items-start g-4">
                                 <div className="col-xl-12 col-lg-12 col-md-12">
-                                    © {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link>
+                                    © {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.
                                 </div>
                             </div>
                         </div>

@@ -10,7 +10,6 @@ import { useAuth } from '../../contexts/AuthContext'
 
 import { BsCheck2Circle, BsEnvelopeDash, BsX, BsClock, BsCalendarCheck, BsExclamationTriangle } from 'react-icons/bs'
 
-import { FaHeart } from 'react-icons/fa'
 
 export default function DashboardMyBookings() {
   const { profile } = useAuth()
@@ -330,7 +329,7 @@ export default function DashboardMyBookings() {
                             
                             <div className="row align-items-start g-4">
                                 <div className="col-xl-12 col-lg-12 col-md-12">
-                                    <p className="text-muted m-0">© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p>
+                                    <p className="text-muted m-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p>
                                 </div>
                             </div>
                             

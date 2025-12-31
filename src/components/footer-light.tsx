@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import logo from '../assets/img/logo.svg'
-import { FaFacebookF, FaHeart, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
+const logo = '/FOAMSTARS_logo.png'
+import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { footerLink1, footerLink2, footerLink3 } from '../data/data'
 import { BsGeoAltFill, BsTelephoneInbound } from 'react-icons/bs'
 
@@ -14,7 +14,7 @@ export default function FooterLight() {
                 <div className="col-12 col-md-5 col-lg-12 col-xl-4">
                     <div className="footer-widget pe-xl-4 mb-5">
                         <div className="footerLogo"><img src={logo} className="img-fluid" width="160" alt="Footer Logo"/></div>
-                        <div className="footerText"><p>© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p></div>
+                        <div className="footerText"><p>© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p></div>
                         <div className="footerSocialwrap">
                             <ul className="footersocial">
                                 <li><Link to="#" className="social-link"><FaFacebookF/></Link></li>
@@ -54,7 +54,7 @@ export default function FooterLight() {
 
                 <div className="col-6 col-md-4 col-lg-3 col-xl-2">
                     <div className="footer-widget">
-                        <h4 className="widget-title">ListingHub Business</h4>
+                        <h4 className="widget-title">FOAMSTARS Business</h4>
                         <ul className="footer-menu">
                             {footerLink3.map((item,index)=>{
                                  return(

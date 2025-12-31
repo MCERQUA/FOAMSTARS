@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+// Link removed - not used
 
 import AdminNavbar from '../../components/navbar/admin-navbar'
 import AdminSidebar from '../../components/admin/admin-sidebar'
@@ -7,7 +7,6 @@ import BackToTop from '../../components/back-to-top'
 import CountUp from 'react-countup'
 import { earning } from '../../data/data'
 
-import { FaHeart } from 'react-icons/fa'
 import { BsBasket2, BsCoin, BsWallet } from 'react-icons/bs'
 
 interface Earning{
@@ -126,7 +125,7 @@ export default function DashboardWallet() {
                                 
                                 <div className="row align-items-start g-4">
                                     <div className="col-xl-12 col-lg-12 col-md-12">
-                                        <p className="text-muted m-0">© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p>
+                                        <p className="text-muted m-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p>
                                     </div>
                                 </div>
                                 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { BsPatchCheckFill, BsTelephone,BsCoin, BsLightningChargeFill  } from 'react-icons/bs'
-import { FaArrowLeft, FaArrowRight,FaStar,FaLocationDot, FaHeart } from 'react-icons/fa6'
+import { FaArrowLeft, FaArrowRight, FaStar, FaLocationDot, FaHeart } from 'react-icons/fa6'
 
 import FilterTwo from '../../../components/filter-two'
 import NavbarFull from '../../../components/navbar/navbar-full'
@@ -180,7 +180,7 @@ export default function HalfMap5() {
                         
                         <div className="row align-items-center justify-content-center mt-5">
                             <div className="col-lg-12 col-md-12 col-sm-12">
-                                <div className="copyrightbox text-center"><p className="mb-0">© {new Date().getFullYear()} ListingHub. Develop with <FaHeart className="ms-1 text-danger"></FaHeart>  By <Link to="https://shreethemes.in/" target="_blank">Shreethemes</Link></p></div>
+                                <div className="copyrightbox text-center"><p className="mb-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p></div>
                             </div>
                         </div>
                             

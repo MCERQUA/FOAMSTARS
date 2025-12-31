@@ -215,7 +215,7 @@ export default function DashboardUser() {
                                 
                                 <div className="row align-items-start g-4">
                                     <div className="col-xl-12 col-lg-12 col-md-12">
-                                        <p className="text-muted m-0">© {new Date().getFullYear()} ContractorHub. Your trusted directory for professional contractors.</p>
+                                        <p className="text-muted m-0">© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p>
                                     </div>
                                 </div>
                                 
