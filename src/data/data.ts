@@ -1,8 +1,9 @@
 // Data layer cleaned for production - all mock data removed
 // Real data now comes from Supabase backend
+// FOAMSTARS - Spray Foam Insulation Contractor Directory
 
-import { BsBarChart, BsCameraReels, BsCodeSlash, BsCoin, BsCreditCard2Back, BsEnvelopeAt, BsFacebook, BsFileEarmarkTextFill, BsGraphUpArrow, BsHouseCheck, BsInstagram, BsLayers, BsLinkedin, BsPatchCheck, BsPatchQuestion, BsPeopleFill, BsPersonCheck, BsPinMap, BsPinMapFill, BsPinterest, BsSuitHeart, BsTwitter, BsYelp } from "react-icons/bs";
-import { FaStar, FaStarHalfStroke, FaHammer, FaWrench, FaPaintRoller, FaPlug, FaScrewdriverWrench, FaHouse, FaBroom, FaLeaf } from "react-icons/fa6";
+import { BsBarChart, BsCameraReels, BsCoin, BsCreditCard2Back, BsEnvelopeAt, BsFacebook, BsFileEarmarkTextFill, BsGraphUpArrow, BsInstagram, BsLinkedin, BsPatchCheck, BsPatchQuestion, BsPeopleFill, BsPersonCheck, BsPinMap, BsPinMapFill, BsPinterest, BsSuitHeart, BsTwitter, BsYelp, BsDroplet } from "react-icons/bs";
+import { FaStar, FaStarHalfStroke, FaHouseChimney, FaFilm, FaRoad, FaUmbrella } from "react-icons/fa6";
 
 // Placeholder images - these can be removed once real data is integrated
 const placeholderImage = '/placeholder.svg';
@@ -12,79 +13,42 @@ import review1 from '../assets/img/google.png'
 import review2 from '../assets/img/trustpilot.png'
 import review3 from '../assets/img/capterra.png'
 
-// Category structure matching Supabase categories - preserved for UI structure
+// Spray Foam Service Categories
 export const categoryData = [
     {
         image: placeholderImage,
-        icon: FaHammer,
-        title: 'General Contractors',
-        list: '0 Contractors'
+        icon: FaHouseChimney,
+        title: 'Spray Foam Insulation',
+        list: '0 Companies',
+        description: 'Residential & commercial insulation services'
     },
     {
         image: placeholderImage,
-        icon: FaWrench,
-        title: 'Plumbing Services',
-        list: '0 Contractors'
+        icon: FaRoad,
+        title: 'Concrete Lifting',
+        list: '0 Companies',
+        description: 'Polyurethane foam concrete leveling & lifting'
     },
     {
         image: placeholderImage,
-        icon: FaPlug,
-        title: 'Electrical Services',
-        list: '0 Contractors'
+        icon: FaFilm,
+        title: 'Artistic & Themed Projects',
+        list: '0 Companies',
+        description: 'Movie sets, theme parks & sculptural foam'
     },
     {
         image: placeholderImage,
-        icon: FaPaintRoller,
-        title: 'Painting & Decorating',
-        list: '0 Contractors'
+        icon: BsDroplet,
+        title: 'Polyurethane Coatings',
+        list: '0 Companies',
+        description: 'Protective coatings & waterproofing'
     },
     {
         image: placeholderImage,
-        icon: BsHouseCheck,
-        title: 'HVAC Services',
-        list: '0 Contractors'
-    },
-    {
-        image: placeholderImage,
-        icon: FaScrewdriverWrench,
-        title: 'Home Repair',
-        list: '0 Contractors'
-    },
-    {
-        image: placeholderImage,
-        icon: FaHouse,
-        title: 'Roofing Specialists',
-        list: '0 Contractors'
-    },
-    {
-        image: placeholderImage,
-        icon: BsLayers,
-        title: 'Flooring Installation',
-        list: '0 Contractors'
-    },
-    {
-        image: placeholderImage,
-        icon: FaLeaf,
-        title: 'Landscaping & Gardening',
-        list: '0 Contractors'
-    },
-    {
-        image: placeholderImage,
-        icon: FaBroom,
-        title: 'Cleaning Services',
-        list: '0 Contractors'
-    },
-    {
-        image: placeholderImage,
-        icon: BsCodeSlash,
-        title: 'Kitchen Remodeling',
-        list: '0 Contractors'
-    },
-    {
-        image: placeholderImage,
-        icon: BsSuitHeart,
-        title: 'Bathroom Renovation',
-        list: '0 Contractors'
+        icon: FaUmbrella,
+        title: 'SPF Roofing',
+        list: '0 Companies',
+        description: 'Spray polyurethane foam roofing systems'
     },
 ]
 
@@ -111,32 +75,32 @@ export const blogData = [
     {
         id: 1,
         image: blog1,
-        title: 'Essential Home Maintenance Tips for Every Season',
-        desc: 'Keep your home in top condition year-round with our comprehensive seasonal maintenance checklist. From HVAC tune-ups to gutter cleaning, we cover everything you need to know.',
+        title: 'Open Cell vs Closed Cell Spray Foam: Which is Right for You?',
+        desc: 'Understanding the differences between open cell and closed cell spray foam insulation. Learn about R-values, moisture barriers, and which type works best for different applications.',
         date: 'December 15, 2024',
         views: '2.5k views'
     },
     {
         id: 2,
         image: blog2,
-        title: 'How to Choose the Right Contractor for Your Project',
-        desc: 'Learn the key factors to consider when selecting a contractor for your home improvement project. Get tips on vetting credentials, comparing quotes, and ensuring quality work.',
+        title: 'The Complete Guide to SPF Roofing Systems',
+        desc: 'Discover why spray polyurethane foam roofing is becoming the preferred choice for commercial buildings. Energy savings, durability, and seamless waterproofing explained.',
         date: 'December 10, 2024',
         views: '1.8k views'
     },
     {
         id: 3,
         image: blog3,
-        title: 'Kitchen Renovation Trends That Add Value to Your Home',
-        desc: 'Discover the latest kitchen renovation trends that not only enhance your daily life but also increase your home\'s market value. From smart appliances to sustainable materials.',
+        title: 'How Concrete Lifting with Polyurethane Foam Works',
+        desc: 'Learn how polyurethane foam injection can raise and level sunken concrete slabs. A cost-effective alternative to replacement for driveways, patios, and foundations.',
         date: 'December 5, 2024',
         views: '3.2k views'
     }
 ];
 
-// Footer links - kept as these are static site content
-export const footerLink1 = ['About ContractorHub', 'Find Contractors', 'Contractor Signup', 'Careers'];
-export const footerLink2 = ['Trust & Safety', 'Contractor Verification', 'Terms of Services', 'Advertising', 'Home Improvement Blog'];
+// Footer links - FOAMSTARS specific
+export const footerLink1 = ['About FOAMSTARS', 'Find Companies', 'List Your Company', 'Browse by State'];
+export const footerLink2 = ['Trust & Safety', 'Company Verification', 'Terms of Services', 'Advertising', 'Spray Foam Blog'];
 export const footerLink3 = ['Help Center', 'Contact Support', 'Pricing', 'Insurance Info', 'Safety Guidelines'];
 
 // City/location data - empty array, real data comes from Supabase
@@ -145,22 +109,22 @@ export const cityData: any[] = [];
 // Event data - empty array, real data comes from CMS/Supabase
 export const eventData: any[] = [];
 
-// How it works section - kept as static content
+// How it works section - FOAMSTARS specific
 export const workData = [
     {
         icon: BsPinMap,
-        title: 'Find Local Contractors',
-        desc: 'Search and discover verified contractors in your area using our comprehensive directory and location-based search tools.'
+        title: 'Search by State',
+        desc: 'Browse spray foam insulation companies by state. Find local professionals for insulation, concrete lifting, coatings, and roofing.'
     },
     {
         icon: BsEnvelopeAt,
-        title: 'Connect & Compare',
-        desc: 'Contact multiple contractors, read reviews, compare quotes, and evaluate their portfolios to make informed decisions.'
+        title: 'Compare Services',
+        desc: 'Review company profiles, services offered, certifications, and customer reviews. Compare specialists for your specific project needs.'
     },
     {
         icon: BsPatchCheck,
-        title: 'Book with Confidence',
-        desc: 'Schedule appointments, track project progress, and manage payments through our secure platform with verified professionals.'
+        title: 'Connect Directly',
+        desc: 'Contact verified spray foam professionals directly. Get quotes for insulation, SPF roofing, concrete lifting, or specialty projects.'
     },
 ];
 

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
-import { FaHammer, FaWrench, FaPaintRoller, FaPlug, FaTools } from 'react-icons/fa'
+import { FaHouseChimney, FaRoad, FaFilm, FaUmbrella } from 'react-icons/fa6'
+import { BsDroplet } from 'react-icons/bs'
 
 import NavbarLight from '../../components/navbar/navbar-light'
 import FormOne from '../../components/form-one'
@@ -73,11 +74,11 @@ export default function IndexTwo() {
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="d-block position-relative">
                             <div className="popularSearches d-flex align-items-center justify-content-center gap-4 flex-wrap">
-                                <div className="singleItem"><Link to="#" data-bs-toggle="tooltip" data-bs-title="General Contractors" className="badge-transparent square--70 circle"><FaHammer className="fs-3"/></Link></div>	
-                                <div className="singleItem"><Link to="#" data-bs-toggle="tooltip" data-bs-title="Plumbing" className="badge-transparent square--70 circle"><FaWrench className="fs-3"/></Link></div>	
-                                <div className="singleItem"><Link to="#" data-bs-toggle="tooltip" data-bs-title="Painting" className="badge-transparent square--70 circle"><FaPaintRoller className="fs-3"/></Link></div>	
-                                <div className="singleItem"><Link to="#" data-bs-toggle="tooltip" data-bs-title="Electrical" className="badge-transparent square--70 circle"><FaPlug className="fs-3"/></Link></div>	
-                                <div className="singleItem"><Link to="#" data-bs-toggle="tooltip" data-bs-title="Home Repair" className="badge-transparent square--70 circle"><FaTools className="fs-3"/></Link></div>		
+                                <div className="singleItem"><Link to="/contractors/list" data-bs-toggle="tooltip" data-bs-title="Spray Foam Insulation" className="badge-transparent square--70 circle"><FaHouseChimney className="fs-3"/></Link></div>
+                                <div className="singleItem"><Link to="/contractors/list" data-bs-toggle="tooltip" data-bs-title="Concrete Lifting" className="badge-transparent square--70 circle"><FaRoad className="fs-3"/></Link></div>
+                                <div className="singleItem"><Link to="/contractors/list" data-bs-toggle="tooltip" data-bs-title="Artistic & Themed Projects" className="badge-transparent square--70 circle"><FaFilm className="fs-3"/></Link></div>
+                                <div className="singleItem"><Link to="/contractors/list" data-bs-toggle="tooltip" data-bs-title="Polyurethane Coatings" className="badge-transparent square--70 circle"><BsDroplet className="fs-3"/></Link></div>
+                                <div className="singleItem"><Link to="/contractors/list" data-bs-toggle="tooltip" data-bs-title="SPF Roofing" className="badge-transparent square--70 circle"><FaUmbrella className="fs-3"/></Link></div>
                             </div>
                         </div>
                     </div>
@@ -90,8 +91,8 @@ export default function IndexTwo() {
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
-                            <h3 className="sectionHeading">Popular Contractor <span className="text-primary">Services</span></h3>
-                            <p>Find contractors for all types of home improvement and repair services</p>
+                            <h3 className="sectionHeading">Spray Foam <span className="text-primary">Services</span></h3>
+                            <p>Find specialized spray foam companies for insulation, coatings, roofing, and more</p>
                         </div>
                     </div>
                 </div>
@@ -104,8 +105,8 @@ export default function IndexTwo() {
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
-                            <h3 className="sectionHeading">Top-Rated Contractors In <span className="text-primary">Your Area</span></h3>
-                            <p>Browse trusted contractors with verified reviews and ratings</p>
+                            <h3 className="sectionHeading">Featured Spray Foam <span className="text-primary">Companies</span></h3>
+                            <p>Browse verified spray foam insulation professionals with proven track records</p>
                         </div>
                     </div>
                 </div>
@@ -118,8 +119,8 @@ export default function IndexTwo() {
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
-                            <h3 className="sectionHeading">Find Contractors By <span className="text-primary">Location</span></h3>
-                            <p>Connect with local contractors in your city and surrounding areas</p>
+                            <h3 className="sectionHeading">Browse By <span className="text-primary">State</span></h3>
+                            <p>Find spray foam contractors in your state</p>
                         </div>
                     </div>
                 </div>
@@ -132,8 +133,8 @@ export default function IndexTwo() {
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
-                            <h3 className="sectionHeading">Customer <span className="text-primary">Success Stories</span></h3>
-                            <p>Read what homeowners say about their contractor experiences</p>
+                            <h3 className="sectionHeading">Customer <span className="text-primary">Testimonials</span></h3>
+                            <p>Read what property owners say about their spray foam projects</p>
                         </div>
                     </div>
                 </div>
@@ -146,8 +147,8 @@ export default function IndexTwo() {
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
-                            <h3 className="sectionHeading">Home Improvement <span className="text-primary">Tips & News</span></h3>
-                            <p>Stay updated with the latest trends, tips, and contractor insights</p>
+                            <h3 className="sectionHeading">Spray Foam <span className="text-primary">Industry News</span></h3>
+                            <p>Stay updated with the latest trends, techniques, and industry insights</p>
                         </div>
                     </div>
                 </div>
@@ -160,8 +161,8 @@ export default function IndexTwo() {
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
-                            <h3 className="sectionHeading">Home & Garden <span className="text-primary">Events</span></h3>
-                            <p>Join local home improvement shows and contractor networking events</p>
+                            <h3 className="sectionHeading">Industry <span className="text-primary">Events</span></h3>
+                            <p>Join spray foam trade shows and industry networking events</p>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ListingHub is a React + TypeScript business directory and listing template built with Vite. It's a comprehensive directory site featuring multiple home page variants, listing layouts, and dashboard functionality.
+**FOAMSTARS** is a React + TypeScript directory website exclusively for **Spray Foam Insulation Companies**. Built on the ListingHub template, we are converting it from a generic contractor directory into a niche-specific directory for the spray foam industry.
+
+### Target Niche
+- **Industry**: Spray Foam Insulation ONLY (no other trades)
+- **Organization**: Companies listed by **State** → individual contractors within each state
+- **Service Categories**:
+  1. **Spray Foam Insulation** - Residential & commercial insulation
+  2. **Concrete Lifting** - Polyurethane foam concrete leveling & lifting
+  3. **Artistic & Themed Projects** - Movie sets, theme parks, sculptural foam
+  4. **Polyurethane Coatings** - Protective coatings & waterproofing
+  5. **SPF Roofing** - Spray polyurethane foam roofing systems
+
+### Conversion Status
+This project is being converted from a general contractor directory. When working on this codebase:
+- Replace generic "contractor" terminology with spray foam specific language
+- Categories should reflect spray foam services (not plumbing, electrical, etc.)
+- Location browsing should emphasize States, not cities
+- All content should be spray foam industry focused
+
+### Remaining Conversion Tasks
+- [ ] Update search/filter components for spray foam services
+- [ ] Convert city-based browsing to state-based
+- [ ] Update all page templates to use spray foam terminology
+- [ ] Update footer components
+- [ ] Modify Supabase schema/categories for spray foam services
+- [ ] Add state selection for company listings
+- [ ] Update SEO metadata for spray foam keywords
 
 ## Development Commands
 
@@ -113,13 +139,13 @@ The app uses a comprehensive routing system with 60+ routes covering all page va
 - **API Functions**: User management, listing CRUD, dashboard statistics
 
 ### Data Structures
-- **Listings**: 9 sample listings with full metadata (status, rating, features, location, pricing)
-- **Categories**: 12 business categories with icons and listing counts
-- **Reviews**: User testimonials with star ratings and user profiles
-- **Blog Posts**: 6 sample posts with images, dates, and view counts
-- **Cities**: 6 location examples with listing counts and related tags
-- **Events**: 3 sample events with dates, categories, and timing
-- **Dashboard Data**: Counters, bookings, messages, earnings, admin reviews
+- **Listings**: Spray foam company profiles with services, state location, ratings, contact info
+- **Categories**: 5 spray foam service categories (Insulation, Concrete Lifting, Artistic, Coatings, Roofing)
+- **States**: US state listings for geographic browsing (replacing generic cities)
+- **Reviews**: Customer testimonials for spray foam projects
+- **Blog Posts**: Spray foam industry articles (open vs closed cell, SPF roofing, concrete lifting)
+- **Events**: Industry trade shows and networking events
+- **Dashboard Data**: Company stats, inquiries, profile management
 
 ### File Organization
 - Pages organized by feature: index/, listings/, dashboard/, auth/, inner-pages/

@@ -145,23 +145,23 @@ export default function NavbarLight() {
                         <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
                         <ul className="nav-menu">
                             <li className={`${current === '/' ? 'active' : ''}`}><Link to="/">Home</Link></li>
-                            <li className={`${['/contractors/list','/contractors','/contractor'].includes(current) || current.startsWith('/contractor/')? 'active' : ''}`}><Link to="/contractors/list">Find Contractors</Link></li>
-                            <li className={`${current === '/contractors/map' ? 'active' : ''}`}><Link to="/contractors/map">Map</Link></li>
+                            <li className={`${['/contractors/list','/contractors','/contractor'].includes(current) || current.startsWith('/contractor/')? 'active' : ''}`}><Link to="/contractors/list">Find Companies</Link></li>
+                            <li className={`${current === '/contractors/map' ? 'active' : ''}`}><Link to="/contractors/map">Map View</Link></li>
                             <li className={`${current === '/faq' ? 'active' : ''}`}><Link to="/faq">FAQ</Link></li>
-                            <li className={`${current === '/blog' || current.startsWith('/blog/')? 'active' : ''}`}><Link to="/blog">Blog</Link></li>
+                            <li className={`${current === '/blog' || current.startsWith('/blog/')? 'active' : ''}`}><Link to="/blog">Industry Blog</Link></li>
 
-                            <li className={`${['/about','/contact','/pricing','/help','/privacy','/terms'].includes(current)? 'active' : ''}`}><Link to="#">About Us<span className="submenu-indicator"><span className="submenu-indicator-chevron"></span></span></Link>
+                            <li className={`${['/about','/contact','/pricing','/help','/privacy','/terms'].includes(current)? 'active' : ''}`}><Link to="#">About<span className="submenu-indicator"><span className="submenu-indicator-chevron"></span></span></Link>
                                 <ul className="nav-dropdown nav-submenu">
-                                    <li className={`${current === '/about' ? 'active' : ''}`}><Link to="/about">About Us</Link></li>
+                                    <li className={`${current === '/about' ? 'active' : ''}`}><Link to="/about">About FOAMSTARS</Link></li>
                                     <li className={`${current === '/contact' ? 'active' : ''}`}><Link to="/contact">Contact Us</Link></li>
-                                    <li className={`${current === '/pricing' ? 'active' : ''}`}><Link to="/pricing">Pricing</Link></li>
+                                    <li className={`${current === '/pricing' ? 'active' : ''}`}><Link to="/pricing">Listing Pricing</Link></li>
                                     <li className={`${current === '/help' ? 'active' : ''}`}><Link to="/help">Help Center</Link></li>
                                     <li className={`${current === '/privacy' ? 'active' : ''}`}><Link to="/privacy">Privacy Policy</Link></li>
                                     <li className={`${current === '/terms' ? 'active' : ''}`}><Link to="/terms">Terms of Service</Link></li>
                                 </ul>
                             </li>
-                            
-                            <li><Link to="/dashboard/add-listing" className="mob-addlisting light" ><BsGeoAltFill className="me-1"/>Add Your Company</Link></li>
+
+                            <li><Link to="/dashboard/add-listing" className="mob-addlisting light" ><BsGeoAltFill className="me-1"/>List Your Company</Link></li>
                         </ul>
                             
                         <ul className="nav-menu nav-menu-social align-to-right">
@@ -187,7 +187,7 @@ export default function NavbarLight() {
                                 )}
                             </li>
                             <li className="list-buttons light">
-                                <Link to="/dashboard/add-listing"><BsGeoAlt className="fs-6 me-1"/>Add Your Company</Link>
+                                <Link to="/dashboard/add-listing"><BsGeoAlt className="fs-6 me-1"/>List Your Company</Link>
                             </li>
                         </ul>
                     </div>
