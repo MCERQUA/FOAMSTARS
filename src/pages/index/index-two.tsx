@@ -33,45 +33,46 @@ export default function IndexTwo() {
             position: 'relative',
             overflow: 'hidden'
         }}>
-            {/* Background spray foam worker - left side */}
+            {/* Layer 1: Background spray foam worker - pinned to TOP LEFT */}
             <img
                 src="/backgorund mike spray.png"
                 alt=""
                 style={{
                     position: 'absolute',
                     left: 0,
-                    bottom: 0,
-                    width: '450px',
+                    top: 80,
+                    width: '500px',
                     height: 'auto',
-                    opacity: 0.25,
-                    filter: 'brightness(0.5)',
+                    opacity: 0.8,
                     zIndex: 1,
                     pointerEvents: 'none'
                 }}
             />
-            {/* Gradient overlay to fade image to center */}
+
+            {/* Layer 2: Black vignette - dark edges fading to transparent center */}
             <div style={{
                 position: 'absolute',
                 left: 0,
                 top: 0,
-                width: '50%',
+                width: '100%',
                 height: '100%',
-                background: 'linear-gradient(to right, transparent 0%, #000000 100%)',
+                background: 'radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.85) 75%, #000000 100%)',
                 zIndex: 2,
                 pointerEvents: 'none'
             }} />
 
-            {/* Yellow glow effect behind logo */}
+            {/* Layer 3: Yellow glow effect behind logo - slightly transparent */}
             <div style={{
                 position: 'absolute',
-                top: '50%',
+                top: '45%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                width: '600px',
-                height: '600px',
-                background: 'radial-gradient(circle, rgba(255, 200, 0, 0.4) 0%, rgba(255, 165, 0, 0.2) 30%, rgba(255, 140, 0, 0.1) 50%, transparent 70%)',
-                filter: 'blur(40px)',
-                zIndex: 0
+                width: '700px',
+                height: '700px',
+                background: 'radial-gradient(circle, rgba(255, 200, 0, 0.35) 0%, rgba(255, 165, 0, 0.2) 25%, rgba(255, 140, 0, 0.1) 45%, transparent 65%)',
+                filter: 'blur(50px)',
+                zIndex: 3,
+                pointerEvents: 'none'
             }} />
 
             <div className="container" style={{ position: 'relative', zIndex: 10 }}>
