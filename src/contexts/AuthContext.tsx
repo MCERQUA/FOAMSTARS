@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import {
-  authClient,
   isAuthConfigured,
   signInWithEmail,
   signUpWithEmail,

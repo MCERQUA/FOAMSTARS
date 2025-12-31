@@ -80,20 +80,18 @@ export async function signInWithGoogle() {
   return result
 }
 
-export async function resetPassword(email: string) {
-  // Better Auth password reset
-  const result = await authClient.forgotPassword({
-    email,
-    redirectTo: `${window.location.origin}/auth/reset-password`,
-  })
-  return result
+export async function resetPassword(_email: string) {
+  // Note: Password reset requires Neon Auth backend configuration
+  // This is a placeholder until the backend is set up
+  console.warn('Password reset not configured - requires Neon Auth backend setup')
+  return { error: { message: 'Password reset not yet configured' } }
 }
 
-export async function updatePassword(newPassword: string) {
-  const result = await authClient.resetPassword({
-    newPassword,
-  })
-  return result
+export async function updatePassword(_newPassword: string) {
+  // Note: Password update requires Neon Auth backend configuration
+  // This is a placeholder until the backend is set up
+  console.warn('Password update not configured - requires Neon Auth backend setup')
+  return { error: { message: 'Password update not yet configured' } }
 }
 
 export async function getCurrentUser(): Promise<AuthUser | null> {
