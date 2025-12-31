@@ -45,8 +45,8 @@ export default function IndexEleven() {
               <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                   <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                       <div className="position-relative text-center">
-                          <h1>Explore Nearby Restaurants</h1>
-                          <p className="fs-5 fw-light">Browse high-rated hotels, restaurants, attractions, activities and more!</p>
+                          <h1>Find Spray Foam Contractors</h1>
+                          <p className="fs-5 fw-light">Connect with verified spray foam insulation professionals across the USA!</p>
                       </div>
                   </div>
               </div>

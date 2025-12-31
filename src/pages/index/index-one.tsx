@@ -26,8 +26,8 @@ export default function IndexOne() {
                 <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                     <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                         <div className="position-relative text-center">
-                            <h1>Find Trusted Local Contractors</h1>
-                            <p className="subtitle">Connect with verified contractors for all your home improvement and repair needs!</p>
+                            <h1>Find Spray Foam Contractors</h1>
+                            <p className="subtitle">Connect with verified spray foam insulation professionals across the USA!</p>
                         </div>
                     </div>
                 </div>

@@ -22,8 +22,8 @@ export default function IndexThree() {
                 <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                     <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                         <div className="position-relative text-center">
-                            <h1>Find Nearby Attractions</h1>
-                            <p className="fs-5 fw-light">Browse high-rated hotels, restaurants, attractions, activities and more!</p>
+                            <h1>Find Spray Foam Contractors</h1>
+                            <p className="fs-5 fw-light">Connect with verified spray foam insulation professionals across the USA!</p>
                         </div>
                     </div>
                 </div>
@@ -36,8 +36,8 @@ export default function IndexThree() {
                 <div className="row align-items-center justify-content-center">
                     <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                         <div className="secHeading-wrap text-center">
-                            <h3 className="sectionHeading">Featured Listing In <span className="text-primary">Las Vegas</span></h3>
-                            <p>Explore Hot & Popular Business Listings</p>
+                            <h3 className="sectionHeading">Featured Spray Foam <span className="text-primary">Companies</span></h3>
+                            <p>Browse top-rated spray foam insulation contractors</p>
                         </div>
                     </div>
                 </div>

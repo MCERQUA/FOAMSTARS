@@ -24,8 +24,8 @@ export default function IndexNine() {
 					<div className="col-xl-7 col-lg-5 col-md-12 col-sm-12">
 						<div className="position-relative d-block py-5">
 							<div className="position-relative">
-							  <h1 className="fw-medium">Explore Your Nearest Places <span className="text-primary">To Stay</span></h1>
-							  <p className="fs-5 fw-light text-muted-2">Take a little break from the work strss of everyday. Discover plan trip and explore beautiful destinations.</p>
+							  <h1 className="fw-medium">Find Spray Foam <span className="text-primary">Contractors</span></h1>
+							  <p className="fs-5 fw-light text-muted-2">Connect with verified spray foam insulation professionals for residential and commercial projects.</p>
 							</div>
 						</div>
 						<div className="heroSearch rounded-search style-01">
