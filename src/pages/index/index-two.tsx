@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
-import Bg from '../../assets/img/banner-2.jpg'
-
 import { FaHammer, FaWrench, FaPaintRoller, FaPlug, FaTools } from 'react-icons/fa'
 
 import NavbarLight from '../../components/navbar/navbar-light'
@@ -29,13 +27,42 @@ export default function IndexTwo() {
     <>
         <NavbarLight/>
 
-        <div className="image-cover hero-header full-height" style={{backgroundImage:`url(${Bg})`}} data-overlay="6">
-            <div className="container">
+        <div className="hero-header full-height" style={{
+            background: '#000000',
+            position: 'relative',
+            overflow: 'hidden'
+        }}>
+            {/* Yellow glow effect behind logo */}
+            <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '600px',
+                height: '600px',
+                background: 'radial-gradient(circle, rgba(255, 200, 0, 0.4) 0%, rgba(255, 165, 0, 0.2) 30%, rgba(255, 140, 0, 0.1) 50%, transparent 70%)',
+                filter: 'blur(40px)',
+                zIndex: 0
+            }} />
+
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                 <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                     <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                         <div className="position-relative text-center">
-                            <h1>Find Trusted Local Contractors</h1>
-                            <p className="fs-5 fw-light">Connect with verified contractors for all your home improvement and repair needs!</p>
+                            {/* FOAMSTARS Logo */}
+                            <img
+                                src="/FOAMSTARS_logo.png"
+                                alt="FOAMSTARS"
+                                style={{
+                                    maxWidth: '400px',
+                                    width: '100%',
+                                    height: 'auto',
+                                    marginBottom: '20px',
+                                    filter: 'drop-shadow(0 0 30px rgba(255, 200, 0, 0.5))'
+                                }}
+                            />
+                            <h1 className="text-white">Find Trusted Spray Foam Contractors</h1>
+                            <p className="fs-5 fw-light text-white-50">Connect with verified spray foam insulation professionals near you!</p>
                         </div>
                     </div>
                 </div>

@@ -116,7 +116,7 @@ export default function NavbarLight() {
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header">
                         <Link className="nav-brand" to="/">
-                            <span className="fw-bold fs-4 text-light">ContractorHUB</span>
+                            <img src="/FOAMSTARS title.png" alt="FOAMSTARS" style={{ height: '40px', width: 'auto' }} />
                         </Link>
                         <div className="nav-toggle" onClick={()=>setIsToggle(!toggle)}></div>
                         <div className="mobile_nav">
@@ -140,7 +140,7 @@ export default function NavbarLight() {
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
                         <div className='mobLogos'>
-                            <span className="fw-bold fs-4 text-dark">ContractorHUB</span>
+                            <img src="/FOAMSTARS title.png" alt="FOAMSTARS" style={{ height: '35px', width: 'auto' }} />
                         </div>
                         <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
                         <ul className="nav-menu">
