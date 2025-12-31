@@ -34,30 +34,30 @@ export default function IndexTwo() {
             overflow: 'hidden'
         }}>
             {/* Background spray foam worker - left side */}
-            <div style={{
-                position: 'absolute',
-                left: '-5%',
-                bottom: 0,
-                width: '500px',
-                height: '90%',
-                backgroundImage: 'url(/backgorund mike spray.png)',
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'left bottom',
-                opacity: 0.35,
-                filter: 'brightness(0.4) contrast(1.1)',
-                zIndex: 0,
-                pointerEvents: 'none'
-            }} />
+            <img
+                src="/backgorund mike spray.png"
+                alt=""
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    bottom: 0,
+                    width: '450px',
+                    height: 'auto',
+                    opacity: 0.25,
+                    filter: 'brightness(0.5)',
+                    zIndex: 1,
+                    pointerEvents: 'none'
+                }}
+            />
             {/* Gradient overlay to fade image to center */}
             <div style={{
                 position: 'absolute',
                 left: 0,
                 top: 0,
-                width: '60%',
+                width: '50%',
                 height: '100%',
-                background: 'linear-gradient(to right, transparent 0%, transparent 30%, #000000 80%)',
-                zIndex: 0,
+                background: 'linear-gradient(to right, transparent 0%, #000000 100%)',
+                zIndex: 2,
                 pointerEvents: 'none'
             }} />
 
@@ -74,7 +74,7 @@ export default function IndexTwo() {
                 zIndex: 0
             }} />
 
-            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div className="container" style={{ position: 'relative', zIndex: 10 }}>
                 <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                     <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                         <div className="position-relative text-center">
