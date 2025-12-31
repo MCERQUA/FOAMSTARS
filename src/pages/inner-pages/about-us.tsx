@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import aboutImg from '../../assets/img/side-img.png'
+import aboutImg from '../../assets/img/banner-1.jpg'
 
 import { MdArrowForwardIos } from 'react-icons/md'
 import { BsCaretRight } from 'react-icons/bs'

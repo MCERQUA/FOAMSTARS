@@ -345,6 +345,12 @@ footer,
 .badge-danger,
 .badge-red {
   background-color: var(--bs-accent-red) !important;
+  color: #ffffff !important; // White text for visibility
+
+  &:hover {
+    color: var(--bs-primary) !important; // Yellow text on hover
+    background-color: #cc0000 !important; // Darker red on hover
+  }
 }
 
 .badge-info,

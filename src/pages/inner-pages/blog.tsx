@@ -99,7 +99,7 @@ export default function Blog() {
                     <div className="card rounded-4 border">
                         <div className="row align-items-center justify-content-start">
                             <div className="col-xl-4 col-lg-4 col-md-4">
-                                <Link to="/blog-detail" className="d-block p-3">
+                                <Link to="/blog-detail/4" className="d-block p-3">
                                     <img className="img-fluid rounded" src={blogImg} alt="blog image"/>
                                 </Link>
                             </div>
@@ -110,10 +110,10 @@ export default function Blog() {
                                         <span className="badge badge-xs badge-success rounded-pill">Featured</span>
                                         <span className="badge badge-xs badge-primary rounded-pill">SEO & Marketing</span>
                                     </div>
-                                    <Link to="/blog-detail"><h4 className="fw-semibold fs-5 lh-base mb-2">Boost Your Spray Foam Company's Website Performance with These SEO Tips</h4></Link>
+                                    <Link to="/blog-detail/4"><h4 className="fw-semibold fs-5 lh-base mb-2">Boost Your Spray Foam Company's Website Performance with These SEO Tips</h4></Link>
                                     <p>Learn how to optimize your spray foam insulation business website for better search rankings and more leads. Discover essential SEO strategies, local search optimization, and performance tips specifically designed for spray foam contractors looking to grow their online presence.</p>
                                     <div className="d-flex align-items-center justify-content-start mt-4">
-                                        <Link to="/blog-detail" className="badge badge-primary rounded-pill">Continue Reading</Link>
+                                        <Link to="/blog-detail/4" className="badge badge-primary rounded-pill">Continue Reading</Link>
                                     </div>
                                 </div>
                             </div>
