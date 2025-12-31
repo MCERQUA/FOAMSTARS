@@ -156,7 +156,7 @@ export default function DashboardAddListing() {
                                                                     type="text" 
                                                                     name="title"
                                                                     className="form-control rounded" 
-                                                                    placeholder="e.g. Professional Plumbing Services"
+                                                                    placeholder="e.g. Professional Spray Foam Insulation Services"
                                                                     value={formData.title}
                                                                     onChange={handleInputChange}
                                                                     required

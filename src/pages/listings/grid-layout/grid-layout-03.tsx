@@ -45,7 +45,7 @@ export default function GridLayout3() {
 				<div className="row justify-content-start align-items-start">
 				  <div className="col-xl-8 col-lg-10 col-md-12 col-sm-12 pt-lg-0 pt-5">
 					<div className="position-relative text-start py-4">
-                        <h2>Get Your Dream Places</h2>
+                        <h2>Find Spray Foam Contractors</h2>
 					    <div className="heroSearch rounded-search style-01 mt-4">
 							<div className="row gx-lg-2 gx-md-2 gx-3 gy-sm-2 gy-2">
 								<div className="col-xl-10 col-lg-9 col-md-12">

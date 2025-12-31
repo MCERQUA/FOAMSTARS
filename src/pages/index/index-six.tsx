@@ -25,8 +25,8 @@ export default function IndexSix() {
 				<div className="row justify-content-center align-items-center">
 				  <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
 					<div className="position-relative text-center mb-5 pt-lg-0 pt-5">
-                        <h1 className="fw-semibold mb-4">Explore <span className="text-light border border-light px-3 rounded-pill br-dashed">Restaurants</span> in New York</h1>
-                        <p className="fs-5 fw-light">Browse high-rated hotels, restaurants, attractions, activities and more!</p>
+                        <h1 className="fw-semibold mb-4">Find <span className="text-light border border-light px-3 rounded-pill br-dashed">Spray Foam</span> Contractors</h1>
+                        <p className="fs-5 fw-light">Browse top-rated spray foam insulation contractors across the United States!</p>
 					</div>
 				  </div>
 				</div>

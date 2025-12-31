@@ -40,11 +40,11 @@ export default function IndexOne() {
                     </div>
                     <div className="col-xl-12 col-lg-12 col-md-12 col-md-12 col-12">
                         <div className="popularSearches d-flex align-items-center justify-content-center column-gap-3 row-gap-1 flex-wrap">
-                            <div className="singleItem"><Link to="#" className="badge badge-transparent rounded-pill">Plumbing</Link></div>	
-                            <div className="singleItem"><Link to="#" className="badge badge-transparent rounded-pill">Electrical</Link></div>	
-                            <div className="singleItem"><Link to="#" className="badge badge-transparent rounded-pill">HVAC</Link></div>	
-                            <div className="singleItem"><Link to="#" className="badge badge-transparent rounded-pill">Roofing</Link></div>	
-                            <div className="singleItem"><Link to="#" className="badge badge-transparent rounded-pill">Painting</Link></div>	
+                            <div className="singleItem"><Link to="/contractors/list" className="badge badge-transparent rounded-pill">Spray Foam Insulation</Link></div>
+                            <div className="singleItem"><Link to="/contractors/list" className="badge badge-transparent rounded-pill">Concrete Lifting</Link></div>
+                            <div className="singleItem"><Link to="/contractors/list" className="badge badge-transparent rounded-pill">SPF Roofing</Link></div>
+                            <div className="singleItem"><Link to="/contractors/list" className="badge badge-transparent rounded-pill">Polyurethane Coatings</Link></div>
+                            <div className="singleItem"><Link to="/contractors/list" className="badge badge-transparent rounded-pill">Artistic Foam</Link></div>	
                         </div>
                     </div>
                 </div>

@@ -65,7 +65,7 @@ export default function GridLayout1() {
                                             <div className="form-group">
                                                 <div className="mobSearch d-flex align-items-center justify-content-start">
                                                     <div className="flexStart ps-2"><span className="fw-semibold text-dark">Find</span></div>
-                                                    <input type="text" className="form-control fs-6 fw-medium border-0" placeholder="Plumbing, Electrical, HVAC..."/>
+                                                    <input type="text" className="form-control fs-6 fw-medium border-0" placeholder="Spray Foam, Insulation, Coatings..."/>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@ export default function GridLayout1() {
                                 <div className="d-flex align-items-center justify-content-start gap-3 flex-wrap">
                                     
                                     <div className="alert tag-alert alert-light alert-dismissible fade show" role="alert">
-                                        <span>Plumbing</span>
+                                        <span>Spray Foam</span>
                                         <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                     

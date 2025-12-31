@@ -304,11 +304,11 @@ export default function NavbarLight() {
                     </div>
                 </div>
                 <div className="popularSearches d-flex align-items-center justify-content-center gap-2 flex-wrap">
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Plumbing</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Electrical</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">HVAC</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Painting</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Roofing</Link></div>	
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Spray Foam Insulation</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Concrete Lifting</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">SPF Roofing</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Polyurethane Coatings</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Foam Insulation</Link></div>	
                 </div>
             </div>
         </div>

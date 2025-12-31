@@ -15,8 +15,8 @@ import defaultAvatarImg from '../assets/img/team-1.jpg'
 const mockListings = [
   {
     id: 'mock-1',
-    title: 'Elite Home Renovations',
-    description: 'Professional home renovation and remodeling services',
+    title: 'Elite Spray Foam Solutions',
+    description: 'Professional spray foam insulation for residential and commercial',
     status: 'active',
     hourly_rate: 85,
     is_featured: true,
@@ -24,16 +24,16 @@ const mockListings = [
     featured_image_url: null,
     owner_avatar_url: null,
     phone: '(555) 123-4567',
-    city: 'San Francisco',
-    state: 'CA',
+    city: 'Houston',
+    state: 'TX',
     review_count: 24,
     average_rating: 4.8,
-    categories: { name: 'General Contractors' }
+    categories: { name: 'Spray Foam Insulation' }
   },
   {
     id: 'mock-2',
-    title: 'ProPlumb Solutions',
-    description: 'Expert plumbing services for residential and commercial',
+    title: 'ProFoam Insulation',
+    description: 'Expert spray foam and polyurethane coating services',
     status: 'active',
     hourly_rate: 95,
     is_featured: false,
@@ -41,16 +41,16 @@ const mockListings = [
     featured_image_url: null,
     owner_avatar_url: null,
     phone: '(555) 987-6543',
-    city: 'Los Angeles',
-    state: 'CA',
+    city: 'Phoenix',
+    state: 'AZ',
     review_count: 18,
     average_rating: 4.9,
-    categories: { name: 'Plumbing' }
+    categories: { name: 'Polyurethane Coatings' }
   },
   {
     id: 'mock-3',
-    title: 'Precision Electrical',
-    description: 'Licensed electricians for all your electrical needs',
+    title: 'Precision SPF Roofing',
+    description: 'Licensed spray polyurethane foam roofing specialists',
     status: 'active',
     hourly_rate: 75,
     is_featured: true,
@@ -58,11 +58,11 @@ const mockListings = [
     featured_image_url: null,
     owner_avatar_url: null,
     phone: '(555) 456-7890',
-    city: 'San Diego',
-    state: 'CA',
+    city: 'Dallas',
+    state: 'TX',
     review_count: 32,
     average_rating: 4.7,
-    categories: { name: 'Electrical' }
+    categories: { name: 'SPF Roofing' }
   }
 ]
 
