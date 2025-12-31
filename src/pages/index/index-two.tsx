@@ -37,32 +37,14 @@ export default function IndexTwo() {
             <img
                 src="/backgorund mike spray.png"
                 alt=""
-                style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: 80,
-                    width: '500px',
-                    height: 'auto',
-                    opacity: 0.8,
-                    zIndex: 1,
-                    pointerEvents: 'none'
-                }}
+                className="hero-spray-worker hero-spray-left"
             />
 
             {/* Layer 1b: Background spray foam worker mirrored - pinned to TOP RIGHT */}
             <img
                 src="/backgorund-mike-spray-rv.png"
                 alt=""
-                style={{
-                    position: 'absolute',
-                    right: 0,
-                    top: 80,
-                    width: '500px',
-                    height: 'auto',
-                    opacity: 0.8,
-                    zIndex: 1,
-                    pointerEvents: 'none'
-                }}
+                className="hero-spray-worker hero-spray-right"
             />
 
             {/* Layer 2: Black vignette - dark edges fading to transparent center */}
