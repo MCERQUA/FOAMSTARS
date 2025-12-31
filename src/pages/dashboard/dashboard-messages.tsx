@@ -5,22 +5,10 @@ import AdminNavbar from '../../components/navbar/admin-navbar'
 import AdminSidebar from '../../components/admin/admin-sidebar'
 import BackToTop from '../../components/back-to-top'
 
-import { getUserBookings, getBookingMessages, sendMessage, markMessagesAsRead, Booking } from '../../lib/neon'
+import { getUserBookings, getBookingMessages, sendMessage, markMessagesAsRead, Booking, BookingMessage } from '../../lib/neon'
 import { useAuth } from '../../contexts/AuthContext'
 
 import { BsSend, BsClock, BsCheckAll } from 'react-icons/bs'
-
-interface BookingMessage {
-  id: string;
-  message: string;
-  sender_id: string;
-  created_at: string | null;
-  is_read: boolean | null;
-  sender: {
-    full_name: string | null;
-    avatar_url: string | null;
-  };
-}
 
 export default function DashboardMessages() {
     const { user, profile } = useAuth()

@@ -8,7 +8,6 @@ import {
   resetPassword as authResetPassword,
   updatePassword as authUpdatePassword,
   signOut as authSignOut,
-  getCurrentUser,
   getCurrentSession,
   AuthUser,
   AuthSession,
@@ -111,27 +110,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     getInitialSession();
 
-    // Subscribe to auth state changes using Better Auth
-    const unsubscribe = authClient.onAuthStateChange((newSession) => {
-      if (import.meta.env.DEV) {
-        console.log('Auth state changed');
-      }
-
-      setSession(newSession);
-
-      if (newSession?.user) {
-        loadProfile(newSession.user);
-      } else {
-        setUser(null);
-        setProfile(null);
-      }
-
-      setLoading(false);
-    });
-
-    return () => {
-      if (unsubscribe) unsubscribe();
-    };
+    // Note: Better Auth doesn't have onAuthStateChange like Supabase
+    // The login/logout functions handle state updates directly
   }, []);
 
   const login = async (email: string, password: string): Promise<void> => {

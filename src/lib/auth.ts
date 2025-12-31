@@ -61,13 +61,13 @@ export async function signUpWithEmail(
   email: string,
   password: string,
   name: string,
-  userType: 'contractor' | 'customer' = 'customer'
+  _userType: 'contractor' | 'customer' = 'customer'
 ) {
   const result = await signUp.email({
     email,
     password,
     name,
-    // Store user type in user metadata if supported
+    // Note: userType is handled in AuthContext after signup
   })
   return result
 }
@@ -82,7 +82,7 @@ export async function signInWithGoogle() {
 
 export async function resetPassword(email: string) {
   // Better Auth password reset
-  const result = await authClient.forgetPassword({
+  const result = await authClient.forgotPassword({
     email,
     redirectTo: `${window.location.origin}/auth/reset-password`,
   })
@@ -97,11 +97,14 @@ export async function updatePassword(newPassword: string) {
 }
 
 export async function getCurrentUser(): Promise<AuthUser | null> {
-  const session = await getSession()
-  return session?.user || null
+  const result = await getSession()
+  // Better Auth wraps response in data property
+  const session = result?.data
+  return session?.user as AuthUser || null
 }
 
 export async function getCurrentSession(): Promise<AuthSession | null> {
-  const session = await getSession()
-  return session || null
+  const result = await getSession()
+  // Better Auth wraps response in data property
+  return result?.data as AuthSession || null
 }

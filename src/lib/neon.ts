@@ -66,6 +66,13 @@ export interface BusinessListing {
   is_featured: boolean
   created_at: string
   updated_at: string
+  // Additional business fields
+  pricing_model: string | null
+  min_project_budget: number | null
+  max_project_budget: number | null
+  service_area_radius: number | null
+  emergency_services: boolean | null
+  accepts_online_booking: boolean | null
   // Joined fields
   category_name?: string
   category_slug?: string
@@ -86,6 +93,14 @@ export interface Profile {
   is_verified: boolean
   created_at: string
   updated_at: string
+  // Additional profile fields
+  address: string | null
+  zip_code: string | null
+  website_url: string | null
+  years_experience: number | null
+  hourly_rate: number | null
+  min_project_budget: number | null
+  service_area_radius: number | null
 }
 
 // ============================================
@@ -451,6 +466,11 @@ export interface BookingMessage {
   // Joined fields
   sender_name?: string
   sender_avatar?: string
+  // Nested sender object for component compatibility
+  sender?: {
+    full_name: string | null
+    avatar_url: string | null
+  }
 }
 
 export interface Review {
@@ -710,27 +730,46 @@ export async function getUserBookings(userId: string, userType: 'contractor' | '
   if (!sql) return []
 
   try {
-    const column = userType === 'contractor' ? 'contractor_id' : 'customer_id'
-
-    const bookings = await sql`
-      SELECT
-        b.*,
-        bl.title as listing_title,
-        bl.business_name as listing_business_name,
-        cust.full_name as customer_name,
-        cust.email as customer_email,
-        cust.phone as customer_phone,
-        cont.full_name as contractor_name,
-        cont.email as contractor_email,
-        cont.phone as contractor_phone,
-        cont.business_name as contractor_business_name
-      FROM bookings b
-      LEFT JOIN business_listings bl ON b.listing_id = bl.id
-      LEFT JOIN profiles cust ON b.customer_id = cust.id
-      LEFT JOIN profiles cont ON b.contractor_id = cont.id
-      WHERE b.${sql(column)} = ${userId}
-      ORDER BY b.created_at DESC
-    `
+    // Use separate queries for contractor vs customer to avoid dynamic column names
+    const bookings = userType === 'contractor'
+      ? await sql`
+          SELECT
+            b.*,
+            bl.title as listing_title,
+            bl.business_name as listing_business_name,
+            cust.full_name as customer_name,
+            cust.email as customer_email,
+            cust.phone as customer_phone,
+            cont.full_name as contractor_name,
+            cont.email as contractor_email,
+            cont.phone as contractor_phone,
+            cont.business_name as contractor_business_name
+          FROM bookings b
+          LEFT JOIN business_listings bl ON b.listing_id = bl.id
+          LEFT JOIN profiles cust ON b.customer_id = cust.id
+          LEFT JOIN profiles cont ON b.contractor_id = cont.id
+          WHERE b.contractor_id = ${userId}
+          ORDER BY b.created_at DESC
+        `
+      : await sql`
+          SELECT
+            b.*,
+            bl.title as listing_title,
+            bl.business_name as listing_business_name,
+            cust.full_name as customer_name,
+            cust.email as customer_email,
+            cust.phone as customer_phone,
+            cont.full_name as contractor_name,
+            cont.email as contractor_email,
+            cont.phone as contractor_phone,
+            cont.business_name as contractor_business_name
+          FROM bookings b
+          LEFT JOIN business_listings bl ON b.listing_id = bl.id
+          LEFT JOIN profiles cust ON b.customer_id = cust.id
+          LEFT JOIN profiles cont ON b.contractor_id = cont.id
+          WHERE b.customer_id = ${userId}
+          ORDER BY b.created_at DESC
+        `
     return bookings as Booking[]
   } catch (error) {
     console.error('Failed to load bookings:', error)

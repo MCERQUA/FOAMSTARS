@@ -45,9 +45,11 @@ export default function DashboardMyBookings() {
     try {
       setUpdatingId(id)
       const updatedBooking = await updateBookingStatus(id, status, notes)
-      setBookings(prev => prev.map(booking => 
-        booking.id === id ? updatedBooking : booking
-      ))
+      if (updatedBooking) {
+        setBookings(prev => prev.map(booking =>
+          booking.id === id ? updatedBooking : booking
+        ))
+      }
     } catch (err: any) {
       alert(err.message || 'Failed to update booking status')
     } finally {

@@ -12,7 +12,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { BsStarFill, BsStarHalf, BsPencil, BsTrash, BsPlus } from 'react-icons/bs'
 
 export default function DashboardMyListings() {
-  const { user, profile } = useAuth()
+  const { user } = useAuth()
   const navigate = useNavigate()
   const [listings, setListings] = useState<BusinessListing[]>([])
   const [loading, setLoading] = useState(true)
