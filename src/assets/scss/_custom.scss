@@ -747,3 +747,36 @@ footer,
     color: #b0b0b0 !important;
   }
 }
+
+// ===== FAQ ACCORDION STYLING =====
+.accordion-button {
+  color: #6c757d !important; // Light grey text by default
+  background-color: transparent !important;
+
+  &:not(.collapsed) {
+    color: var(--bs-primary) !important; // Primary color when expanded
+    background-color: rgba(255, 184, 0, 0.1) !important;
+    box-shadow: none !important;
+  }
+
+  &:hover {
+    color: var(--bs-primary) !important; // Primary color on hover
+  }
+
+  &:focus {
+    box-shadow: none !important;
+    border-color: rgba(255, 184, 0, 0.3) !important;
+  }
+
+  &::after {
+    filter: grayscale(100%); // Grey arrow by default
+  }
+
+  &:not(.collapsed)::after {
+    filter: none; // Colored arrow when expanded
+  }
+
+  &:hover::after {
+    filter: none; // Colored arrow on hover
+  }
+}
