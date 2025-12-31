@@ -36,16 +36,16 @@ export default function IndexTwo() {
             {/* Background spray foam worker - left side */}
             <div style={{
                 position: 'absolute',
-                left: 0,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: '45%',
-                height: '100%',
+                left: '-5%',
+                bottom: 0,
+                width: '500px',
+                height: '90%',
                 backgroundImage: 'url(/backgorund mike spray.png)',
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'left center',
-                opacity: 0.15,
+                backgroundPosition: 'left bottom',
+                opacity: 0.35,
+                filter: 'brightness(0.4) contrast(1.1)',
                 zIndex: 0,
                 pointerEvents: 'none'
             }} />
@@ -54,9 +54,9 @@ export default function IndexTwo() {
                 position: 'absolute',
                 left: 0,
                 top: 0,
-                width: '50%',
+                width: '60%',
                 height: '100%',
-                background: 'linear-gradient(to right, transparent 0%, transparent 40%, #000000 100%)',
+                background: 'linear-gradient(to right, transparent 0%, transparent 30%, #000000 80%)',
                 zIndex: 0,
                 pointerEvents: 'none'
             }} />
