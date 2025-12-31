@@ -508,3 +508,62 @@ footer,
   background-color: rgba(0, 168, 255, 0.1) !important;
   border-color: rgba(0, 168, 255, 0.3) !important;
 }
+
+// Yellow Glass Button (Navigation CTA)
+.list-buttons a,
+.list-buttons.light a {
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.9) 0%, rgba(255, 180, 0, 0.85) 100%) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 204, 0, 0.6) !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(255, 214, 51, 0.95) 0%, rgba(255, 204, 0, 0.9) 100%) !important;
+    box-shadow: 0 6px 25px rgba(255, 204, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-2px) !important;
+    color: #000000 !important;
+  }
+}
+
+// Mobile version
+.mob-addlisting.light {
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.9) 0%, rgba(255, 180, 0, 0.85) 100%) !important;
+  border: 1px solid rgba(255, 204, 0, 0.6) !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+// SignUp/SignIn Navigation Link
+.nav-menu-social .navCl {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  transition: color 0.3s ease !important;
+}
+
+.nav-menu-social a:hover .navCl {
+  color: var(--bs-primary) !important;
+}
+
+// When scrolled (header-fixed)
+.header-fixed .nav-menu-social .navCl,
+.header-fixed .nav-menu-social .navCl.text-dark {
+  color: #ffffff !important;
+}
+
+.header-fixed .nav-menu-social a:hover .navCl {
+  color: var(--bs-primary) !important;
+}
+
+// Person icon in nav
+.nav-menu-social svg {
+  color: #ffffff !important;
+}
+
+.nav-menu-social a:hover svg {
+  color: var(--bs-primary) !important;
+}
