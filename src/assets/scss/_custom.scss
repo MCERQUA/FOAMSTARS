@@ -567,3 +567,70 @@ footer,
 .nav-menu-social a:hover svg {
   color: var(--bs-primary) !important;
 }
+
+// Newsletter Section - Sleek Dark Design
+.newsletter-section {
+  background-color: #0a0a0a !important;
+}
+
+.newsletter-box {
+  background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+  border: 1px solid #2a2a2a;
+  position: relative;
+  overflow: hidden;
+
+  // Subtle yellow accent glow
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 204, 0, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  h4 {
+    color: #ffffff !important;
+  }
+
+  p {
+    color: #888888 !important;
+  }
+}
+
+.newsletter-input {
+  background-color: #0a0a0a !important;
+  border: 1px solid #2a2a2a !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem 0 0 0.5rem !important;
+
+  &::placeholder {
+    color: #666666 !important;
+  }
+
+  &:focus {
+    background-color: #0a0a0a !important;
+    border-color: rgba(255, 204, 0, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.1) !important;
+    color: #ffffff !important;
+  }
+}
+
+.btn-newsletter {
+  background: linear-gradient(135deg, #d4a800 0%, #b8920a 100%) !important;
+  border: none !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background: linear-gradient(135deg, #e6b800 0%, #d4a800 100%) !important;
+    box-shadow: 0 4px 20px rgba(255, 204, 0, 0.3) !important;
+    color: #000000 !important;
+  }
+}
