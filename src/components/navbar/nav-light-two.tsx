@@ -58,7 +58,7 @@ export default function NavLightTwo() {
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header">
-                        <Link className="nav-brand" to="/"><span className="fw-bold fs-4 text-primary">ContractorHUB</span></Link>
+                        <Link className="nav-brand" to="/"><span className="fw-bold fs-4 text-primary">FOAMSTARS</span></Link>
                         <div className="nav-toggle" onClick={()=>setIsToggle(!toggle)}></div>
                         <div className="mobile_nav">
                             <ul>
@@ -76,7 +76,7 @@ export default function NavLightTwo() {
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
                         <div className='mobLogos'>
-                            <span className="fw-bold fs-4 text-primary">ContractorHUB</span>
+                            <span className="fw-bold fs-4 text-primary">FOAMSTARS</span>
                         </div>
                         <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
                         <ul className="nav-menu">

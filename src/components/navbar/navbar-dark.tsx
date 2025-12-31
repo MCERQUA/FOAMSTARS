@@ -113,7 +113,7 @@ export default function NavbarDark() {
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header">
                         <Link className="nav-brand" to="/">
-                            <span className="fw-bold fs-4 text-primary">ContractorHUB</span>
+                            <span className="fw-bold fs-4 text-primary">FOAMSTARS</span>
                         </Link>
                         <div className="nav-toggle" onClick={()=>setIsToggle(!toggle)}></div>
                         <div className="mobile_nav">
@@ -137,7 +137,7 @@ export default function NavbarDark() {
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
                         <div className='mobLogos'>
-                            <span className="fw-bold fs-4 text-primary">ContractorHUB</span>
+                            <span className="fw-bold fs-4 text-primary">FOAMSTARS</span>
                         </div>
                         <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
                         <ul className="nav-menu">
@@ -302,11 +302,11 @@ export default function NavbarDark() {
                     </div>
                 </div>
                 <div className="popularSearches d-flex align-items-center justify-content-center gap-2 flex-wrap">
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Plumbing</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Electrical</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">HVAC</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Painting</Link></div>	
-                    <div className="singleItem"><Link to="#" className="badge badge-xs badge-primary rounded-pill">Roofing</Link></div>	
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Spray Foam Insulation</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Concrete Lifting</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">SPF Roofing</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Polyurethane Coatings</Link></div>
+                    <div className="singleItem"><Link to="/contractors/list" className="badge badge-xs badge-primary rounded-pill">Foam Insulation</Link></div>
                 </div>
             </div>
         </div>

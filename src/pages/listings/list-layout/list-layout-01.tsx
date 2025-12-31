@@ -55,8 +55,8 @@ export default function ListLayout1() {
 				<div className="row justify-content-center align-items-center">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div className="position-relative text-start mt-4">
-                            <h2>Get Your Dream Place in New York</h2>
-                            <p className="fs-5 fw-light">Discover the best place for your dream place & homes.</p>
+                            <h2>Find Spray Foam Insulation Contractors</h2>
+                            <p className="fs-5 fw-light">Connect with trusted spray foam professionals across the United States.</p>
                         </div>
                     </div>
 				</div>
