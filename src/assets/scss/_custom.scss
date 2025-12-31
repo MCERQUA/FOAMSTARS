@@ -1,42 +1,67 @@
-// scss-docs-start theme-color-variables Customize your color option here
+// FOAMSTARS Dark Theme
+// Colors: Black, Grey, Yellow (primary), with Red & Blue accents
+
 :root,
 [data-bs-theme=light] {
-  --bs-body-bg: #ffffff;
+  // Dark Theme Base Colors
+  --bs-body-bg: #0a0a0a;
   --bs-white: #ffffff;
-  --bs-body-bg-rgb: 255, 255, 255;
-  --bs-card-bg: #ffffff;
-  --bs-body-color: #2b2b2b;
-  --paragraphColor: #2b2b2b;
-  --bs-muted: #444c55;
-  --bs-muted-2: #444c55;
-  --bs-body-color-rgb: 43, 43, 43;
-  --bs-dark-text: #212529;
+  --bs-body-bg-rgb: 10, 10, 10;
+  --bs-card-bg: #141414;
+  --bs-body-color: #e0e0e0;
+  --paragraphColor: #b0b0b0;
+  --bs-muted: #888888;
+  --bs-muted-2: #666666;
+  --bs-body-color-rgb: 224, 224, 224;
+  --bs-dark-text: #ffffff;
+
+  // FOAMSTARS Yellow Primary
   --bs-primary: #ffcc00;
-  --bs-light: #f5f5f5;
-  --bs-light-gray: #e0e0e0;
-  --bs-dark: #000000;
   --bs-primary-rgb: 255, 204, 0;
-  --bs-light-rgb: 245, 245, 245;
-  --bs-dark-rgb: 0, 0, 0;
   --bs-primary-2: #ffd633;
   --bs-primary-text-emphasis: #ffcc00;
-  --bs-primary-bg-subtle: #fff8e1;
+  --bs-primary-bg-subtle: rgba(255, 204, 0, 0.1);
   --bs-primary-bg-dark: #e6b800;
-  --bs-primary-border-subtle: #ffecb3;
-  --bs-danger-bg-subtle:#ffecb3;
-  --headingColor: #2b2b2b;
-  --bs-link-color: #212529;
-  --bs-link-color-rgb: 28, 28, 28;
+  --bs-primary-border-subtle: rgba(255, 204, 0, 0.3);
+
+  // Accent Colors
+  --bs-accent-red: #ff3b3b;
+  --bs-accent-blue: #00a8ff;
+  --bs-accent-red-rgb: 255, 59, 59;
+  --bs-accent-blue-rgb: 0, 168, 255;
+
+  // Grey Scale
+  --bs-light: #1a1a1a;
+  --bs-light-gray: #2a2a2a;
+  --bs-dark: #000000;
+  --bs-light-rgb: 26, 26, 26;
+  --bs-dark-rgb: 0, 0, 0;
+
+  // UI Colors
+  --bs-danger-bg-subtle: rgba(255, 59, 59, 0.1);
+  --bs-success-bg-subtle: rgba(0, 200, 83, 0.1);
+  --bs-info-bg-subtle: rgba(0, 168, 255, 0.1);
+  --bs-warning-bg-subtle: rgba(255, 204, 0, 0.1);
+
+  --headingColor: #ffffff;
+  --bs-link-color: #ffffff;
+  --bs-link-color-rgb: 255, 255, 255;
   --bs-link-hover-color: #ffcc00;
   --bs-link-hover-color-rgb: 255, 204, 0;
-  --bs-link-decoration: underline;
+  --bs-link-decoration: none;
   --bs-code-color: #ffcc00;
-  --bs-highlight-color: #212529;
-  --bs-highlight-bg: #fff8e1;
-  --bs-border-color: #e0e0e0;
-  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
-  --bs-nav-color: #212529;
-  --bs-dashboard-bg: #1a1a1a;
+  --bs-highlight-color: #ffffff;
+  --bs-highlight-bg: rgba(255, 204, 0, 0.2);
+  --bs-border-color: #2a2a2a;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.1);
+  --bs-nav-color: #ffffff;
+  --bs-dashboard-bg: #0a0a0a;
+
+  // Glow effects
+  --glow-yellow: 0 0 20px rgba(255, 204, 0, 0.4);
+  --glow-yellow-intense: 0 0 40px rgba(255, 204, 0, 0.6);
+  --glow-red: 0 0 20px rgba(255, 59, 59, 0.4);
+  --glow-blue: 0 0 20px rgba(0, 168, 255, 0.4);
 
   --body-font-family: 'Jost', sans-serif;
 }
@@ -44,12 +69,107 @@
 // Import Font Family
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&display=swap');
 
-// Custom Navigation Dropdown Styles
+// ===== DARK THEME OVERRIDES =====
+
+// Body & Background
+body {
+  background-color: var(--bs-body-bg) !important;
+  color: var(--bs-body-color) !important;
+}
+
+// Cards
+.card {
+  background-color: var(--bs-card-bg) !important;
+  border-color: var(--bs-border-color) !important;
+}
+
+// Text Colors
+.text-dark {
+  color: var(--headingColor) !important;
+}
+
+.text-muted {
+  color: var(--bs-muted) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.sectionHeading {
+  color: var(--headingColor) !important;
+}
+
+// Primary Button with Glow
+.btn-primary {
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background-color: var(--bs-primary-2) !important;
+    border-color: var(--bs-primary-2) !important;
+    box-shadow: var(--glow-yellow) !important;
+    transform: translateY(-2px);
+  }
+}
+
+// Outline buttons
+.btn-outline-primary {
+  border-color: var(--bs-primary) !important;
+  color: var(--bs-primary) !important;
+
+  &:hover {
+    background-color: var(--bs-primary) !important;
+    color: #000000 !important;
+    box-shadow: var(--glow-yellow) !important;
+  }
+}
+
+// Hero Header Dark
+.hero-header {
+  background-color: #000000 !important;
+}
+
+// Section backgrounds
+section {
+  background-color: var(--bs-body-bg) !important;
+}
+
+section.bg-light {
+  background-color: var(--bs-light) !important;
+}
+
+// Navigation Dark Theme
+.header {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+.header-fixed {
+  background-color: rgba(10, 10, 10, 0.98) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+// Navigation Links
+.nav-menu > li > a {
+  color: #ffffff !important;
+  transition: color 0.3s ease !important;
+
+  &:hover {
+    color: var(--bs-primary) !important;
+  }
+}
+
+.nav-menu > li.active > a {
+  color: var(--bs-primary) !important;
+}
+
+// Custom Navigation Dropdown Styles (Dark)
 .nav-dropdown.nav-submenu {
-  background-color: #f5f5f5 !important; // Light grey background
-  border: 1px solid #e0e0e0 !important;
-  border-radius: 0.375rem !important;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
   padding: 0.5rem 0 !important;
 }
 
@@ -58,25 +178,333 @@
 }
 
 .nav-dropdown.nav-submenu li a {
-  padding: 0.5rem 1rem !important;
-  color: var(--bs-nav-color) !important;
+  padding: 0.75rem 1.25rem !important;
+  color: #e0e0e0 !important;
   background-color: transparent !important;
   border-radius: 0 !important;
-  transition: background-color 0.15s ease-in-out !important;
+  transition: all 0.2s ease !important;
 }
 
 .nav-dropdown.nav-submenu li a:hover,
 .nav-dropdown.nav-submenu li.active a {
-  background-color: #e0e0e0 !important;
+  background-color: rgba(255, 204, 0, 0.1) !important;
   color: var(--bs-primary) !important;
 }
 
 // Mobile navigation dropdown styles
 @media (max-width: 991px) {
+  .nav-menus-wrapper {
+    background-color: #0a0a0a !important;
+  }
+
   .nav-menus-wrapper .nav-dropdown.nav-submenu {
-    background-color: #f5f5f5 !important;
+    background-color: #141414 !important;
     margin-left: 1rem !important;
     margin-top: 0.5rem !important;
-    border-radius: 0.375rem !important;
+    border-radius: 0.5rem !important;
   }
+
+  .mobLogos {
+    background-color: transparent !important;
+  }
+}
+
+// Hero Search Box Dark
+.heroSearch {
+  background-color: rgba(20, 20, 20, 0.95) !important;
+  border: 1px solid #2a2a2a !important;
+  backdrop-filter: blur(10px);
+
+  .form-control {
+    background-color: #1a1a1a !important;
+    border-color: #2a2a2a !important;
+    color: #ffffff !important;
+
+    &::placeholder {
+      color: #666666 !important;
+    }
+
+    &:focus {
+      border-color: var(--bs-primary) !important;
+      box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.1) !important;
+    }
+  }
+}
+
+// Category Cards
+.categoryBox {
+  background-color: var(--bs-card-bg) !important;
+  border: 1px solid #2a2a2a !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    border-color: var(--bs-primary) !important;
+    box-shadow: var(--glow-yellow) !important;
+    transform: translateY(-5px);
+  }
+
+  h5 {
+    color: #ffffff !important;
+  }
+}
+
+// Listing Cards
+.listingWraps,
+.listingCard {
+  background-color: var(--bs-card-bg) !important;
+  border: 1px solid #2a2a2a !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    border-color: var(--bs-primary) !important;
+    box-shadow: var(--glow-yellow) !important;
+    transform: translateY(-5px);
+  }
+}
+
+// Footer Dark
+footer,
+.footer-area {
+  background-color: #000000 !important;
+  border-top: 1px solid #1a1a1a !important;
+}
+
+.footer-top {
+  background-color: #0a0a0a !important;
+}
+
+// Form Inputs Dark
+.form-control,
+.form-select {
+  background-color: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #ffffff !important;
+
+  &:focus {
+    background-color: #1a1a1a !important;
+    border-color: var(--bs-primary) !important;
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.15) !important;
+    color: #ffffff !important;
+  }
+
+  &::placeholder {
+    color: #666666 !important;
+  }
+}
+
+// Badge styles with accents
+.badge-primary {
+  background-color: var(--bs-primary) !important;
+  color: #000000 !important;
+}
+
+.badge-danger,
+.badge-red {
+  background-color: var(--bs-accent-red) !important;
+}
+
+.badge-info,
+.badge-blue {
+  background-color: var(--bs-accent-blue) !important;
+}
+
+// Icon boxes with glow
+.icoBoxx {
+  background-color: rgba(255, 204, 0, 0.1) !important;
+  color: var(--bs-primary) !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    box-shadow: var(--glow-yellow) !important;
+  }
+}
+
+// Popular searches badge
+.badge-transparent {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+    color: #000000 !important;
+    box-shadow: var(--glow-yellow) !important;
+  }
+}
+
+// ===== MODERN ANIMATIONS =====
+
+// Fade in up animation
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Glow pulse animation
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 204, 0, 0.6);
+  }
+}
+
+// Float animation
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// Shimmer effect
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+// Apply animations to elements
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-glowPulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+// Section headings animation
+.sectionHeading {
+  position: relative;
+
+  .text-primary {
+    color: var(--bs-primary) !important;
+    text-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+  }
+}
+
+// Scroll reveal classes
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Hover lift effect
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+
+  &:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  }
+}
+
+// Gradient text effect
+.gradient-text {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-accent-red) 50%, var(--bs-accent-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Accent borders
+.border-accent-yellow {
+  border-color: var(--bs-primary) !important;
+}
+
+.border-accent-red {
+  border-color: var(--bs-accent-red) !important;
+}
+
+.border-accent-blue {
+  border-color: var(--bs-accent-blue) !important;
+}
+
+// Glow text
+.glow-text {
+  text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+}
+
+// Loading shimmer for cards
+.loading-shimmer {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+// Modal dark theme
+.modal-content {
+  background-color: #141414 !important;
+  border: 1px solid #2a2a2a !important;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: #2a2a2a !important;
+}
+
+// Offcanvas dark theme
+.offcanvas {
+  background-color: #0a0a0a !important;
+  border-color: #2a2a2a !important;
+}
+
+// Table dark theme
+.table {
+  color: var(--bs-body-color) !important;
+
+  th, td {
+    border-color: #2a2a2a !important;
+  }
+}
+
+// Alert styles
+.alert {
+  background-color: #141414 !important;
+  border-color: #2a2a2a !important;
+  color: var(--bs-body-color) !important;
+}
+
+.alert-success {
+  background-color: rgba(0, 200, 83, 0.1) !important;
+  border-color: rgba(0, 200, 83, 0.3) !important;
+}
+
+.alert-danger {
+  background-color: rgba(255, 59, 59, 0.1) !important;
+  border-color: rgba(255, 59, 59, 0.3) !important;
+}
+
+.alert-warning {
+  background-color: rgba(255, 204, 0, 0.1) !important;
+  border-color: rgba(255, 204, 0, 0.3) !important;
+}
+
+.alert-info {
+  background-color: rgba(0, 168, 255, 0.1) !important;
+  border-color: rgba(0, 168, 255, 0.3) !important;
 }
