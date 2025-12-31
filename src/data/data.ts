@@ -89,9 +89,10 @@ export const listData: any[] = [];
 export const reviewData: any[] = [];
 
 // Blog data
-import blog1 from '../assets/img/blog-1.jpg'
-import blog2 from '../assets/img/blog-2.jpg'
-import blog3 from '../assets/img/blog-3.jpg'
+// Use spray foam banner images for blog posts
+import blog1 from '../assets/img/banner-1.jpg'
+import blog2 from '../assets/img/banner-2.jpg'
+import blog3 from '../assets/img/banner-4.jpg'
 
 export const blogData = [
     {

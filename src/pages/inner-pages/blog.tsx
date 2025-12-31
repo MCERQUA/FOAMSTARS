@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import bg from '../../assets/img/title-banner.jpg'
-import blogImg from '../../assets/img/blog-5.jpg'
+import blogImg from '../../assets/img/banner-5.jpg'
 
 import { blogData } from '../../data/data'
 
@@ -9,7 +8,7 @@ import { MdArrowForwardIos } from 'react-icons/md'
 import { BsCalendarCheck, BsEyeFill } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-import NavbarDark from '../../components/navbar/navbar-dark'
+import NavbarLight from '../../components/navbar/navbar-light'
 import FooterTop from '../../components/footer-top'
 import Footer from '../../components/footer'
 import BackToTop from '../../components/back-to-top'
@@ -26,26 +25,72 @@ interface BlogData{
 export default function Blog() {
   return (
     <>
-     <NavbarDark/>
+     <NavbarLight/>
 
-    <section className="bg-cover position-relative" style={{backgroundImage:`url(${bg})`}} data-overlay="6">
-        <div className="container">
+    {/* Hero Section - Following FOAMSTARS Style Guide */}
+    <div className="hero-header" style={{
+        background: '#000000',
+        position: 'relative',
+        overflow: 'hidden',
+        paddingTop: '120px',
+        paddingBottom: '60px'
+    }}>
+        {/* Spray worker images - USE CSS CLASSES */}
+        <img src="/backgorund mike spray.png" alt="" className="hero-spray-worker hero-spray-left" />
+        <img src="/backgorund-mike-spray-rv.png" alt="" className="hero-spray-worker hero-spray-right" />
+
+        {/* Black vignette overlay */}
+        <div style={{
+            position: 'absolute',
+            left: 0, top: 0, width: '100%', height: '100%',
+            background: 'radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.85) 75%, #000000 100%)',
+            zIndex: 2, pointerEvents: 'none'
+        }} />
+
+        {/* Yellow glow effect */}
+        <div style={{
+            position: 'absolute',
+            top: '45%', left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '700px', height: '700px',
+            background: 'radial-gradient(circle, rgba(255, 200, 0, 0.35) 0%, rgba(255, 165, 0, 0.2) 25%, rgba(255, 140, 0, 0.1) 45%, transparent 65%)',
+            filter: 'blur(50px)',
+            zIndex: 3, pointerEvents: 'none'
+        }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
             <div className="row justify-content-center align-items-center">
                 <div className="col-xl-7 col-lg-9 col-md-12 col-sm-12 pt-lg-0 pt-5">
                     <div className="position-relative text-center mb-5">
-                        <h1 className="text-light xl-heading">Latest Updates</h1>
-                        <nav id="breadcrumbs" className="breadcrumbs light">
-                            <ul>
-                                <li><Link to="#">Home</Link></li><MdArrowForwardIos className='ms-2'/>
-                                <li><Link to="#">Pages</Link></li><MdArrowForwardIos className='ms-2'/>
-                                <li>Blog</li>
+                        {/* FOAMSTARS Logo */}
+                        <img
+                            src="/FOAMSTARS_logo.png"
+                            alt="FOAMSTARS"
+                            style={{
+                                maxWidth: '300px',
+                                width: '100%',
+                                height: 'auto',
+                                marginBottom: '20px',
+                                display: 'block',
+                                marginLeft: 'auto',
+                                marginRight: 'auto',
+                                filter: 'drop-shadow(0 0 30px rgba(255, 200, 0, 0.5))'
+                            }}
+                        />
+                        <h1 className="text-white xl-heading">Industry Blog</h1>
+                        <p className="text-white-50">Stay updated with the latest spray foam industry news and insights</p>
+                        <nav id="breadcrumbs" className="breadcrumbs mt-3">
+                            <ul className="d-flex align-items-center justify-content-center gap-2">
+                                <li><Link to="/" className="text-white-50">Home</Link></li>
+                                <MdArrowForwardIos className='text-white-50'/>
+                                <li className="text-white">Blog</li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <section className="bg-light">
         <div className="container">
@@ -58,21 +103,21 @@ export default function Blog() {
                                     <img className="img-fluid rounded" src={blogImg} alt="blog image"/>
                                 </Link>
                             </div>
-                            
+
                             <div className="col-xl-8 col-lg-8 col-md-8">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center justify-content-start gap-2 mb-3">
                                         <span className="badge badge-xs badge-success rounded-pill">Featured</span>
-                                        <span className="badge badge-xs badge-danger rounded-pill">Web Design</span>
+                                        <span className="badge badge-xs badge-primary rounded-pill">Spray Foam</span>
                                     </div>
-                                    <Link to="/blog-detail"><h4 className="fw-semibold fs-5 lh-base mb-2">Boost Your Website's Performance with These Bootstrap Optimization Tips</h4></Link>
-                                    <p>Cicero famously orated against his political opponent Lucius Sergius Catilina. Occasionally the first Oration against Catiline is taken for type specimens: Quo usque tandem abutere, Catilina, patientia nostra.</p>
+                                    <Link to="/blog-detail"><h4 className="fw-semibold fs-5 lh-base mb-2">Energy Efficiency: How Spray Foam Insulation Reduces Your Utility Bills</h4></Link>
+                                    <p>Discover how spray foam insulation creates an airtight seal that dramatically reduces heating and cooling costs. Learn about R-values, air barrier properties, and the long-term savings of upgrading your insulation.</p>
                                     <div className="d-flex align-items-center justify-content-start mt-4">
                                         <Link to="/blog-detail" className="badge badge-primary rounded-pill">Continue Reading</Link>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -102,7 +147,7 @@ export default function Blog() {
                                 </div>
                                 <div className="card-footer bg-white d-flex justify-content-between align-items-center py-3">
                                     <div className="text-dark fw-medium text-md d-flex align-items-center"><BsCalendarCheck className="me-2"/>{item.date}</div>
-                                    <div className="text-muted fw-medium text-md d-flex align-items-center"><BsEyeFill className="me-2"/>12k Views</div>
+                                    <div className="text-muted fw-medium text-md d-flex align-items-center"><BsEyeFill className="me-2"/>{item.views}</div>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +171,7 @@ export default function Blog() {
                         </ul>
                     </nav>
                 </div>
-            </div>				
+            </div>
         </div>
     </section>
     <FooterTop/>
