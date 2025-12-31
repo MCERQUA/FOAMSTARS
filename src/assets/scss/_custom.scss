@@ -246,6 +246,16 @@ section.bg-light {
   h5 {
     color: #ffffff !important;
   }
+
+  // Companies counter - transparent yellow bg with solid yellow text
+  .categorycounter {
+    background-color: rgba(255, 204, 0, 0.15) !important;
+    color: #ffcc00 !important;
+    padding: 4px 12px !important;
+    border-radius: 20px !important;
+    font-weight: 500 !important;
+    border: 1px solid rgba(255, 204, 0, 0.3) !important;
+  }
 }
 
 // Listing Cards
