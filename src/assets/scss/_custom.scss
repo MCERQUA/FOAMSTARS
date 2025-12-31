@@ -522,11 +522,22 @@ footer,
   box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
   transition: all 0.3s ease !important;
 
+  // Icon always black
+  svg {
+    color: #000000 !important;
+    fill: #000000 !important;
+  }
+
   &:hover {
     background: linear-gradient(135deg, rgba(255, 214, 51, 0.95) 0%, rgba(255, 204, 0, 0.9) 100%) !important;
     box-shadow: 0 6px 25px rgba(255, 204, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
     transform: translateY(-2px) !important;
     color: #000000 !important;
+
+    svg {
+      color: #000000 !important;
+      fill: #000000 !important;
+    }
   }
 }
 
@@ -536,6 +547,11 @@ footer,
   border: 1px solid rgba(255, 204, 0, 0.6) !important;
   color: #000000 !important;
   font-weight: 600 !important;
+
+  svg {
+    color: #000000 !important;
+    fill: #000000 !important;
+  }
 }
 
 // SignUp/SignIn Navigation Link
