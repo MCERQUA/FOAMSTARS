@@ -2,7 +2,8 @@ import { neon } from '@neondatabase/serverless'
 
 // Neon serverless client for browser
 // Uses the connection string from environment
-const DATABASE_URL = import.meta.env.VITE_DATABASE_URL
+// Supports both VITE_DATABASE_URL (local) and NETLIFY_DATABASE_URL (Netlify integration)
+const DATABASE_URL = import.meta.env.VITE_DATABASE_URL || import.meta.env.NETLIFY_DATABASE_URL
 
 // Check if database is configured
 export const isDatabaseConfigured = !!DATABASE_URL
