@@ -5,7 +5,7 @@ import AdminNavbar from '../../components/navbar/admin-navbar'
 import AdminSidebar from '../../components/admin/admin-sidebar'
 import BackToTop from '../../components/back-to-top'
 
-import { getUserBookings, getBookingMessages, sendMessage, markMessagesAsRead, Booking } from '../../lib/supabase'
+import { getUserBookings, getBookingMessages, sendMessage, markMessagesAsRead, Booking } from '../../lib/neon'
 import { useAuth } from '../../contexts/AuthContext'
 
 import { BsSend, BsClock, BsCheckAll } from 'react-icons/bs'
@@ -23,7 +23,7 @@ interface BookingMessage {
 }
 
 export default function DashboardMessages() {
-    const { profile } = useAuth()
+    const { user, profile } = useAuth()
     const [searchParams] = useSearchParams()
     const [bookings, setBookings] = useState<Booking[]>([])
     const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
@@ -36,12 +36,12 @@ export default function DashboardMessages() {
     const messagesEndRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        if (profile?.user_type) {
+        if (user?.id && profile?.user_type) {
             loadBookings()
         } else {
             setLoading(false)
         }
-    }, [profile])
+    }, [user, profile])
 
     useEffect(() => {
         const bookingId = searchParams.get('booking')
@@ -62,11 +62,12 @@ export default function DashboardMessages() {
     }
 
     const loadBookings = async () => {
+        if (!user?.id) return
         try {
             setLoading(true)
             const userType = profile?.user_type === 'contractor' ? 'contractor' : 'customer'
-            const data = await getUserBookings(userType)
-            setBookings(data)
+            const data = await getUserBookings(user.id, userType)
+            setBookings(data as Booking[])
         } catch (err: any) {
             setError(err.message || 'Failed to load bookings')
         } finally {
@@ -75,13 +76,14 @@ export default function DashboardMessages() {
     }
 
     const handleSelectBooking = async (booking: Booking) => {
+        if (!user?.id) return
         setSelectedBooking(booking)
         setLoadingMessages(true)
         try {
             const messageData = await getBookingMessages(booking.id)
-            setMessages(messageData)
+            setMessages(messageData as BookingMessage[])
             // Mark messages as read
-            await markMessagesAsRead(booking.id)
+            await markMessagesAsRead(booking.id, user.id)
         } catch (err: any) {
             console.error('Error loading messages:', err)
         } finally {
@@ -91,12 +93,14 @@ export default function DashboardMessages() {
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (!newMessage.trim() || !selectedBooking) return
+        if (!newMessage.trim() || !selectedBooking || !user?.id) return
 
         setSendingMessage(true)
         try {
-            const sentMessage = await sendMessage(selectedBooking.id, newMessage.trim())
-            setMessages(prev => [...prev, sentMessage])
+            const sentMessage = await sendMessage(selectedBooking.id, user.id, newMessage.trim())
+            if (sentMessage) {
+                setMessages(prev => [...prev, sentMessage as BookingMessage])
+            }
             setNewMessage('')
         } catch (err: any) {
             alert(err.message || 'Failed to send message')

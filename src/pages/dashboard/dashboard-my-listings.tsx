@@ -6,13 +6,13 @@ import AdminSidebar from '../../components/admin/admin-sidebar'
 import BackToTop from '../../components/back-to-top'
 import BusinessListingForm from '../../components/business/BusinessListingForm'
 
-import { getUserListings, deleteListing, BusinessListing } from '../../lib/supabase'
+import { getUserListings, deleteListing, BusinessListing } from '../../lib/neon'
 import { useAuth } from '../../contexts/AuthContext'
 
 import { BsStarFill, BsStarHalf, BsPencil, BsTrash, BsPlus } from 'react-icons/bs'
 
 export default function DashboardMyListings() {
-  const { profile } = useAuth()
+  const { user, profile } = useAuth()
   const navigate = useNavigate()
   const [listings, setListings] = useState<BusinessListing[]>([])
   const [loading, setLoading] = useState(true)
@@ -22,13 +22,18 @@ export default function DashboardMyListings() {
   const [deletingId, setDeletingId] = useState<string | null>(null)
 
   useEffect(() => {
-    loadListings()
-  }, [profile])
+    if (user?.id) {
+      loadListings()
+    } else {
+      setLoading(false)
+    }
+  }, [user])
 
   const loadListings = async () => {
+    if (!user?.id) return
     try {
       setLoading(true)
-      const data = await getUserListings()
+      const data = await getUserListings(user.id)
       setListings(data)
     } catch (err: any) {
       setError(err.message || 'Failed to load listings')

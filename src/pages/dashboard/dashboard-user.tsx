@@ -4,7 +4,7 @@ import AdminSidebar from '../../components/admin/admin-sidebar'
 import RecentActivity from '../../components/admin/recent-activity';
 import BackToTop from '../../components/back-to-top';
 import { useAuth } from '../../contexts/AuthContext';
-import { getUserDashboardStats, getUserRecentMessages } from '../../lib/supabase';
+import { getUserDashboardStats, getUserRecentMessages } from '../../lib/neon';
 
 import CountUp from 'react-countup';
 import { IconType } from 'react-icons';
@@ -33,16 +33,17 @@ export default function DashboardUser() {
     const displayName = profile?.full_name || user?.email?.split('@')[0] || 'User';
 
     useEffect(() => {
-        if (user) {
+        if (user?.id) {
             loadDashboardData();
         }
     }, [user]);
 
     const loadDashboardData = async () => {
+        if (!user?.id) return;
         try {
             const [stats, messages] = await Promise.all([
-                getUserDashboardStats(),
-                getUserRecentMessages()
+                getUserDashboardStats(user.id),
+                getUserRecentMessages(user.id)
             ]);
             setDashboardStats(stats);
             setRecentMessages(messages);

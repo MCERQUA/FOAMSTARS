@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BusinessListing, BusinessListingInsert, Category, getCategories, createListing, updateListing } from '../../lib/supabase';
+import { BusinessListing, Category, getCategories, createListing, updateListing } from '../../lib/neon';
+import { useAuth } from '../../contexts/AuthContext';
+
+// Type for creating a new listing
+type BusinessListingInsert = Partial<BusinessListing>;
 
 interface BusinessListingFormProps {
   listing?: BusinessListing;
@@ -12,6 +16,7 @@ const BusinessListingForm: React.FC<BusinessListingFormProps> = ({
   onSuccess,
   onCancel
 }) => {
+  const { user } = useAuth();
   const [categories, setCategories] = useState<Category[]>([]);
   const [formData, setFormData] = useState<Partial<BusinessListingInsert>>({
     title: '',
@@ -116,11 +121,23 @@ const BusinessListingForm: React.FC<BusinessListingFormProps> = ({
       if (listing) {
         result = await updateListing(listing.id, formData);
       } else {
-        result = await createListing(formData as BusinessListingInsert);
+        if (!user?.id) {
+          setError('You must be logged in to create a listing');
+          setIsSubmitting(false);
+          return;
+        }
+        result = await createListing({
+          ...formData,
+          owner_id: user.id
+        } as BusinessListingInsert);
       }
-      
-      setSuccess(true);
-      onSuccess?.(result);
+
+      if (result) {
+        setSuccess(true);
+        onSuccess?.(result);
+      } else {
+        setError('Failed to save listing');
+      }
     } catch (err: any) {
       setError(err.message || 'Failed to save listing');
     } finally {

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { updatePassword } from '../../lib/supabase';
+import { useAuth } from '../../contexts/AuthContext';
 
 const PasswordUpdateForm: React.FC = () => {
+  const { updatePassword } = useAuth();
   const [formData, setFormData] = useState({
     newPassword: '',
     confirmPassword: ''

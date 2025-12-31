@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { Profile } from '../../lib/supabase';
+import { Profile } from '../../lib/neon';
 
 interface ProfileFormProps {
   onSuccess?: () => void;

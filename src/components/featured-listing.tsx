@@ -1,6 +1,6 @@
 // @ts-nocheck 
 import { useState, useEffect } from 'react'
-import { getFeaturedListings, BusinessListing } from '../lib/supabase'
+import { getFeaturedListings, BusinessListing } from '../lib/neon'
 import { Link } from 'react-router-dom'
 import { BsGeoAlt, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart, BsTelephone } from 'react-icons/bs'
 

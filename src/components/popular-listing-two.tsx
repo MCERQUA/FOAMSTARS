@@ -1,7 +1,7 @@
 // @ts-nocheck 
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
-import { getPublicListings, BusinessListing } from '../lib/supabase'
+import { getPublicListings, BusinessListing } from '../lib/neon'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay,Pagination } from 'swiper/modules';
 import 'swiper/css';

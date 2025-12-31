@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getPublicListings, BusinessListing } from '../lib/supabase'
+import { getPublicListings, BusinessListing } from '../lib/neon'
 import { Link } from 'react-router-dom'
 import { BsEyeFill, BsGeoAlt, BsPatchCheckFill, BsShareFill, BsStar, BsSuitHeart, BsTelephone } from 'react-icons/bs'
 

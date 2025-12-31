@@ -1,6 +1,7 @@
 import { BsCheckCircle, BsHeart, BsStar, BsJournalCheck } from 'react-icons/bs'
 import { useState, useEffect } from 'react'
-import { getUserRecentActivities } from '../../lib/supabase'
+import { getUserRecentActivities } from '../../lib/neon'
+import { useAuth } from '../../contexts/AuthContext'
 
 interface Activity {
   type: string;
@@ -11,16 +12,22 @@ interface Activity {
 }
 
 export default function RecentActivity() {
+  const { user } = useAuth();
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadActivities();
-  }, []);
+    if (user?.id) {
+      loadActivities();
+    } else {
+      setLoading(false);
+    }
+  }, [user]);
 
   const loadActivities = async () => {
+    if (!user?.id) return;
     try {
-      const data = await getUserRecentActivities();
+      const data = await getUserRecentActivities(user.id);
       setActivities(data);
     } catch (error) {
       console.error('Error loading activities:', error);

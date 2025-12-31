@@ -12,7 +12,7 @@ import bg from '../../../assets/img/banner-6.jpg'
 import { BsCoin, BsLightningChargeFill, BsPatchCheckFill, BsSearch, BsTelephone } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight, FaHeart, FaLocationDot, FaStar } from 'react-icons/fa6'
 
-import { getPublicListings, BusinessListing } from '../../../lib/supabase'
+import { getPublicListings, BusinessListing } from '../../../lib/neon'
 
 export default function ListLayout1() {
   const [listings, setListings] = useState<BusinessListing[]>([])

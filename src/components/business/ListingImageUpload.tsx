@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { BsPatchPlus, BsX, BsCheck } from 'react-icons/bs';
-import { supabase } from '../../lib/supabase';
+import { BsPatchPlus, BsX, BsCheck, BsExclamationCircle } from 'react-icons/bs';
 
 interface UploadedImage {
   file: File;
@@ -22,66 +21,22 @@ interface ListingImageUploadProps {
 
 export default function ListingImageUpload({ onImagesChange }: ListingImageUploadProps) {
   const [images, setImages] = useState<UploadedImage[]>([]);
-  const [uploading, setUploading] = useState(false);
 
-  const uploadToSupabase = async (file: File, type: string) => {
-    try {
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${type}-${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-      const filePath = `listings/${fileName}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from('business-images')
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: false
-        });
-
-      if (uploadError) throw uploadError;
-
-      const { data: urlData } = supabase.storage
-        .from('business-images')
-        .getPublicUrl(filePath);
-
-      return urlData.publicUrl;
-    } catch (error) {
-      console.error('Upload error:', error);
-      throw error;
-    }
-  };
-
+  // Note: Image upload to cloud storage is not yet configured
+  // For now, images are only previewed locally
   const onDrop = useCallback(async (acceptedFiles: File[], type: 'logo' | 'featured' | 'gallery') => {
     const newImages: UploadedImage[] = acceptedFiles.map(file => ({
       file,
       url: URL.createObjectURL(file),
       type,
-      uploading: true,
-      uploaded: false
+      uploading: false,
+      uploaded: true,
+      // For now, use the local preview URL
+      // In production, this would be the cloud storage URL
+      publicUrl: URL.createObjectURL(file)
     }));
 
     setImages(prev => [...prev, ...newImages]);
-    setUploading(true);
-
-    try {
-      for (let i = 0; i < newImages.length; i++) {
-        const image = newImages[i];
-        const publicUrl = await uploadToSupabase(image.file, type);
-        
-        setImages(prev => prev.map(img => 
-          img.file === image.file 
-            ? { ...img, uploading: false, uploaded: true, publicUrl }
-            : img
-        ));
-      }
-
-      // Update parent component with uploaded URLs
-      updateParentImages();
-    } catch (error) {
-      console.error('Upload failed:', error);
-      alert('Upload failed. Please try again.');
-    } finally {
-      setUploading(false);
-    }
   }, []);
 
   const updateParentImages = useCallback(() => {
@@ -99,8 +54,8 @@ export default function ListingImageUpload({ onImagesChange }: ListingImageUploa
   }, [updateParentImages]);
 
   const removeImage = (imageToRemove: UploadedImage) => {
+    URL.revokeObjectURL(imageToRemove.url);
     setImages(prev => prev.filter(img => img !== imageToRemove));
-    setTimeout(updateParentImages, 0);
   };
 
   const { getRootProps: getLogoRootProps, getInputProps: getLogoInputProps } = useDropzone({
@@ -138,7 +93,7 @@ export default function ListingImageUpload({ onImagesChange }: ListingImageUploa
       <div className="mb-4">
         <label className="form-label fw-semibold">{title}</label>
         <p className="text-muted small mb-2">{description}</p>
-        
+
         {!hasImages && (
           <div {...getRootProps()} className="dropzone border-2 border-dashed border-primary rounded p-4 text-center cursor-pointer hover-bg-light">
             <input {...getInputProps()} />
@@ -150,8 +105,8 @@ export default function ListingImageUpload({ onImagesChange }: ListingImageUploa
 
         {typeImages.map((image, index) => (
           <div key={index} className="position-relative d-inline-block me-2 mb-2">
-            <img 
-              src={image.url} 
+            <img
+              src={image.url}
               alt={`${type} preview`}
               className="rounded border"
               style={{ width: type === 'logo' ? '100px' : '150px', height: type === 'logo' ? '100px' : '120px', objectFit: 'cover' }}
@@ -180,7 +135,7 @@ export default function ListingImageUpload({ onImagesChange }: ListingImageUploa
         {hasImages && type === 'gallery' && typeImages.length < 10 && (
           <div {...getRootProps()} className="d-inline-block me-2 mb-2 cursor-pointer">
             <input {...getInputProps()} />
-            <div className="border-2 border-dashed border-primary rounded d-flex align-items-center justify-content-center" 
+            <div className="border-2 border-dashed border-primary rounded d-flex align-items-center justify-content-center"
                  style={{ width: '150px', height: '120px' }}>
               <BsPatchPlus className="fs-3 text-primary" />
             </div>
@@ -192,6 +147,11 @@ export default function ListingImageUpload({ onImagesChange }: ListingImageUploa
 
   return (
     <div>
+      <div className="alert alert-warning mb-4">
+        <BsExclamationCircle className="me-2" />
+        <small>Image upload to cloud storage is not yet configured. Images will preview locally but may not persist after submission.</small>
+      </div>
+
       {renderDropzone(
         getLogoRootProps,
         getLogoInputProps,
@@ -214,15 +174,6 @@ export default function ListingImageUpload({ onImagesChange }: ListingImageUploa
         'gallery',
         'Gallery Images',
         'Showcase your work samples and projects (max 10 images, 5MB each)'
-      )}
-
-      {uploading && (
-        <div className="alert alert-info">
-          <div className="d-flex align-items-center">
-            <div className="spinner-border spinner-border-sm me-2" role="status"></div>
-            Uploading images...
-          </div>
-        </div>
       )}
     </div>
   );

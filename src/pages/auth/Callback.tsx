@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../lib/supabase';
+import { getCurrentSession } from '../../lib/auth';
 
 export default function AuthCallback() {
   const navigate = useNavigate();
@@ -8,16 +8,10 @@ export default function AuthCallback() {
   useEffect(() => {
     const handleAuthCallback = async () => {
       try {
-        // Handle the auth callback
-        const { data, error } = await supabase.auth.getSession();
-        
-        if (error) {
-          console.error('Auth callback error:', error);
-          navigate('/auth/login?error=auth_callback_failed');
-          return;
-        }
+        // Handle the auth callback - Better Auth handles the OAuth flow
+        const session = await getCurrentSession();
 
-        if (data.session) {
+        if (session?.user) {
           // Successfully authenticated, redirect to dashboard
           navigate('/dashboard');
         } else {

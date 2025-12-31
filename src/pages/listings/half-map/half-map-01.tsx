@@ -5,7 +5,7 @@ import FilterTwo from '../../../components/filter-two'
 import NavbarDark from '../../../components/navbar/navbar-dark'
 import Map from '../../../components/map'
 
-import { getPublicListings, BusinessListing } from '../../../lib/supabase'
+import { getPublicListings, BusinessListing } from '../../../lib/neon'
 import { listData } from '../../../data/data'
 
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'

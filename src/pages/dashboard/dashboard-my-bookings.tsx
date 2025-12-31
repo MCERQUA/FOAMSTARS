@@ -5,14 +5,14 @@ import AdminNavbar from '../../components/navbar/admin-navbar'
 import AdminSidebar from '../../components/admin/admin-sidebar'
 import BackToTop from '../../components/back-to-top'
 
-import { getUserBookings, updateBookingStatus, Booking } from '../../lib/supabase'
+import { getUserBookings, updateBookingStatus, Booking } from '../../lib/neon'
 import { useAuth } from '../../contexts/AuthContext'
 
 import { BsCheck2Circle, BsEnvelopeDash, BsX, BsClock, BsCalendarCheck, BsExclamationTriangle } from 'react-icons/bs'
 
 
 export default function DashboardMyBookings() {
-  const { profile } = useAuth()
+  const { user, profile } = useAuth()
   const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -20,19 +20,20 @@ export default function DashboardMyBookings() {
   const [filter, setFilter] = useState<string>('all')
 
   useEffect(() => {
-    if (profile?.user_type) {
+    if (user?.id && profile?.user_type) {
       loadBookings()
     } else {
       setLoading(false)
     }
-  }, [profile])
+  }, [user, profile])
 
   const loadBookings = async () => {
+    if (!user?.id) return
     try {
       setLoading(true)
       const userType = profile?.user_type === 'contractor' ? 'contractor' : 'customer'
-      const data = await getUserBookings(userType)
-      setBookings(data)
+      const data = await getUserBookings(user.id, userType)
+      setBookings(data as Booking[])
     } catch (err: any) {
       setError(err.message || 'Failed to load bookings')
     } finally {

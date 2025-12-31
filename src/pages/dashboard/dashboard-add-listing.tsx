@@ -6,17 +6,13 @@ import AdminSidebar from '../../components/admin/admin-sidebar'
 import BackToTop from '../../components/back-to-top';
 import ListingImageUpload from '../../components/business/ListingImageUpload';
 import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../lib/supabase';
+import { getCategories, createListing, Category } from '../../lib/neon';
 
 import { FaFile, FaImages } from 'react-icons/fa6';
 import { BsGeoAlt, BsPatchQuestionFill, BsPlusCircle, BsStopwatch } from 'react-icons/bs';
 
 
-interface Category {
-    id: string;
-    name: string;
-    slug: string;
-}
+// Category type imported from neon.ts
 
 interface FormData {
     title: string;
@@ -72,14 +68,8 @@ export default function DashboardAddListing() {
 
     const fetchCategories = async () => {
         try {
-            const { data, error } = await supabase
-                .from('categories')
-                .select('id, name, slug')
-                .eq('is_active', true)
-                .order('display_order');
-            
-            if (error) throw error;
-            setCategories(data || []);
+            const data = await getCategories();
+            setCategories(data);
         } catch (error) {
             console.error('Error fetching categories:', error);
         }
@@ -92,44 +82,36 @@ export default function DashboardAddListing() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!user) {
             alert('You must be logged in to create a listing');
             return;
         }
 
-
         setLoading(true);
-        
-        try {
-            const { error } = await supabase
-                .from('business_listings')
-                .insert({
-                    owner_id: user.id,
-                    title: formData.title,
-                    slug: formData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-                    business_name: formData.business_name,
-                    description: formData.description,
-                    category_id: formData.category_id,
-                    phone: formData.phone,
-                    email: formData.email,
-                    website_url: formData.website_url,
-                    address: formData.address,
-                    city: formData.city,
-                    state: formData.state,
-                    zip_code: formData.zip_code,
-                    pricing_model: formData.pricing_model,
-                    hourly_rate: formData.hourly_rate ? parseFloat(formData.hourly_rate) : null,
-                    min_project_budget: formData.min_project_budget ? parseFloat(formData.min_project_budget) : null,
-                    max_project_budget: formData.max_project_budget ? parseFloat(formData.max_project_budget) : null,
-                    featured_image_url: imageData.featured || null,
-                    gallery_images: imageData.gallery.length > 0 ? imageData.gallery : null,
-                    status: 'active'
-                })
-                .select()
-                .single();
 
-            if (error) throw error;
+        try {
+            const result = await createListing({
+                owner_id: user.id,
+                title: formData.title,
+                business_name: formData.business_name || null,
+                description: formData.description || null,
+                category_id: formData.category_id,
+                phone: formData.phone || null,
+                email: formData.email || null,
+                website_url: formData.website_url || null,
+                address: formData.address || null,
+                city: formData.city || null,
+                state: formData.state || null,
+                zip_code: formData.zip_code || null,
+                hourly_rate: formData.hourly_rate ? parseFloat(formData.hourly_rate) : null,
+                featured_image_url: imageData.featured || null,
+                gallery_images: imageData.gallery.length > 0 ? imageData.gallery : [],
+            });
+
+            if (!result) {
+                throw new Error('Failed to create listing');
+            }
 
             alert('Listing created successfully and is now live!');
             navigate('/dashboard/listings');

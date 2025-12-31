@@ -1,22 +1,22 @@
 import React, { useState, useRef } from 'react';
-import { uploadAvatar, deleteAvatar } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
-import { BsCamera, BsTrash, BsCheck2Circle } from 'react-icons/bs';
+import { BsCamera, BsTrash, BsCheck2Circle, BsExclamationCircle } from 'react-icons/bs';
 
 interface AvatarUploadProps {
   currentAvatarUrl?: string | null;
   onAvatarUpdate?: (newAvatarUrl: string | null) => void;
 }
 
-const AvatarUpload: React.FC<AvatarUploadProps> = ({ 
-  currentAvatarUrl, 
-  onAvatarUpdate 
+const AvatarUpload: React.FC<AvatarUploadProps> = ({
+  currentAvatarUrl,
+  onAvatarUpdate
 }) => {
-  const { refreshProfile } = useAuth();
+  const { refreshProfile, updateProfile } = useAuth();
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileSelect = () => {
@@ -44,24 +44,21 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
     setUploading(true);
 
     try {
-      // Delete old avatar if exists
-      if (currentAvatarUrl && currentAvatarUrl.includes('supabase')) {
-        try {
-          await deleteAvatar(currentAvatarUrl);
-        } catch (deleteErr) {
-          console.warn('Could not delete old avatar:', deleteErr);
-        }
-      }
+      // Create a local preview URL
+      const localUrl = URL.createObjectURL(file);
+      setPreviewUrl(localUrl);
 
-      // Upload new avatar
-      const newAvatarUrl = await uploadAvatar(file);
-      
+      // Note: Cloud storage upload is not configured yet
+      // For now, just update the profile with the preview URL
+      // In production, you would upload to cloud storage and use that URL
+      await updateProfile({ avatar_url: localUrl });
+
       // Refresh the profile data
       await refreshProfile();
-      
+
       // Notify parent component
-      onAvatarUpdate?.(newAvatarUrl);
-      
+      onAvatarUpdate?.(localUrl);
+
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
     } catch (err: any) {
@@ -76,8 +73,6 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
   };
 
   const handleDeleteAvatar = async () => {
-    if (!currentAvatarUrl || !currentAvatarUrl.includes('supabase')) return;
-    
     if (!confirm('Are you sure you want to remove your profile picture?')) return;
 
     setError(null);
@@ -85,14 +80,21 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
     setDeleting(true);
 
     try {
-      await deleteAvatar(currentAvatarUrl);
-      
+      // Update profile to remove avatar
+      await updateProfile({ avatar_url: null });
+
       // Refresh the profile data
       await refreshProfile();
-      
+
+      // Clean up preview URL if exists
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        setPreviewUrl(null);
+      }
+
       // Notify parent component
       onAvatarUpdate?.(null);
-      
+
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
     } catch (err: any) {
@@ -101,6 +103,8 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
       setDeleting(false);
     }
   };
+
+  const displayUrl = previewUrl || currentAvatarUrl;
 
   return (
     <div className="avatar-upload">
@@ -111,7 +115,12 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
         onChange={handleFileChange}
         style={{ display: 'none' }}
       />
-      
+
+      <div className="alert alert-warning alert-sm mb-3">
+        <BsExclamationCircle className="me-1" />
+        <small>Cloud storage not configured. Avatar preview only.</small>
+      </div>
+
       {error && (
         <div className="alert alert-danger alert-sm mb-3">
           {error}
@@ -140,12 +149,12 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
           ) : (
             <>
               <BsCamera className="me-1" />
-              {currentAvatarUrl ? 'Change Photo' : 'Upload Photo'}
+              {displayUrl ? 'Change Photo' : 'Upload Photo'}
             </>
           )}
         </button>
 
-        {currentAvatarUrl && currentAvatarUrl.includes('supabase') && (
+        {displayUrl && (
           <button
             type="button"
             className="btn btn-sm btn-outline-danger"

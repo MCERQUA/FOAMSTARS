@@ -1,5 +1,4 @@
-// Data layer cleaned for production - all mock data removed
-// Real data now comes from Supabase backend
+// Data layer - Real data comes from Neon PostgreSQL
 // FOAMSTARS - Spray Foam Insulation Contractor Directory
 
 import { BsBarChart, BsCameraReels, BsCoin, BsCreditCard2Back, BsEnvelopeAt, BsFacebook, BsFileEarmarkTextFill, BsGraphUpArrow, BsInstagram, BsLinkedin, BsPatchCheck, BsPatchQuestion, BsPeopleFill, BsPersonCheck, BsPinMap, BsPinMapFill, BsPinterest, BsSuitHeart, BsTwitter, BsYelp, BsDroplet } from "react-icons/bs";
@@ -13,12 +12,35 @@ import review1 from '../assets/img/google.png'
 import review2 from '../assets/img/trustpilot.png'
 import review3 from '../assets/img/capterra.png'
 
-// Spray Foam Service Categories
+// Import Neon database functions
+import {
+  getPublicListings,
+  getFeaturedListings,
+  getCategories,
+  getCategoryStats,
+  getListingsByState,
+  getListingsByCategory,
+  searchListings
+} from '../lib/neon';
+
+// Re-export Neon functions for use throughout the app
+export {
+  getPublicListings,
+  getFeaturedListings,
+  getCategories,
+  getCategoryStats,
+  getListingsByState,
+  getListingsByCategory,
+  searchListings
+};
+
+// Spray Foam Service Categories (static version for initial render)
 export const categoryData = [
     {
         image: placeholderImage,
         icon: FaHouseChimney,
         title: 'Spray Foam Insulation',
+        slug: 'spray-foam-insulation',
         list: '0 Companies',
         description: 'Residential & commercial insulation services'
     },
@@ -26,6 +48,7 @@ export const categoryData = [
         image: placeholderImage,
         icon: FaRoad,
         title: 'Concrete Lifting',
+        slug: 'concrete-lifting',
         list: '0 Companies',
         description: 'Polyurethane foam concrete leveling & lifting'
     },
@@ -33,6 +56,7 @@ export const categoryData = [
         image: placeholderImage,
         icon: FaFilm,
         title: 'Artistic & Themed Projects',
+        slug: 'artistic-themed-projects',
         list: '0 Companies',
         description: 'Movie sets, theme parks & sculptural foam'
     },
@@ -40,6 +64,7 @@ export const categoryData = [
         image: placeholderImage,
         icon: BsDroplet,
         title: 'Polyurethane Coatings',
+        slug: 'polyurethane-coatings',
         list: '0 Companies',
         description: 'Protective coatings & waterproofing'
     },
@@ -47,16 +72,13 @@ export const categoryData = [
         image: placeholderImage,
         icon: FaUmbrella,
         title: 'SPF Roofing',
+        slug: 'spf-roofing',
         list: '0 Companies',
         description: 'Spray polyurethane foam roofing systems'
     },
 ]
 
-// Listing data - empty array, real data comes from Supabase
-// Import Supabase functions for real data
-import { getPublicListings, getFeaturedListings } from '../lib/supabase';
-
-// Real data comes from Supabase - export functions instead of static arrays
+// Real data comes from Neon - export functions instead of static arrays
 export const getListData = getPublicListings;
 export const getFeaturedListData = getFeaturedListings;
 
