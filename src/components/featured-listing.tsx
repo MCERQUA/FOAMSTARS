@@ -101,7 +101,7 @@ export default function FeaturedListing() {
                                             <div className="opssListing position-absolute start-0 bottom-0 ms-3 mb-4 z-2">
                                                 <div className="d-flex align-items-center justify-content-between gap-2">
                                                     <div className="listing-avatar">
-                                                        <Link to={`/single-listing/${listing.id}`} className="avatarImg"><img src="/src/assets/img/team-1.jpg" className="img-fluid circle" alt="Avatar"/></Link>
+                                                        <Link to={`/single-listing/${listing.id}`} className="avatarImg"><img src={listing.featured_image_url || '/src/assets/img/team-1.jpg'} className="img-fluid circle" alt="Company Logo"/></Link>
                                                     </div>
                                                     <div className="listing-details">
                                                         <h4 className="listingTitle"><Link to={`/single-listing/${listing.id}`} className="titleLink">{listing.title}{listing.is_verified && <span className="verified"><BsPatchCheckFill className="m-0"/></span>}</Link></h4>

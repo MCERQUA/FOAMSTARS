@@ -147,7 +147,7 @@ export default function PopularListingTwo() {
                                     </div>
                                     <div className="listing-middle-item">
                                         <div className="listing-avatar">
-                                            <Link to={`/contractor/${listing.id}`} className="avatarImg"><img src={listing.owner_avatar_url || defaultAvatarImg} className="img-fluid circle" alt="Avatar"/></Link>
+                                            <Link to={`/contractor/${listing.id}`} className="avatarImg"><img src={listing.featured_image_url || defaultAvatarImg} className="img-fluid circle" alt="Company Logo"/></Link>
                                         </div>
                                         <div className="listing-details">
                                             <h4 className="listingTitle"><Link to={`/contractor/${listing.id}`} className="titleLink">{listing.title}{listing.is_verified && <span className="verified"><BsPatchCheckFill className="m-0"/></span>}</Link></h4>
