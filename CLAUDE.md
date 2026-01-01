@@ -320,3 +320,91 @@ When an error persists after 3 attempts, the following protocol is MANDATORY:
 ### Session ID Format
 SESSION-[TIMESTAMP]-[ISSUE_ID]
 Example: SESSION-1705321200-456
+
+## 🖼️ IMAGE PROCESSING SYSTEM
+
+### MANDATORY: All company images MUST be processed through this system
+
+### Folder Structure
+```
+public/
+  _inbox/                      # DROP RAW IMAGES HERE
+    {company-slug}/
+      logo.png                 # Any logo file
+      project-photo-1.jpg      # Gallery images
+
+  companies/                   # PROCESSED OUTPUT (auto-generated)
+    {company-slug}/
+      logos/
+        original.png           # Source file backup
+        square.png             # 400x400 (cards, avatars)
+        square.webp            # 400x400 WebP version
+        wide.png               # 800x400 (banners)
+        wide.webp              # 800x400 WebP version
+        thumb.png              # 100x100 (tiny icons)
+        thumb.webp             # 100x100 WebP version
+      gallery/
+        original-{name}.jpg    # Source file backup
+        thumb-{name}.jpg       # 300x200 (grid preview)
+        thumb-{name}.webp
+        medium-{name}.jpg      # 800x600 (card display)
+        medium-{name}.webp
+        large-{name}.jpg       # 1600x1200 (lightbox)
+        large-{name}.webp
+```
+
+### Processing Commands
+```bash
+# Process single company
+node scripts/process-images.mjs {company-slug}
+
+# Process all companies in _inbox
+node scripts/process-images.mjs --all
+```
+
+### Quality Settings (CRITICAL - NO BLUR)
+- **JPEG**: 90% quality (high quality, minimal artifacts)
+- **WebP**: 90% quality (excellent quality-to-size ratio)
+- **PNG**: Lossless compression (no quality loss)
+- **Downscaling**: Lanczos3 kernel (highest quality)
+- **NEVER upscale**: Small images keep original dimensions
+
+### File Naming Convention
+- **Logos**: Files with "logo" in the name → processed as logos
+- **Gallery**: All other images → processed as gallery images
+- **Company slug**: lowercase, hyphens, no spaces (e.g., `alabama-spray-foam-llc`)
+
+### When to Process Images
+
+#### From _inbox folder (manual uploads):
+1. User drops raw images into `public/_inbox/{company-slug}/`
+2. Run: `node scripts/process-images.mjs {company-slug}`
+3. Processed images appear in `public/companies/{company-slug}/`
+4. Update database `featured_image_url` to: `/companies/{company-slug}/logos/square.png`
+
+#### From website uploads (future implementation):
+When implementing file uploads via the dashboard:
+1. Accept upload via react-dropzone
+2. Save original to Supabase Storage: `business-images/{company-id}/originals/`
+3. Process using sharp with same quality settings
+4. Save processed versions to: `business-images/{company-id}/logos/` or `/gallery/`
+5. Update database with Supabase Storage URLs
+
+### Image Format Reference
+
+| Format | Dimensions | Use Case | File Types |
+|--------|-----------|----------|------------|
+| `square` | 400x400 | Cards, avatars, sliders | .png, .webp |
+| `wide` | 800x400 | Headers, banners | .png, .webp |
+| `thumb` | 100x100 | Tiny icons, favicons | .png, .webp |
+| `gallery-thumb` | 300x200 | Grid previews | .jpg, .webp |
+| `gallery-medium` | 800x600 | Card display | .jpg, .webp |
+| `gallery-large` | 1600x1200 | Lightbox/full view | .jpg, .webp |
+
+### DO NOT
+- ❌ Use quality below 85% (causes blur/artifacts)
+- ❌ Upscale small images (keep original if smaller than target)
+- ❌ Skip WebP generation (modern browsers need it)
+- ❌ Delete original files (always keep backup)
+- ❌ Process images outside this system (breaks consistency)
+- ❌ Use different quality settings per image (maintain uniformity)
