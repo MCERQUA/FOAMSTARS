@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import { MdArrowForwardIos } from 'react-icons/md'
 import { faqData1, faqData2, faqData3 } from '../../data/data'
@@ -15,6 +16,49 @@ interface FaqData{
 }
 
 export default function Faq() {
+  // SEO: Dynamic page title, meta description, and FAQ Schema
+  useEffect(() => {
+    document.title = 'Spray Foam Insulation FAQ | Common Questions Answered | FOAMSTARS'
+
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content',
+        'Find answers to frequently asked questions about spray foam insulation. Learn about hiring contractors, costs, open vs closed cell foam, and more from FOAMSTARS experts.'
+      )
+    }
+
+    // Combine all FAQ data for schema
+    const allFaqs = [...faqData1, ...faqData2, ...faqData3]
+
+    // Add FAQPage Schema.org structured data
+    const existingSchema = document.querySelector('#faq-schema')
+    if (existingSchema) existingSchema.remove()
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": allFaqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.title,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.desc
+        }
+      }))
+    }
+
+    const scriptTag = document.createElement('script')
+    scriptTag.id = 'faq-schema'
+    scriptTag.type = 'application/ld+json'
+    scriptTag.text = JSON.stringify(schema)
+    document.head.appendChild(scriptTag)
+
+    return () => {
+      const schemaEl = document.querySelector('#faq-schema')
+      if (schemaEl) schemaEl.remove()
+    }
+  }, [])
+
   return (
     <>
     <NavbarLight/>

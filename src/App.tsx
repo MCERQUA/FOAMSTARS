@@ -41,6 +41,7 @@ import SingleListing2 from './pages/listings/single/single-listing-02';
 import SingleListing3 from './pages/listings/single/single-listing-03';
 import SingleListing4 from './pages/listings/single/single-listing-04';
 import SingleListing5 from './pages/listings/single/single-listing-05';
+import StateContractors from './pages/listings/state-contractors';
 
 import DashboardUser from './pages/dashboard/dashboard-user';
 import DashboardMyProfile from './pages/dashboard/dashboard-my-profile';
@@ -159,6 +160,7 @@ function App() {
         <Route path='/contractors' element={<Navigate to="/contractors/list" replace />}/>
         <Route path='/contractors/list' element={<ListLayout1/>}/>
         <Route path='/contractors/map' element={<HalfMap1/>}/>
+        <Route path='/contractors/:state' element={<StateContractors/>}/>
         <Route path='/contractor/:id' element={<SingleListing1/>}/>
         
         {/* Legacy Grid Layout Routes */}

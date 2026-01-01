@@ -134,6 +134,33 @@ export async function getPublicListings(limit: number = 50): Promise<BusinessLis
   }
 }
 
+export async function getListingsByState(stateAbbr: string, limit: number = 50): Promise<BusinessListing[]> {
+  if (!sql) {
+    console.log('Database not configured - returning empty listings')
+    return []
+  }
+
+  try {
+    const listings = await sql`
+      SELECT
+        bl.*,
+        c.name as category_name,
+        c.slug as category_slug
+      FROM business_listings bl
+      LEFT JOIN categories c ON bl.category_id = c.id
+      WHERE bl.status = 'active'
+        AND UPPER(bl.state) = UPPER(${stateAbbr})
+      ORDER BY bl.is_featured DESC, bl.average_rating DESC, bl.created_at DESC
+      LIMIT ${limit}
+    `
+    console.log(`✓ Loaded ${listings.length} listings for state ${stateAbbr}`)
+    return listings as BusinessListing[]
+  } catch (error) {
+    console.error(`Failed to load listings for state ${stateAbbr}:`, error)
+    return []
+  }
+}
+
 export async function getFeaturedListings(limit: number = 6): Promise<BusinessListing[]> {
   if (!sql) return []
 
@@ -195,28 +222,6 @@ export async function getListingById(id: string): Promise<BusinessListing | null
   } catch (error) {
     console.error('Failed to load listing:', error)
     return null
-  }
-}
-
-export async function getListingsByState(state: string, limit: number = 50): Promise<BusinessListing[]> {
-  if (!sql) return []
-
-  try {
-    const listings = await sql`
-      SELECT
-        bl.*,
-        c.name as category_name,
-        c.slug as category_slug
-      FROM business_listings bl
-      LEFT JOIN categories c ON bl.category_id = c.id
-      WHERE bl.status = 'active' AND UPPER(bl.state) = UPPER(${state})
-      ORDER BY bl.created_at DESC
-      LIMIT ${limit}
-    `
-    return listings as BusinessListing[]
-  } catch (error) {
-    console.error('Failed to load listings by state:', error)
-    return []
   }
 }
 
