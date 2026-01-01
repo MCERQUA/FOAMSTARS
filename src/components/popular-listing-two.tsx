@@ -11,60 +11,12 @@ import { BsEyeFill, BsGeoAlt, BsPatchCheckFill, BsShareFill, BsStar, BsSuitHeart
 import defaultListingImg from '../assets/img/list-1.jpg'
 import defaultAvatarImg from '../assets/img/team-1.jpg'
 
-// Mock data as fallback
-const mockListings = [
-  {
-    id: 'mock-1',
-    title: 'Elite Spray Foam Solutions',
-    description: 'Professional spray foam insulation for residential and commercial',
-    status: 'active',
-    hourly_rate: 85,
-    is_featured: true,
-    is_verified: true,
-    featured_image_url: null,
-    owner_avatar_url: null,
-    phone: '(555) 123-4567',
-    city: 'Houston',
-    state: 'TX',
-    review_count: 24,
-    average_rating: 4.8,
-    categories: { name: 'Spray Foam Insulation' }
-  },
-  {
-    id: 'mock-2',
-    title: 'ProFoam Insulation',
-    description: 'Expert spray foam and polyurethane coating services',
-    status: 'active',
-    hourly_rate: 95,
-    is_featured: false,
-    is_verified: true,
-    featured_image_url: null,
-    owner_avatar_url: null,
-    phone: '(555) 987-6543',
-    city: 'Phoenix',
-    state: 'AZ',
-    review_count: 18,
-    average_rating: 4.9,
-    categories: { name: 'Polyurethane Coatings' }
-  },
-  {
-    id: 'mock-3',
-    title: 'Precision SPF Roofing',
-    description: 'Licensed spray polyurethane foam roofing specialists',
-    status: 'active',
-    hourly_rate: 75,
-    is_featured: true,
-    is_verified: true,
-    featured_image_url: null,
-    owner_avatar_url: null,
-    phone: '(555) 456-7890',
-    city: 'Dallas',
-    state: 'TX',
-    review_count: 32,
-    average_rating: 4.7,
-    categories: { name: 'SPF Roofing' }
-  }
-]
+// Helper function to check if a listing has a real logo (not a placeholder)
+const hasRealLogo = (listing: BusinessListing): boolean => {
+  const url = listing.featured_image_url
+  // Only show listings with processed logos from /companies/ folder
+  return !!url && url.startsWith('/companies/')
+}
 
 export default function PopularListingTwo() {
   const [listings, setListings] = useState<BusinessListing[]>([])
@@ -75,26 +27,29 @@ export default function PopularListingTwo() {
     const loadListings = async () => {
       try {
         console.log('Loading popular listings for homepage...')
-        
+
         // Add a race condition with timeout to prevent hanging
         const timeoutPromise = new Promise((_, reject) => {
           setTimeout(() => reject(new Error('Request timeout')), 30000)
         })
-        
+
+        // Fetch more listings to ensure we have enough with logos after filtering
         const data = await Promise.race([
-          getPublicListings(6),
+          getPublicListings(50),
           timeoutPromise
-        ])
-        
-        console.log('Popular listings loaded:', data)
-        setListings(data || [])
+        ]) as BusinessListing[]
+
+        // Filter to only show companies with real logos
+        const listingsWithLogos = (data || []).filter(hasRealLogo)
+
+        console.log(`Popular listings: ${data?.length || 0} total, ${listingsWithLogos.length} with logos`)
+        setListings(listingsWithLogos)
         setError(null)
       } catch (error) {
         console.error('Error loading popular listings:', error)
         console.log('Error details:', error instanceof Error ? error.message : 'Unknown error')
-        console.log('Using mock data as fallback...')
-        console.log('Mock data:', mockListings)
-        setListings(mockListings as BusinessListing[])
+        // No fallback mock data - only show companies with real logos
+        setListings([])
         setError(null)
       } finally {
         setLoading(false)
@@ -140,8 +95,8 @@ export default function PopularListingTwo() {
       <div className="row align-items-center justify-content-center">
         <div className="col-xl-8 text-center py-5">
           <div className="empty-state-box p-5 rounded-4">
-            <h4 className="mb-3">No Spray Foam Companies Listed Yet</h4>
-            <p className="text-light opacity-75 mb-0">Check back soon or be the first to list your company!</p>
+            <h4 className="mb-3">Featured Companies Coming Soon</h4>
+            <p className="text-light opacity-75 mb-0">Companies with logos will be featured here. Add your company logo to get listed!</p>
           </div>
         </div>
       </div>

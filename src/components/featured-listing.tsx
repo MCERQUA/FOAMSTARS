@@ -8,25 +8,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay,Pagination } from 'swiper/modules';
 import 'swiper/css';
 
-import { IconType } from 'react-icons';
-
-interface ListData{
-    id: number;
-    image: string;
-    user: string;
-    status: string;
-    featured: boolean;
-    title: string;
-    desc: string;
-    call: string;
-    loction: string;
-    tag: string;
-    tagIcon: IconType;
-    tagIconStyle: string;
-    review: string;
-    rating: string;
-    ratingRate: string;
-    instantBooking: boolean;
+// Helper function to check if a listing has a real logo (not a placeholder)
+const hasRealLogo = (listing: BusinessListing): boolean => {
+  const url = listing.featured_image_url
+  // Only show listings with processed logos from /companies/ folder
+  return !!url && url.startsWith('/companies/')
 }
 
 export default function FeaturedListing() {
@@ -36,8 +22,10 @@ export default function FeaturedListing() {
   useEffect(() => {
     const loadListings = async () => {
       try {
-        const data = await getFeaturedListings(8)
-        setListings(data)
+        const data = await getFeaturedListings(50)
+        // Filter to only show companies with real logos
+        const listingsWithLogos = data.filter(hasRealLogo)
+        setListings(listingsWithLogos)
       } catch (error) {
         console.error('Error loading featured listings:', error)
       } finally {
