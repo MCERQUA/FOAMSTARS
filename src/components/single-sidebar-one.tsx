@@ -1,265 +1,315 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-import bg from '../assets/img/avatar-bg.jpg'
-import bg2 from '../assets/img/avatar-bg-2.jpg'
-import team4 from '../assets/img/team-4.jpg'
+import { BsBrowserChrome, BsEnvelope, BsFacebook, BsInstagram, BsSuitHeart, BsTwitterX, BsWhatsapp, BsTelephoneFill, BsClock } from 'react-icons/bs'
+import { FaLocationDot } from 'react-icons/fa6'
+import { FiSend } from 'react-icons/fi'
 
-import { BsBrowserChrome, BsCalendar, BsEnvelope, BsFacebook, BsInstagram, BsSuitHeart, BsTwitterX, BsWhatsapp, BsYoutube } from 'react-icons/bs'
-import { BiPhone } from 'react-icons/bi'
-import { FaMinus, FaPlus } from 'react-icons/fa6'
-
-import Select from 'react-select';
-import { IconType } from 'react-icons'
-
-interface Personal{
-    icon: IconType;
-    title: string;
-    desc: string;
+interface ListingData {
+    id?: string;
+    business_name?: string | null;
+    phone?: string | null;
+    email?: string | null;
+    website_url?: string | null;
+    address?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zip_code?: string | null;
+    featured_image_url?: string | null;
+    years_in_business?: number | null;
+    is_verified?: boolean;
 }
 
-interface Social{
-    icon: IconType;
-    style: string;
+interface SingleSidebarOneProps {
+    listing?: ListingData | null;
 }
-interface TimeTable{
+
+interface TimeTable {
     day: string;
     time: string;
 }
 
-export default function SingleSidebarOne() {
-    const [selectedOptions, setSelectedOptions] = useState<object>([]);
-    const [guests, setGuests] = useState<boolean>(false);
-    const [adults, setAdults] = useState<number>(1);
-    const [children, setChildren] = useState<number>(0);
+export default function SingleSidebarOne({ listing }: SingleSidebarOneProps) {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    })
 
-
-    const personal = [
-        {
-          icon: BsEnvelope,
-          title:'Email',
-          desc:'shree.patel@gmail.com'  
-        },
-        {
-          icon: BiPhone,
-          title:'Phone No.',
-          desc:'+41 256 254 5487'  
-        },
-        {
-          icon: BsBrowserChrome,
-          title:'Website',
-          desc:'foamstars.com'  
-        },
+    const timeTable: TimeTable[] = [
+        { day: 'Monday', time: '8:00 AM - 5:00 PM' },
+        { day: 'Tuesday', time: '8:00 AM - 5:00 PM' },
+        { day: 'Wednesday', time: '8:00 AM - 5:00 PM' },
+        { day: 'Thursday', time: '8:00 AM - 5:00 PM' },
+        { day: 'Friday', time: '8:00 AM - 5:00 PM' },
+        { day: 'Saturday', time: 'By Appointment' },
+        { day: 'Sunday', time: 'Closed' },
     ]
-    const social = [
-        {
-            icon:BsFacebook,
-            style:'color--facebook'
-        },
-        {
-            icon:BsTwitterX,
-            style:'color--twitter'
-        },
-        {
-            icon:BsInstagram,
-            style:'color--instagram'
-        },
-        {
-            icon:BsYoutube,
-            style:'color--pinterest'
-        },
-        {
-            icon:BsWhatsapp,
-            style:'color--whatsapp'
-        },
-    ]
-    
-  const options = [
-    { value: 'slice', label: 'Slice' },
-    { value: 'burger', label: 'Burger' },
-    { value: 'coffee', label: 'Coffee' },
-    { value: 'thali', label: 'Indian Thali' },
-    { value: 'tandoori', label: 'Tandoori' },
-    { value: 'chips', label: 'Chips' },
-  ];
 
-  const option2 = [
-    { value: '1', label: '07:00 AM' },
-    { value: '2', label: '07:30 AM' },
-    { value: '3', label: '08:00 AM' },
-    { value: '4', label: '08:30 AM' },
-    { value: '5', label: '09:00 AM' },
-    { value: '6', label: '09:30 AM' },
-    { value: '7', label: '10:30 AM' },
-    { value: '8', label: '11:30 AM' },
-    { value: '9', label: '12:30 AM' },
-  ]
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
 
-  const timeTable = [
-    { day:'Monday', time:'8:00 Am To 10:00 PM'},
-    { day:'Tuesday', time:'8:00 Am To 10:00 PM'},
-    { day:'Wednesday', time:'8:00 Am To 10:00 PM'},
-    { day:'Thursday', time:'8:00 Am To 10:00 PM'},
-    { day:'Friday', time:'8:00 Am To 10:00 PM'},
-    { day:'Saturday', time:'8:00 Am To 10:00 PM'},
-    { day:'Sunday', time:'0:00 Am To 16:00 PM'},
-  ]
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+        // TODO: Implement form submission
+        console.log('Quote request submitted:', formData)
+        alert('Thank you! Your quote request has been submitted.')
+        setFormData({ name: '', email: '', phone: '', message: '' })
+    }
 
-  const handleChange = (selected:object) => {
-    setSelectedOptions(selected);
-  };
-  return (
+    const formatPhoneForLink = (phone: string) => {
+        return phone.replace(/[^0-9+]/g, '')
+    }
+
+    return (
         <div className="sidebarGroups d-flex flex-column gap-4">
-            
+
+            {/* Contact Information Card */}
             <div className="card">
-                <div className="bg-cover card-header ht-150" style={{backgroundImage:`url(${bg})`}}></div>
-                <div className="card-body mt-n3 p-0">
-                    <div className="avatarBox position-relative mb-4">
-                        <div className="square--100 circle bg-transparents mx-auto p-2 z-2"><img src={team4} className="img-fluid circle" alt="Avatar"/></div>
-                        <div className="listingInfo text-center">
-                            <p className="text-md text-muted mb-0">Added By</p>
-                            <h6 className="mb-0">Shree K. Patel</h6>
-                        </div>
-                    </div>
-                    <div className="avatarInfo mb-2">
-                        {personal.map((item:Personal,index:number)=>{
-                            const Icon = item.icon
-                            return(
-                                <div className="py-3 px-3 border-top" key={index}>
-                                    <div className="infoFlexio d-flex align-items-center justify-content-start gap-2">
-                                        <div className="square--40 rounded bg-light-primary"><Icon className="text-primary"/></div>
-                                        <div className="infoDetails">
-                                            <p className="text-muted lh-base mb-0">{item.title}</p>
-                                            <p className="text-dark lh-base fw-medium fs-6 mb-0">{item.desc}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-                <div className="card-footer bg-white border-top">
-                    <div className="d-flex align-items-center justify-content-center gap-3">
-                        {social.map((item:Social,index:number)=>{
-                            const Icon = item.icon
-                            return(
-                                <div className="flexSocial" key={index}><Link to="#" className="square--40 circle border"><Icon className={item.style}/></Link></div>
-                            )
-                        })}
-                    </div>
-                </div>
-            </div>
-            
-            <div className="card p-0">
-                <div className="card-header bg-cover ht-150" style={{backgroundImage:`url(${bg2})`}} data-overlay="4"></div>
-                <div className="card-body px-4">
-                    <div className="text-center d-block py-xl-4">
-                        <div className="offerTitles d-block mb-4">
-                            <h2 className="fw-semibold lh-base m-0">40% Off</h2>
-                            <p className="text-md text-dark">On purchase worth more than <span className="fw-medium">$300</span> offer valid till <span className="fw-medium">20 August 2024</span></p>
-                        </div>
-                        <div className="couponCodes d-block">
-                            <div className="couponCode">
-                                <div className="couponcodeText border-opacity-25">PLAUG1758</div>
-                                <div className="copyCoupon"><Link to="#" className="fw-medium text-sm text-muted text-uppercase">Copy Code</Link></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>										
-            </div>
-            
-            <div className="card overflow-visible">
-                <div className="card-header py-3">
-                    <div className="headerFirst"><h6><BsCalendar className="me-2"/>Book Your Table</h6></div>
-                </div>
-                <div className="p-xl-4 p-3">
-                    <div className="contactForm position-relative">
-                        <div className="form-group form-border">
-                            <input type="text" className="form-control fw-medium" id="input" placeholder="Choose A Date"/>
-                        </div>
-                        <div className="form-group form-border">
-                            <div className="position-relative fw-medium">
-                                <Select
-                                    className="choosetime form-control"
-                                    options={option2}
-                                    />
-                            </div>
-                        </div>
-                        <div className="form-group form-border">
-                            <div className="booking-form__input guests-input mixer-auto">
-                                <button name="guests-btn" id="guests-input-btn" onClick={()=>setGuests(!guests)}> <span>{adults} Guest</span> <span>{children} Children</span></button>
-                                <div className={`guests-input__options ${guests ? 'open' : ''}`} id="guests-input-options">
-                                    <div>
-                                        <span className="guests-input__ctrl minus" id="adults-subs-btn" onClick={()=>setAdults(adults - 1)} ><FaMinus className=""/></span>
-                                        <span className="guests-input__value"><span id="guests-count-adults">{adults}</span>Guests</span>
-                                        <span className="guests-input__ctrl plus" id="adults-add-btn" onClick={()=>setAdults(adults + 1)}><FaPlus className=""/></span>
-                                    </div>
-                                    <div>
-                                        <span className="guests-input__ctrl minus" id="children-subs-btn" onClick={()=>setChildren(children - 1 )}><FaMinus className=""/></span>
-                                        <span className="guests-input__value"><span id="guests-count-children">{children}</span>Children</span>
-                                        <span className="guests-input__ctrl plus" id="children-add-btn" onClick={()=>setChildren(children + 1 )}><FaPlus className=""/></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form-group form-border">
-                            <div className="position-relative fw-medium">
-                                <Select
-                                    className="features form-control"
-                                    isMulti
-                                    name="features"
-                                    options={options}
-                                    value={selectedOptions}
-                                    onChange={handleChange}
-                                    />
-                            </div>
-                        </div>
-                        <div className="form-group form-border">
-                            <button type="button" className="btn btn-primary rounded-pill fw-medium w-100">Booking Request</button>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div className="card">
-                <div className="card-header py-3">
-                    <div className="headerFirst"><h6>Openings Hours</h6></div>
-                    <div className="headerLast"><span className="badge badge-xs badge-success rounded-pill">Now Open</span></div>
+                <div
+                    className="card-header py-3"
+                    style={{ background: '#000' }}
+                >
+                    <h6 className="text-white mb-0">Contact Information</h6>
                 </div>
                 <div className="card-body p-0">
-                    <div className="openingsInfo">
-                        {timeTable.map((item:TimeTable,index:number)=>{
-                            return(
-                                <div className="py-3 px-3 border-top" key={index}>
-                                    <div className="infoFlexio d-flex align-items-center justify-content-between">
-                                        <p className="text-dark text-md fw-medium lh-base mb-0">{item.day}</p>
-                                        <p className="text-dark text-sm fw-medium lh-base mb-0">{item.time}</p>
+                    <div className="contactInfo">
+                        {listing?.phone && (
+                            <a
+                                href={`tel:${formatPhoneForLink(listing.phone)}`}
+                                className="py-3 px-3 border-bottom d-block text-decoration-none"
+                            >
+                                <div className="d-flex align-items-center gap-3">
+                                    <div
+                                        className="d-flex align-items-center justify-content-center"
+                                        style={{
+                                            width: '44px',
+                                            height: '44px',
+                                            background: 'rgba(255, 184, 0, 0.1)',
+                                            borderRadius: '10px'
+                                        }}
+                                    >
+                                        <BsTelephoneFill style={{ color: '#FFB800' }} />
+                                    </div>
+                                    <div>
+                                        <p className="text-muted text-sm mb-0">Phone</p>
+                                        <p className="text-dark fw-medium mb-0">{listing.phone}</p>
                                     </div>
                                 </div>
-                            )
-                        })}
+                            </a>
+                        )}
+
+                        {listing?.email && (
+                            <a
+                                href={`mailto:${listing.email}`}
+                                className="py-3 px-3 border-bottom d-block text-decoration-none"
+                            >
+                                <div className="d-flex align-items-center gap-3">
+                                    <div
+                                        className="d-flex align-items-center justify-content-center"
+                                        style={{
+                                            width: '44px',
+                                            height: '44px',
+                                            background: 'rgba(255, 184, 0, 0.1)',
+                                            borderRadius: '10px'
+                                        }}
+                                    >
+                                        <BsEnvelope style={{ color: '#FFB800' }} />
+                                    </div>
+                                    <div>
+                                        <p className="text-muted text-sm mb-0">Email</p>
+                                        <p className="text-dark fw-medium mb-0">{listing.email}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        )}
+
+                        {listing?.website_url && (
+                            <a
+                                href={listing.website_url.startsWith('http') ? listing.website_url : `https://${listing.website_url}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="py-3 px-3 border-bottom d-block text-decoration-none"
+                            >
+                                <div className="d-flex align-items-center gap-3">
+                                    <div
+                                        className="d-flex align-items-center justify-content-center"
+                                        style={{
+                                            width: '44px',
+                                            height: '44px',
+                                            background: 'rgba(255, 184, 0, 0.1)',
+                                            borderRadius: '10px'
+                                        }}
+                                    >
+                                        <BsBrowserChrome style={{ color: '#FFB800' }} />
+                                    </div>
+                                    <div>
+                                        <p className="text-muted text-sm mb-0">Website</p>
+                                        <p className="text-dark fw-medium mb-0">Visit Website</p>
+                                    </div>
+                                </div>
+                            </a>
+                        )}
+
+                        {(listing?.address || listing?.city || listing?.state) && (
+                            <div className="py-3 px-3">
+                                <div className="d-flex align-items-start gap-3">
+                                    <div
+                                        className="d-flex align-items-center justify-content-center flex-shrink-0"
+                                        style={{
+                                            width: '44px',
+                                            height: '44px',
+                                            background: 'rgba(255, 184, 0, 0.1)',
+                                            borderRadius: '10px'
+                                        }}
+                                    >
+                                        <FaLocationDot style={{ color: '#FFB800' }} />
+                                    </div>
+                                    <div>
+                                        <p className="text-muted text-sm mb-0">Location</p>
+                                        <p className="text-dark fw-medium mb-0">
+                                            {listing?.address && <>{listing.address}<br /></>}
+                                            {listing?.city && listing?.state
+                                                ? `${listing.city}, ${listing.state}`
+                                                : listing?.state || ''}
+                                            {listing?.zip_code && ` ${listing.zip_code}`}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
-            
+
+            {/* Quick Quote Request Form */}
             <div className="card">
-                <div className="card-body px-3">
-                    <div className="form-group mb-1">
-                        <button type="button" className="btn btn-whites border rounded-pill fw-medium w-100"><BsSuitHeart className="me-2"/>Bookmark This Listing</button>
+                <div
+                    className="card-header py-3"
+                    style={{ background: '#000' }}
+                >
+                    <h6 className="text-white mb-0">
+                        <FiSend className="me-2" />
+                        Request a Free Quote
+                    </h6>
+                </div>
+                <div className="p-4">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group mb-3">
+                            <input
+                                type="text"
+                                name="name"
+                                className="form-control"
+                                placeholder="Your Name *"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group mb-3">
+                            <input
+                                type="email"
+                                name="email"
+                                className="form-control"
+                                placeholder="Email Address *"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group mb-3">
+                            <input
+                                type="tel"
+                                name="phone"
+                                className="form-control"
+                                placeholder="Phone Number *"
+                                value={formData.phone}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group mb-3">
+                            <textarea
+                                name="message"
+                                className="form-control"
+                                rows={3}
+                                placeholder="Briefly describe your project..."
+                                value={formData.message}
+                                onChange={handleInputChange}
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            className="btn w-100 fw-medium"
+                            style={{
+                                background: '#FFB800',
+                                color: '#000',
+                                border: 'none'
+                            }}
+                        >
+                            Send Quote Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            {/* Business Hours */}
+            <div className="card">
+                <div className="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 className="mb-0">
+                        <BsClock className="me-2" />
+                        Business Hours
+                    </h6>
+                    <span className="badge badge-xs badge-success rounded-pill">Open Now</span>
+                </div>
+                <div className="card-body p-0">
+                    <div className="hoursInfo">
+                        {timeTable.map((item: TimeTable, index: number) => (
+                            <div
+                                className={`py-2 px-3 d-flex justify-content-between ${index < timeTable.length - 1 ? 'border-bottom' : ''}`}
+                                key={index}
+                            >
+                                <span className="text-dark text-sm fw-medium">{item.day}</span>
+                                <span className={`text-sm ${item.time === 'Closed' ? 'text-danger' : 'text-muted'}`}>
+                                    {item.time}
+                                </span>
+                            </div>
+                        ))}
                     </div>
-                    <div className="form-group text-center mb-4">
-                        <p className="text-md">45 People Bookmark This Place</p>
+                </div>
+            </div>
+
+            {/* Share & Bookmark */}
+            <div className="card">
+                <div className="card-body px-3 py-3">
+                    <div className="form-group mb-3">
+                        <button type="button" className="btn btn-whites border rounded-pill fw-medium w-100">
+                            <BsSuitHeart className="me-2" />Bookmark This Company
+                        </button>
                     </div>
                     <div className="form-group m-0">
-                        <div className="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                            <button type="button" className="btn btn-md btn-whites border rounded-pill color--facebook flex-fill"><BsSuitHeart className="me-1"/>Facebook</button>
-                            <button type="button" className="btn btn-md btn-whites border rounded-pill color--twitter flex-fill"><BsSuitHeart className="me-1"/>Twitter</button>
-                            <button type="button" className="btn btn-md btn-whites border rounded-pill color--instagram flex-fill"><BsSuitHeart className="me-1"/>Instagram</button>
+                        <p className="text-sm text-muted mb-2 text-center">Share this listing:</p>
+                        <div className="d-flex align-items-center justify-content-center gap-2">
+                            <a href="#" className="btn btn-sm btn-whites border rounded-circle" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <BsFacebook className="color--facebook" />
+                            </a>
+                            <a href="#" className="btn btn-sm btn-whites border rounded-circle" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <BsTwitterX className="color--twitter" />
+                            </a>
+                            <a href="#" className="btn btn-sm btn-whites border rounded-circle" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <BsInstagram className="color--instagram" />
+                            </a>
+                            <a href="#" className="btn btn-sm btn-whites border rounded-circle" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <BsWhatsapp className="color--whatsapp" />
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-  )
+    )
 }

@@ -1,19 +1,71 @@
 import { Link } from 'react-router-dom'
 
-export default function Maps() {
-  return (
+interface MapsProps {
+    address?: string;
+    city?: string;
+    state?: string;
+    latitude?: number;
+    longitude?: number;
+}
+
+export default function Maps({ address, city, state, latitude, longitude }: MapsProps) {
+    // Build the address string for the embed
+    const locationParts = [address, city, state].filter(Boolean)
+    const locationQuery = locationParts.join(', ')
+
+    // If we have coordinates, use them; otherwise use address search
+    const mapUrl = latitude && longitude
+        ? `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}&q=${latitude},${longitude}&zoom=14`
+        : locationQuery
+            ? `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY || ''}&q=${encodeURIComponent(locationQuery)}&zoom=12`
+            : null
+
+    // Don't render if we don't have location info or API key
+    if (!mapUrl && !locationQuery) {
+        return null
+    }
+
+    // Fallback to a simple embed without API key (uses legacy embed)
+    const fallbackUrl = locationQuery
+        ? `https://maps.google.com/maps?q=${encodeURIComponent(locationQuery)}&t=&z=12&ie=UTF8&iwloc=&output=embed`
+        : 'https://maps.google.com/maps?q=United%20States&t=&z=4&ie=UTF8&iwloc=&output=embed'
+
+    return (
         <div className="listingSingleblock mb-4" id="maps">
             <div className="SingleblockHeader">
-                <Link data-bs-toggle="collapse" data-parent="#map" data-bs-target="#map" aria-controls="map" to="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Map</h4></Link>
+                <Link
+                    data-bs-toggle="collapse"
+                    data-parent="#map"
+                    data-bs-target="#map"
+                    aria-controls="map"
+                    to="#"
+                    aria-expanded="false"
+                    className="collapsed"
+                >
+                    <h4 className="listingcollapseTitle">Location</h4>
+                </Link>
             </div>
-            
+
             <div id="map" className="panel-collapse collapse show">
                 <div className="card-body p-4 pt-2">
+                    {locationQuery && (
+                        <p className="text-muted mb-3">
+                            Service area: <strong>{locationQuery}</strong>
+                        </p>
+                    )}
                     <div className="map-container rounded-3 overflow-hidden">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15090.183774083564!2d72.82822336977539!3d18.99565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cef0d17ace6f%3A0xba0d758b25d8b289!2sICICI%20Bank%20Curry%20Road%2C%20Mumbai-Branch%20%26%20ATM!5e0!3m2!1sen!2sin!4v1624183548415!5m2!1sen!2sin" className="full-width" height="450" style={{border:'0'}} allowFullScreen loading="lazy"></iframe>
+                        <iframe
+                            src={fallbackUrl}
+                            className="full-width w-100"
+                            height="350"
+                            style={{ border: '0' }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
                     </div>
                 </div>
             </div>
         </div>
-  )
+    )
 }

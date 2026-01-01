@@ -1,127 +1,168 @@
-// @ts-nocheck 
-import { listData } from '../../data/data'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay,Pagination } from 'swiper/modules';
-import 'swiper/css';
-import { Link } from 'react-router-dom';
-import { BsGeoAlt, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart, BsTelephone } from 'react-icons/bs';
-import { IconType } from 'react-icons';
+import { useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper/modules'
+import { Link } from 'react-router-dom'
+import { BsGeoAlt, BsPatchCheckFill, BsStarFill, BsSuitHeart } from 'react-icons/bs'
+import { FaSprayCan } from 'react-icons/fa6'
+import { getPublicListings } from '../../lib/neon'
 
-interface ListData{
-    id: number;
-    image: string;
-    user: string;
-    status: string;
-    featured: boolean;
-    title: string;
-    desc: string;
-    call: string;
-    loction: string;
-    tag: string;
-    tagIcon: IconType;
-    tagIconStyle: string;
-    review: string;
-    rating: string;
-    ratingRate: string;
-    instantBooking: boolean;
+interface SimilarListing {
+    id: string;
+    business_name: string | null;
+    featured_image_url: string | null;
+    city: string | null;
+    state: string | null;
+    average_rating: number;
+    review_count: number;
+    is_verified: boolean;
+    is_featured: boolean;
+    category_name?: string;
 }
 
-export default function List() {
-  return (
+interface ListProps {
+    currentListingId?: string;
+    category?: string;
+}
+
+export default function List({ currentListingId }: ListProps) {
+    const [similarListings, setSimilarListings] = useState<SimilarListing[]>([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        async function fetchSimilarListings() {
+            setLoading(true)
+
+            const listings = await getPublicListings(7)
+
+            // Filter out the current listing
+            const filtered = currentListingId
+                ? listings.filter(l => l.id !== currentListingId).slice(0, 6)
+                : listings.slice(0, 6)
+
+            setSimilarListings(filtered as SimilarListing[])
+            setLoading(false)
+        }
+
+        fetchSimilarListings()
+    }, [currentListingId])
+
+    // Don't render if no similar listings
+    if (!loading && similarListings.length === 0) {
+        return null
+    }
+
+    const renderStars = (rating: number) => {
+        const stars = []
+        const fullStars = Math.floor(rating || 0)
+        for (let i = 0; i < 5; i++) {
+            stars.push(
+                <BsStarFill
+                    key={i}
+                    className={`mb-0 ${i < fullStars ? 'text-warning' : 'text-muted opacity-25'}`}
+                />
+            )
+        }
+        return stars
+    }
+
+    return (
         <div className="listingSingleblock">
             <div className="SingleblockHeader">
-                <a data-bs-toggle="collapse" data-parent="#similar" data-bs-target="#similar" aria-controls="similar" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Similar Lists</h4></a>
+                <Link
+                    data-bs-toggle="collapse"
+                    data-parent="#similar"
+                    data-bs-target="#similar"
+                    aria-controls="similar"
+                    to="#"
+                    aria-expanded="false"
+                    className="collapsed"
+                >
+                    <h4 className="listingcollapseTitle">Similar Contractors</h4>
+                </Link>
             </div>
-            
+
             <div id="similar" className="panel-collapse collapse show">
                 <div className="card-body p-4 pt-2">
-                    <div className="owl-carousel owl-theme similarSliders">
-                    <Swiper
-                        slidesPerView={2}
-                        spaceBetween={15}
-                        modules={[Autoplay,Pagination]}
-                        pagination={true}
-                        loop={true}
-                        autoplay={{delay: 2000, disableOnInteraction: false,}} 
-                        breakpoints={{
-                            320: { slidesPerView: 1 },
-                            640: { slidesPerView: 2 },
-                            1024: { slidesPerView: 2 },
-                            1440: { slidesPerView: 2 },
-                        }}
-                    >
-                    {listData.map((item:ListData,index:number)=>{
-                        const Icon = item.tagIcon
-                        return(
-                            <SwiperSlide className="singleItem" key={index}>
-                                <div className="listingitem-container">
-                                    <div className="singlelisting-item bg-light border-0">
-                                        <div className="listing-top-item">
-                                            <div className="position-absolute end-0 top-0 me-3 mt-3 z-2">
-                                                <Link to="#" className="bookmarkList" data-bs-toggle="tooltip" data-bs-title="Save Listing"><BsSuitHeart className="m-0"/></Link>
-                                            </div>
-                                            <Link to="#" className="topLink">
-                                                <div className="position-absolute start-0 top-0 ms-3 mt-3 z-2">
-                                                    <div className="d-flex align-items-center justify-content-start gap-2">
-                                                        {item.status === 'open' ? (<span className="badge badge-xs text-uppercase listOpen">Open</span>) :(<span className="badge badge-xs text-uppercase listClose">Closed</span>)}
-    
-                                                        <span className="badge badge-xs badge-transparent">$$$</span>
-    
-                                                        {item.featured === true && 
-                                                            <span className="badge badge-xs badge-transparent"><BsStar className="mb-0 me-1"/>Featured</span>
-                                                        }
-                                                    </div>
+                    {loading ? (
+                        <div className="text-center py-4">
+                            <div className="spinner-border spinner-border-sm text-primary" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    ) : (
+                        <Swiper
+                            slidesPerView={2}
+                            spaceBetween={15}
+                            modules={[Autoplay, Pagination]}
+                            pagination={{ clickable: true }}
+                            loop={similarListings.length > 2}
+                            autoplay={{ delay: 4000, disableOnInteraction: true }}
+                            breakpoints={{
+                                320: { slidesPerView: 1 },
+                                640: { slidesPerView: 2 },
+                                1024: { slidesPerView: 2 },
+                            }}
+                        >
+                            {similarListings.map((item) => (
+                                <SwiperSlide className="singleItem" key={item.id}>
+                                    <div className="listingitem-container">
+                                        <div className="singlelisting-item bg-light border-0 rounded-3 overflow-hidden">
+                                            <div className="listing-top-item position-relative">
+                                                <div className="position-absolute end-0 top-0 me-3 mt-3 z-2">
+                                                    <button className="bookmarkList btn btn-sm bg-white rounded-circle p-2">
+                                                        <BsSuitHeart className="m-0" />
+                                                    </button>
                                                 </div>
-                                                <img src={item.image} className="img-fluid" alt="Listing Image"/>
-                                            </Link>
-                                            <div className="opssListing position-absolute start-0 bottom-0 ms-3 mb-4 z-2">
-                                                <div className="d-flex align-items-center justify-content-between gap-2">
-                                                    <div className="listing-avatar">
-                                                        <Link to="#" className="avatarImg"><img src={item.user} className="img-fluid circle" alt="Avatar"/></Link>
-                                                    </div>
-                                                    <div className="listing-details">
-                                                        <h4 className="listingTitle"><Link to="#" className="titleLink">{item.title}<span className="verified"><BsPatchCheckFill className="m-0"/></span></Link></h4>
-                                                        <div className="list-infos">
-                                                            <div className="gap-3 mt-1">
-                                                                <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{item.loction}</div>
-                                                                <div className="list-calls text-light hide-mob mt-1 d-flex align-items-center"><BsTelephone className="mb-0 me-2"/>{item.call}</div>
-                                                            </div>
+                                                <Link to={`/contractor/${item.id}`} className="topLink d-block">
+                                                    <div className="position-absolute start-0 top-0 ms-3 mt-3 z-2">
+                                                        <div className="d-flex align-items-center gap-2">
+                                                            {item.is_featured && (
+                                                                <span className="badge badge-xs" style={{ background: '#FFB800', color: '#000' }}>
+                                                                    Featured
+                                                                </span>
+                                                            )}
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <img
+                                                        src={item.featured_image_url || '/FOAMSTARS_logo.png'}
+                                                        className="img-fluid w-100"
+                                                        style={{ height: '180px', objectFit: 'cover' }}
+                                                        alt={item.business_name || 'Spray Foam Company'}
+                                                    />
+                                                </Link>
                                             </div>
-                                        </div>
-                                        <div className="listing-footer-item border-0">
-                                            <div className="d-flex align-items-center justify-content-between gap-2">
-                                                <div className="catdWraps">
-                                                    <div className="flex-start">
-                                                        <Link to="#" className="d-flex align-items-center justify-content-start gap-2">
-                                                            <span className={item.tagIconStyle}><Icon className=""></Icon></span>
-                                                            <span className="catTitle">{item.tag}</span>
-                                                        </Link>
-                                                    </div>
+                                            <div className="listing-footer-item p-3 border-0">
+                                                <Link to={`/contractor/${item.id}`} className="text-decoration-none">
+                                                    <h6 className="mb-1 text-dark">
+                                                        {item.business_name}
+                                                        {item.is_verified && (
+                                                            <BsPatchCheckFill className="ms-1 text-primary" style={{ fontSize: '0.75rem' }} />
+                                                        )}
+                                                    </h6>
+                                                </Link>
+                                                <div className="d-flex align-items-center text-muted text-sm mb-2">
+                                                    <BsGeoAlt className="me-1" />
+                                                    {item.city && item.state ? `${item.city}, ${item.state}` : item.state || 'USA'}
                                                 </div>
-                                                <div className="listing-rates">
-                                                    <span className="d-flex align-items-center justify-content-start gap-1 text-sm">
-                                                        <BsStarFill className="mb-0 text-warning"/>
-                                                        <BsStarFill className="mb-0 text-warning"/>
-                                                        <BsStarFill className="mb-0 text-warning"/>
-                                                        <BsStarFill className="mb-0 text-warning"/>
-                                                        <BsStarFill className="mb-0 text-warning"/>
-                                                    </span>
-                                                    <span className="text-md text-muted-2 hide-mob mt-2">(42 Reviews)</span>
+                                                <div className="d-flex align-items-center justify-content-between">
+                                                    <div className="d-flex align-items-center gap-1">
+                                                        <FaSprayCan style={{ color: '#FFB800' }} />
+                                                        <span className="text-sm text-muted">{item.category_name || 'Spray Foam'}</span>
+                                                    </div>
+                                                    <div className="d-flex align-items-center gap-1">
+                                                        {renderStars(item.average_rating)}
+                                                        <span className="text-sm text-muted ms-1">({item.review_count || 0})</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </SwiperSlide>
-                        )
-                    })}
-                    </Swiper>
-                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    )}
                 </div>
             </div>
         </div>
-  )
+    )
 }
