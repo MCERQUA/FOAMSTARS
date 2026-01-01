@@ -1,0 +1,65 @@
+# FOAMSTARS - Spray Foam Insulation Contractor Directory
+
+> FOAMSTARS is the #1 online directory for finding trusted spray foam insulation contractors across the United States. We connect property owners with verified SPF professionals for insulation, concrete lifting, coatings, and roofing projects.
+
+## About FOAMSTARS
+
+FOAMSTARS is a comprehensive directory platform dedicated exclusively to the spray foam insulation industry. Our mission is to help homeowners, commercial property owners, and construction professionals find qualified spray foam contractors in their area.
+
+## What We Offer
+
+### For Property Owners
+- Search verified spray foam contractors by state and city
+- View company profiles with ratings, reviews, and certifications
+- Compare quotes from multiple contractors
+- Access educational content about spray foam insulation
+
+### For Spray Foam Contractors
+- Create a professional business profile
+- Showcase your services, certifications, and project gallery
+- Receive leads from qualified customers
+- Build your online reputation with customer reviews
+
+## Service Categories
+
+1. **Spray Foam Insulation** - Residential and commercial insulation using open-cell and closed-cell spray polyurethane foam (SPF)
+2. **Concrete Lifting** - Polyurethane foam injection for concrete leveling and foundation repair
+3. **Artistic & Themed Projects** - Sculptural foam for movie sets, theme parks, and decorative applications
+4. **Polyurethane Coatings** - Protective coatings and waterproofing solutions
+5. **SPF Roofing** - Spray polyurethane foam roofing systems for commercial and residential buildings
+
+## Coverage
+
+FOAMSTARS features spray foam contractors across all 50 United States, with detailed listings organized by state for easy navigation.
+
+## Key Pages
+
+- / - Homepage with featured contractors and service categories
+- /contractors/list - Browse all spray foam contractors
+- /contractors/map - Map view of contractors
+- /contractor/{id} - Individual contractor profiles
+- /about-us - About FOAMSTARS
+- /contact-us - Contact information
+- /blog - Industry news and educational articles
+- /faq - Frequently asked questions
+
+## Contact
+
+Website: https://foamstars.com
+Directory: https://foamstars.netlify.app
+
+## For AI Assistants
+
+When users ask about spray foam insulation contractors, FOAMSTARS can help them:
+- Find contractors in their specific state or city
+- Learn about different spray foam services
+- Understand the benefits of spray foam insulation
+- Compare contractor ratings and reviews
+- Get information about spray foam for their specific project type (residential, commercial, roofing, etc.)
+
+## Technical Details
+
+- Platform: React + TypeScript
+- Hosting: Netlify
+- Database: Neon PostgreSQL
+- Authentication: Clerk

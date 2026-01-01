@@ -1,0 +1,49 @@
+# FOAMSTARS Robots.txt
+# https://foamstars.netlify.app
+
+User-agent: *
+Allow: /
+
+# Disallow admin/dashboard areas (require authentication)
+Disallow: /dashboard
+Disallow: /dashboard/*
+
+# Disallow auth pages
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /callback
+
+# Disallow checkout/payment pages
+Disallow: /checkout
+Disallow: /viewcart
+Disallow: /invoice
+Disallow: /success-payment
+
+# Allow AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://foamstars.netlify.app/sitemap.xml
+
+# LLMs.txt for AI discovery
+# See: https://foamstars.netlify.app/llms.txt

@@ -74,6 +74,80 @@ export default function SingleListing1() {
         fetchListing()
     }, [id])
 
+    // Dynamic SEO: Update page title and meta tags
+    useEffect(() => {
+        if (listing) {
+            const companyName = listing.business_name || listing.title || 'Spray Foam Contractor'
+            const location = listing.city && listing.state ? `${listing.city}, ${listing.state}` : listing.state || ''
+            const category = listing.categories?.name || 'Spray Foam Insulation'
+
+            // Update page title
+            document.title = `${companyName}${location ? ` - ${location}` : ''} | FOAMSTARS`
+
+            // Update meta description
+            const metaDesc = document.querySelector('meta[name="description"]')
+            if (metaDesc) {
+                metaDesc.setAttribute('content',
+                    listing.description?.substring(0, 155) ||
+                    `${companyName} provides professional ${category.toLowerCase()} services${location ? ` in ${location}` : ''}. View reviews, certifications, and request a free quote on FOAMSTARS.`
+                )
+            }
+
+            // Add LocalBusiness Schema.org structured data
+            const existingSchema = document.querySelector('#contractor-schema')
+            if (existingSchema) existingSchema.remove()
+
+            const schema = {
+                "@context": "https://schema.org",
+                "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+                "@id": `https://foamstars.netlify.app/contractor/${listing.id}`,
+                "name": companyName,
+                "description": listing.description || `Professional ${category.toLowerCase()} contractor`,
+                "image": listing.featured_image_url || "https://foamstars.netlify.app/FOAMSTARS_logo.png",
+                "url": `https://foamstars.netlify.app/contractor/${listing.id}`,
+                ...(listing.phone && { "telephone": listing.phone }),
+                ...(listing.email && { "email": listing.email }),
+                ...(listing.website_url && { "sameAs": [listing.website_url] }),
+                "address": {
+                    "@type": "PostalAddress",
+                    ...(listing.address && { "streetAddress": listing.address }),
+                    ...(listing.city && { "addressLocality": listing.city }),
+                    ...(listing.state && { "addressRegion": listing.state }),
+                    ...(listing.zip_code && { "postalCode": listing.zip_code }),
+                    "addressCountry": "US"
+                },
+                ...(listing.average_rating > 0 && {
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": listing.average_rating.toFixed(1),
+                        "reviewCount": listing.review_count || 1,
+                        "bestRating": "5",
+                        "worstRating": "1"
+                    }
+                }),
+                "priceRange": listing.hourly_rate ? `$${listing.hourly_rate}/hr` : "$$",
+                "areaServed": {
+                    "@type": "State",
+                    "name": listing.state || "United States"
+                },
+                "serviceType": category
+            }
+
+            const scriptTag = document.createElement('script')
+            scriptTag.id = 'contractor-schema'
+            scriptTag.type = 'application/ld+json'
+            scriptTag.text = JSON.stringify(schema)
+            document.head.appendChild(scriptTag)
+
+            // Cleanup on unmount
+            return () => {
+                const schemaEl = document.querySelector('#contractor-schema')
+                if (schemaEl) schemaEl.remove()
+                document.title = 'FOAMSTARS - #1 Spray Foam Insulation Contractor Directory'
+            }
+        }
+    }, [listing])
+
     // Helper to render star rating
     const renderStars = (rating: number) => {
         const stars = []

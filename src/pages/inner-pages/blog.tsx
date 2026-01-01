@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import blogImg from '../../assets/img/banner-5.jpg'
 
@@ -23,6 +24,14 @@ interface BlogData{
 }
 
 export default function Blog() {
+  useEffect(() => {
+    document.title = 'Spray Foam Insulation Blog - Industry News & Tips | FOAMSTARS'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Read the latest spray foam insulation news, tips, and industry insights. Learn about open vs closed cell foam, SPF roofing, concrete lifting, and more from FOAMSTARS experts.')
+    }
+  }, [])
+
   return (
     <>
      <NavbarLight/>

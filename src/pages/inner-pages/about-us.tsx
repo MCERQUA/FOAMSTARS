@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import aboutImg from '../../assets/img/banner-1.jpg'
 
@@ -30,6 +31,14 @@ interface WorkData{
 }
 
 export default function AboutUs() {
+  useEffect(() => {
+    document.title = 'About FOAMSTARS - The #1 Spray Foam Contractor Directory'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Learn about FOAMSTARS, the leading directory for spray foam insulation contractors. We connect property owners with verified SPF professionals across all 50 states.')
+    }
+  }, [])
+
   return (
     <>
      <NavbarLight/>

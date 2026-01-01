@@ -17,10 +17,10 @@ export default function FooterLight() {
                         <div className="footerText"><p>© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p></div>
                         <div className="footerSocialwrap">
                             <ul className="footersocial">
-                                <li><Link to="#" className="social-link"><FaFacebookF/></Link></li>
-                                <li><Link to="#" className="social-link"><FaTwitter/></Link></li>
-                                <li><Link to="#" className="social-link"><FaInstagram/></Link></li>
-                                <li><Link to="#" className="social-link"><FaLinkedin/></Link></li>
+                                <li><a href="https://www.facebook.com/FoamStars" target="_blank" rel="noopener noreferrer" className="social-link"><FaFacebookF/></a></li>
+                                <li><a href="#" className="social-link"><FaTwitter/></a></li>
+                                <li><a href="#" className="social-link"><FaInstagram/></a></li>
+                                <li><a href="#" className="social-link"><FaLinkedin/></a></li>
                             </ul>
                         </div>
                     </div>
@@ -32,7 +32,7 @@ export default function FooterLight() {
                         <ul className="footer-menu">
                             {footerLink1.map((item,index)=>{
                                 return(
-                                    <li key={index}><Link to="#">{item}</Link></li>
+                                    <li key={index}><Link to={item.url}>{item.label}</Link></li>
                                 )
                             })}
                         </ul>
@@ -45,7 +45,7 @@ export default function FooterLight() {
                         <ul className="footer-menu">
                             {footerLink2.map((item,index)=>{
                                  return(
-                                    <li key={index}><Link to="#">{item}</Link></li>
+                                    <li key={index}><Link to={item.url}>{item.label}</Link></li>
                                 )
                             })}
                         </ul>
@@ -58,7 +58,7 @@ export default function FooterLight() {
                         <ul className="footer-menu">
                             {footerLink3.map((item,index)=>{
                                  return(
-                                    <li key={index}><Link to="#">{item}</Link></li>
+                                    <li key={index}><Link to={item.url}>{item.label}</Link></li>
                                 )
                             })}
                         </ul>
@@ -73,16 +73,16 @@ export default function FooterLight() {
                             <div className="singleinfo">
                                 <div className="icons"><BsGeoAltFill/></div>
                                 <div className="caps">
-                                    <h5 className="title">Angraster 7, Greenhorst<br/>Los Angeles QTC564</h5>
-                                    <p className="subs">Reach Us</p>											
+                                    <h5 className="title">91 Peelar Rd, Concord<br/>Ontario L4K 1A3</h5>
+                                    <p className="subs">Reach Us</p>
                                 </div>
                             </div>
-                            
+
                             <div className="singleinfo">
                                 <div className="icons"><BsTelephoneInbound /></div>
                                 <div className="caps">
-                                    <h5 className="title">042 - 526 - 5263</h5>
-                                    <p className="subs">Mon - Sat 10am - 6PM</p>											
+                                    <h5 className="title">(647) 849-4438</h5>
+                                    <p className="subs">Mon - Sat 10:30am - 6PM</p>
                                 </div>
                             </div>
                         

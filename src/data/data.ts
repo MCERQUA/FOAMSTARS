@@ -132,9 +132,26 @@ export const blogData = [
 ];
 
 // Footer links - FOAMSTARS specific
-export const footerLink1 = ['About FOAMSTARS', 'Find Companies', 'List Your Company', 'Browse by State'];
-export const footerLink2 = ['Trust & Safety', 'Company Verification', 'Terms of Services', 'Advertising', 'Spray Foam Blog'];
-export const footerLink3 = ['Help Center', 'Contact Support', 'Pricing', 'Insurance Info', 'Safety Guidelines'];
+export const footerLink1 = [
+    { label: 'About FOAMSTARS', url: '/about' },
+    { label: 'Find Companies', url: '/contractors/list' },
+    { label: 'List Your Company', url: '/dashboard/add-listing' },
+    { label: 'Browse by State', url: '/contractors/list' }
+];
+export const footerLink2 = [
+    { label: 'Trust & Safety', url: '/help' },
+    { label: 'Company Verification', url: '/help' },
+    { label: 'Terms of Services', url: '/terms' },
+    { label: 'Advertising', url: '/pricing' },
+    { label: 'Spray Foam Blog', url: '/blog' }
+];
+export const footerLink3 = [
+    { label: 'Help Center', url: '/help' },
+    { label: 'Contact Support', url: '/contact' },
+    { label: 'Pricing', url: '/pricing' },
+    { label: 'Insurance Info', url: '/help' },
+    { label: 'Safety Guidelines', url: '/help' }
+];
 
 // City/location data - empty array, real data comes from Supabase
 export const cityData: any[] = [];

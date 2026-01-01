@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 import NavbarLight from '../../components/navbar/navbar-light'
 import FooterTop from '../../components/footer-top'
@@ -8,6 +9,14 @@ import BackToTop from '../../components/back-to-top'
 import { FaBriefcase, FaFacebookF, FaGlobe, FaHeadset, FaInstagram, FaPaperPlane, FaTwitter } from 'react-icons/fa'
 
 export default function ContactUs() {
+  useEffect(() => {
+    document.title = 'Contact FOAMSTARS - Get Help Finding Spray Foam Contractors'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Contact FOAMSTARS for help finding spray foam insulation contractors. We connect property owners with verified SPF professionals for insulation, roofing, and concrete lifting projects.')
+    }
+  }, [])
+
   return (
     <>
         <NavbarLight/>

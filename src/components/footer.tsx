@@ -17,10 +17,10 @@ export default function Footer() {
                             <div className="footerText"><p>© {new Date().getFullYear()} FOAMSTARS. The #1 directory for spray foam insulation contractors.</p></div>
                             <div className="footerSocialwrap">
                                 <ul className="footersocial">
-                                    <li><Link to="#" className="social-link"><FaFacebookF className=""/></Link></li>
-                                    <li><Link to="#" className="social-link"><FaTwitter className=""/></Link></li>
-                                    <li><Link to="#" className="social-link"><FaInstagram className=""/></Link></li>
-                                    <li><Link to="#" className="social-link"><FaLinkedin className=""/></Link></li>
+                                    <li><a href="https://www.facebook.com/FoamStars" target="_blank" rel="noopener noreferrer" className="social-link"><FaFacebookF className=""/></a></li>
+                                    <li><a href="#" className="social-link"><FaTwitter className=""/></a></li>
+                                    <li><a href="#" className="social-link"><FaInstagram className=""/></a></li>
+                                    <li><a href="#" className="social-link"><FaLinkedin className=""/></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -32,7 +32,7 @@ export default function Footer() {
                             <ul className="footer-menu">
                                 {footerLink1.map((item,index)=>{
                                     return(
-                                        <li key={index}><Link to="#">{item}</Link></li>
+                                        <li key={index}><Link to={item.url}>{item.label}</Link></li>
                                     )
                                 })}
                             </ul>
@@ -45,7 +45,7 @@ export default function Footer() {
                             <ul className="footer-menu">
                                 {footerLink2.map((item,index)=>{
                                     return(
-                                        <li key={index}><Link to="#">{item}</Link></li>
+                                        <li key={index}><Link to={item.url}>{item.label}</Link></li>
                                     )
                                 })}
                             </ul>
@@ -58,7 +58,7 @@ export default function Footer() {
                             <ul className="footer-menu">
                                 {footerLink3.map((item,index)=>{
                                     return(
-                                        <li key={index}><Link to="#">{item}</Link></li>
+                                        <li key={index}><Link to={item.url}>{item.label}</Link></li>
                                     )
                                 })}
                             </ul>

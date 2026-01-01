@@ -18,21 +18,30 @@ export default function ListLayout1() {
   const [listings, setListings] = useState<BusinessListing[]>([])
   const [loading, setLoading] = useState(true)
 
+  // SEO: Set page title and meta description
+  useEffect(() => {
+    document.title = 'Find Spray Foam Contractors Near You | FOAMSTARS Directory'
+    const metaDesc = document.querySelector('meta[name="description"]')
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Browse verified spray foam insulation contractors. Find SPF professionals for residential insulation, commercial projects, concrete lifting, and SPF roofing in your area.')
+    }
+  }, [])
+
   useEffect(() => {
     const loadListings = async () => {
       try {
         console.log('Loading public listings...')
-        
+
         // Add timeout to prevent hanging
         const timeoutPromise = new Promise((_, reject) => {
           setTimeout(() => reject(new Error('Request timeout')), 30000)
         })
-        
+
         const data = await Promise.race([
           getPublicListings(50),
           timeoutPromise
         ]) as BusinessListing[]
-        
+
         console.log('Loaded listings:', data?.length || 0, 'items')
         setListings(data || [])
       } catch (error) {
