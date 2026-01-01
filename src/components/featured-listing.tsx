@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { getFeaturedListings, BusinessListing } from '../lib/neon'
 import { Link } from 'react-router-dom'
-import { BsGeoAlt, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart, BsTelephone } from 'react-icons/bs'
+import { BsGeoAlt, BsGlobe, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart, BsTelephone } from 'react-icons/bs'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay,Pagination } from 'swiper/modules';
@@ -121,6 +121,17 @@ export default function FeaturedListing() {
                                                             <div className="gap-3 mt-1">
                                                                 <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{listing.city && listing.state ? `${listing.city}, ${listing.state}` : 'Location not set'}</div>
                                                                 <div className="list-calls text-light hide-mob mt-1 d-flex align-items-center"><BsTelephone className="mb-0 me-2"/>{listing.phone || 'Contact via listing'}</div>
+                                                                {listing.website_url && (
+                                                                    <a
+                                                                        href={listing.website_url.startsWith('http') ? listing.website_url : `https://${listing.website_url}`}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        className="list-website text-light mt-1 d-flex align-items-center"
+                                                                        onClick={(e) => e.stopPropagation()}
+                                                                    >
+                                                                        <BsGlobe className="mb-0 me-2"/><span className="text-primary text-decoration-underline">{listing.website_url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
+                                                                    </a>
+                                                                )}
                                                             </div>
                                                         </div>
                                                     </div>
