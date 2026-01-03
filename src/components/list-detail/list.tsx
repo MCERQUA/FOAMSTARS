@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Link } from 'react-router-dom'
-import { BsGeoAlt, BsPatchCheckFill, BsStarFill, BsSuitHeart } from 'react-icons/bs'
+import { BsGeoAlt, BsPatchCheckFill, BsStarFill, BsSuitHeart, BsPeople } from 'react-icons/bs'
 import { FaSprayCan } from 'react-icons/fa6'
 import { getPublicListings } from '../../lib/neon'
 
@@ -22,6 +22,20 @@ interface SimilarListing {
 interface ListProps {
     currentListingId?: string;
     category?: string;
+}
+
+// Dark card styles
+const darkCardStyle = {
+    background: 'linear-gradient(145deg, #1e1e1e 0%, #151515 100%)',
+    border: '1px solid rgba(255, 184, 0, 0.15)',
+    borderRadius: '16px',
+    overflow: 'hidden'
+}
+
+const darkCardHeaderStyle = {
+    background: 'linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(255, 140, 0, 0.1) 100%)',
+    borderBottom: '1px solid rgba(255, 184, 0, 0.2)',
+    padding: '16px 20px'
 }
 
 export default function List({ currentListingId }: ListProps) {
@@ -58,7 +72,8 @@ export default function List({ currentListingId }: ListProps) {
             stars.push(
                 <BsStarFill
                     key={i}
-                    className={`mb-0 ${i < fullStars ? 'text-warning' : 'text-muted opacity-25'}`}
+                    className="mb-0"
+                    style={{ color: i < fullStars ? '#FFB800' : 'rgba(255,255,255,0.2)' }}
                 />
             )
         }
@@ -66,8 +81,8 @@ export default function List({ currentListingId }: ListProps) {
     }
 
     return (
-        <div className="listingSingleblock">
-            <div className="SingleblockHeader">
+        <div style={darkCardStyle}>
+            <div style={darkCardHeaderStyle}>
                 <Link
                     data-bs-toggle="collapse"
                     data-parent="#similar"
@@ -75,17 +90,18 @@ export default function List({ currentListingId }: ListProps) {
                     aria-controls="similar"
                     to="#"
                     aria-expanded="false"
-                    className="collapsed"
+                    className="collapsed text-decoration-none d-flex align-items-center gap-2"
                 >
-                    <h4 className="listingcollapseTitle">Similar Contractors</h4>
+                    <BsPeople style={{ color: '#FFB800', fontSize: '1.25rem' }} />
+                    <h4 className="mb-0 fw-semibold" style={{ color: '#FFB800' }}>Similar Contractors</h4>
                 </Link>
             </div>
 
             <div id="similar" className="panel-collapse collapse show">
-                <div className="card-body p-4 pt-2">
+                <div className="p-4">
                     {loading ? (
                         <div className="text-center py-4">
-                            <div className="spinner-border spinner-border-sm text-primary" role="status">
+                            <div className="spinner-border spinner-border-sm" style={{ color: '#FFB800' }} role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
                         </div>
@@ -106,18 +122,36 @@ export default function List({ currentListingId }: ListProps) {
                             {similarListings.map((item) => (
                                 <SwiperSlide className="singleItem" key={item.id}>
                                     <div className="listingitem-container">
-                                        <div className="singlelisting-item bg-light border-0 rounded-3 overflow-hidden">
+                                        <div
+                                            className="singlelisting-item rounded-3 overflow-hidden"
+                                            style={{
+                                                background: 'rgba(255,255,255,0.03)',
+                                                border: '1px solid rgba(255,255,255,0.08)'
+                                            }}
+                                        >
                                             <div className="listing-top-item position-relative">
                                                 <div className="position-absolute end-0 top-0 me-3 mt-3 z-2">
-                                                    <button className="bookmarkList btn btn-sm bg-white rounded-circle p-2">
-                                                        <BsSuitHeart className="m-0" />
+                                                    <button
+                                                        className="bookmarkList btn btn-sm rounded-circle p-2"
+                                                        style={{
+                                                            background: 'rgba(0,0,0,0.5)',
+                                                            border: '1px solid rgba(255,255,255,0.2)'
+                                                        }}
+                                                    >
+                                                        <BsSuitHeart className="m-0" style={{ color: '#fff' }} />
                                                     </button>
                                                 </div>
                                                 <Link to={`/contractor/${item.id}`} className="topLink d-block">
                                                     <div className="position-absolute start-0 top-0 ms-3 mt-3 z-2">
                                                         <div className="d-flex align-items-center gap-2">
                                                             {item.is_featured && (
-                                                                <span className="badge badge-xs" style={{ background: '#FFB800', color: '#000' }}>
+                                                                <span
+                                                                    className="badge badge-xs"
+                                                                    style={{
+                                                                        background: 'linear-gradient(135deg, #FFB800 0%, #FF9500 100%)',
+                                                                        color: '#000'
+                                                                    }}
+                                                                >
                                                                     Featured
                                                                 </span>
                                                             )}
@@ -133,25 +167,25 @@ export default function List({ currentListingId }: ListProps) {
                                             </div>
                                             <div className="listing-footer-item p-3 border-0">
                                                 <Link to={`/contractor/${item.id}`} className="text-decoration-none">
-                                                    <h6 className="mb-1 text-dark">
+                                                    <h6 className="mb-1" style={{ color: '#fff' }}>
                                                         {item.business_name}
                                                         {item.is_verified && (
-                                                            <BsPatchCheckFill className="ms-1 text-primary" style={{ fontSize: '0.75rem' }} />
+                                                            <BsPatchCheckFill className="ms-1" style={{ color: '#FFB800', fontSize: '0.75rem' }} />
                                                         )}
                                                     </h6>
                                                 </Link>
-                                                <div className="d-flex align-items-center text-muted text-sm mb-2">
+                                                <div className="d-flex align-items-center text-sm mb-2" style={{ color: 'rgba(255,255,255,0.5)' }}>
                                                     <BsGeoAlt className="me-1" />
                                                     {item.city && item.state ? `${item.city}, ${item.state}` : item.state || 'USA'}
                                                 </div>
                                                 <div className="d-flex align-items-center justify-content-between">
                                                     <div className="d-flex align-items-center gap-1">
                                                         <FaSprayCan style={{ color: '#FFB800' }} />
-                                                        <span className="text-sm text-muted">{item.category_name || 'Spray Foam'}</span>
+                                                        <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.category_name || 'Spray Foam'}</span>
                                                     </div>
                                                     <div className="d-flex align-items-center gap-1">
                                                         {renderStars(item.average_rating)}
-                                                        <span className="text-sm text-muted ms-1">({item.review_count || 0})</span>
+                                                        <span className="text-sm ms-1" style={{ color: 'rgba(255,255,255,0.5)' }}>({item.review_count || 0})</span>
                                                     </div>
                                                 </div>
                                             </div>

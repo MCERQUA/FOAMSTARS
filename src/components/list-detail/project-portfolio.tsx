@@ -6,6 +6,7 @@ import 'swiper/css/navigation'
 import { useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
+import { FaImages } from 'react-icons/fa6'
 
 interface ProjectPortfolioProps {
     images?: string[];
@@ -19,6 +20,20 @@ const placeholderProjects = [
     '/img/spray-foam-attic.jpg',
     '/img/concrete-lifting.jpg'
 ]
+
+// Dark card styles
+const darkCardStyle = {
+    background: 'linear-gradient(145deg, #1e1e1e 0%, #151515 100%)',
+    border: '1px solid rgba(255, 184, 0, 0.15)',
+    borderRadius: '16px',
+    overflow: 'hidden'
+}
+
+const darkCardHeaderStyle = {
+    background: 'linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(255, 140, 0, 0.1) 100%)',
+    borderBottom: '1px solid rgba(255, 184, 0, 0.2)',
+    padding: '16px 20px'
+}
 
 export default function ProjectPortfolio({ images, businessName }: ProjectPortfolioProps) {
     const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -38,8 +53,8 @@ export default function ProjectPortfolio({ images, businessName }: ProjectPortfo
     }
 
     return (
-        <div className="listingSingleblock mb-4" id="portfolio">
-            <div className="SingleblockHeader">
+        <div className="mb-4" id="portfolio" style={darkCardStyle}>
+            <div style={darkCardHeaderStyle}>
                 <Link
                     data-bs-toggle="collapse"
                     data-parent="#portfolioContent"
@@ -47,15 +62,16 @@ export default function ProjectPortfolio({ images, businessName }: ProjectPortfo
                     aria-controls="portfolioContent"
                     to="#"
                     aria-expanded="false"
-                    className="collapsed"
+                    className="collapsed text-decoration-none d-flex align-items-center gap-2"
                 >
-                    <h4 className="listingcollapseTitle">Project Portfolio</h4>
+                    <FaImages style={{ color: '#FFB800', fontSize: '1.25rem' }} />
+                    <h4 className="mb-0 fw-semibold" style={{ color: '#FFB800' }}>Project Portfolio</h4>
                 </Link>
             </div>
 
             <div id="portfolioContent" className="panel-collapse collapse show">
-                <div className="card-body p-4 pt-2">
-                    <p className="text-muted mb-3">
+                <div className="p-4">
+                    <p className="mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
                         View examples of completed projects{businessName ? ` by ${businessName}` : ''}.
                     </p>
 
@@ -78,7 +94,10 @@ export default function ProjectPortfolio({ images, businessName }: ProjectPortfo
                             <SwiperSlide key={index}>
                                 <div
                                     className="portfolioItem position-relative rounded-3 overflow-hidden"
-                                    style={{ cursor: 'pointer' }}
+                                    style={{
+                                        cursor: 'pointer',
+                                        border: '2px solid rgba(255, 255, 255, 0.1)'
+                                    }}
                                     onClick={() => openLightbox(index)}
                                 >
                                     <img
@@ -93,7 +112,7 @@ export default function ProjectPortfolio({ images, businessName }: ProjectPortfo
                                     <div
                                         className="portfolioOverlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                                         style={{
-                                            background: 'rgba(0, 0, 0, 0.4)',
+                                            background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%)',
                                             opacity: 0,
                                             transition: 'opacity 0.3s ease'
                                         }}
@@ -103,10 +122,12 @@ export default function ProjectPortfolio({ images, businessName }: ProjectPortfo
                                         <span
                                             className="badge"
                                             style={{
-                                                background: '#FFB800',
+                                                background: 'linear-gradient(135deg, #FFB800 0%, #FF9500 100%)',
                                                 color: '#000',
-                                                padding: '8px 16px',
-                                                fontSize: '0.875rem'
+                                                padding: '10px 20px',
+                                                fontSize: '0.875rem',
+                                                fontWeight: '600',
+                                                borderRadius: '8px'
                                             }}
                                         >
                                             View Project

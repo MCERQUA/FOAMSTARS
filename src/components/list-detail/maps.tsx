@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaLocationDot } from 'react-icons/fa6'
 
 interface MapsProps {
     address?: string;
@@ -6,6 +7,20 @@ interface MapsProps {
     state?: string;
     latitude?: number;
     longitude?: number;
+}
+
+// Dark card styles
+const darkCardStyle = {
+    background: 'linear-gradient(145deg, #1e1e1e 0%, #151515 100%)',
+    border: '1px solid rgba(255, 184, 0, 0.15)',
+    borderRadius: '16px',
+    overflow: 'hidden'
+}
+
+const darkCardHeaderStyle = {
+    background: 'linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(255, 140, 0, 0.1) 100%)',
+    borderBottom: '1px solid rgba(255, 184, 0, 0.2)',
+    padding: '16px 20px'
 }
 
 export default function Maps({ address, city, state, latitude, longitude }: MapsProps) {
@@ -31,8 +46,8 @@ export default function Maps({ address, city, state, latitude, longitude }: Maps
         : 'https://maps.google.com/maps?q=United%20States&t=&z=4&ie=UTF8&iwloc=&output=embed'
 
     return (
-        <div className="listingSingleblock mb-4" id="maps">
-            <div className="SingleblockHeader">
+        <div className="mb-4" id="maps" style={darkCardStyle}>
+            <div style={darkCardHeaderStyle}>
                 <Link
                     data-bs-toggle="collapse"
                     data-parent="#map"
@@ -40,25 +55,31 @@ export default function Maps({ address, city, state, latitude, longitude }: Maps
                     aria-controls="map"
                     to="#"
                     aria-expanded="false"
-                    className="collapsed"
+                    className="collapsed text-decoration-none d-flex align-items-center gap-2"
                 >
-                    <h4 className="listingcollapseTitle">Location</h4>
+                    <FaLocationDot style={{ color: '#FFB800', fontSize: '1.25rem' }} />
+                    <h4 className="mb-0 fw-semibold" style={{ color: '#FFB800' }}>Location</h4>
                 </Link>
             </div>
 
             <div id="map" className="panel-collapse collapse show">
-                <div className="card-body p-4 pt-2">
+                <div className="p-4">
                     {locationQuery && (
-                        <p className="text-muted mb-3">
-                            Service area: <strong>{locationQuery}</strong>
+                        <p className="mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                            Service area: <strong style={{ color: '#fff' }}>{locationQuery}</strong>
                         </p>
                     )}
-                    <div className="map-container rounded-3 overflow-hidden">
+                    <div
+                        className="map-container rounded-3 overflow-hidden"
+                        style={{
+                            border: '2px solid rgba(255, 255, 255, 0.1)'
+                        }}
+                    >
                         <iframe
                             src={fallbackUrl}
                             className="full-width w-100"
                             height="350"
-                            style={{ border: '0' }}
+                            style={{ border: '0', filter: 'grayscale(20%) contrast(1.1)' }}
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"

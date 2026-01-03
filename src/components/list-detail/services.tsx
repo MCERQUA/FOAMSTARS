@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaSprayCan, FaHouseChimney, FaBuilding, FaRoad, FaPaintRoller, FaWarehouse, FaTemperatureArrowDown, FaDroplet } from 'react-icons/fa6'
+import { FaSprayCan, FaHouseChimney, FaBuilding, FaRoad, FaPaintRoller, FaWarehouse, FaTemperatureArrowDown, FaDroplet, FaWrench } from 'react-icons/fa6'
 import { IconType } from 'react-icons'
 
 interface ServicesProps {
@@ -73,6 +73,20 @@ function getIconForService(serviceName: string): IconType {
     return FaSprayCan // default icon
 }
 
+// Dark card styles
+const darkCardStyle = {
+    background: 'linear-gradient(145deg, #1e1e1e 0%, #151515 100%)',
+    border: '1px solid rgba(255, 184, 0, 0.15)',
+    borderRadius: '16px',
+    overflow: 'hidden'
+}
+
+const darkCardHeaderStyle = {
+    background: 'linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(255, 140, 0, 0.1) 100%)',
+    borderBottom: '1px solid rgba(255, 184, 0, 0.2)',
+    padding: '16px 20px'
+}
+
 export default function Services({ services }: ServicesProps) {
     // If no services provided, show default spray foam services
     const displayServices = services && services.length > 0
@@ -88,8 +102,8 @@ export default function Services({ services }: ServicesProps) {
     }
 
     return (
-        <div className="listingSingleblock mb-4" id="services">
-            <div className="SingleblockHeader">
+        <div className="mb-4" id="services" style={darkCardStyle}>
+            <div style={darkCardHeaderStyle}>
                 <Link
                     data-bs-toggle="collapse"
                     data-parent="#servicesContent"
@@ -97,35 +111,45 @@ export default function Services({ services }: ServicesProps) {
                     aria-controls="servicesContent"
                     to="#"
                     aria-expanded="false"
-                    className="collapsed"
+                    className="collapsed text-decoration-none d-flex align-items-center gap-2"
                 >
-                    <h4 className="listingcollapseTitle">Services Offered</h4>
+                    <FaWrench style={{ color: '#FFB800', fontSize: '1.25rem' }} />
+                    <h4 className="mb-0 fw-semibold" style={{ color: '#FFB800' }}>Services Offered</h4>
                 </Link>
             </div>
 
             <div id="servicesContent" className="panel-collapse collapse show">
-                <div className="card-body p-4 pt-2">
+                <div className="p-4">
                     <div className="row g-3">
                         {displayServices.map((service, index) => {
                             const Icon = service.icon
                             return (
                                 <div className="col-xl-6 col-lg-6 col-md-6" key={index}>
-                                    <div className="serviceCard d-flex align-items-start gap-3 p-3 bg-light rounded-3 h-100">
+                                    <div
+                                        className="serviceCard d-flex align-items-start gap-3 p-3 h-100"
+                                        style={{
+                                            background: 'rgba(255, 255, 255, 0.03)',
+                                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                                            borderRadius: '12px',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                    >
                                         <div
                                             className="serviceIcon d-flex align-items-center justify-content-center flex-shrink-0"
                                             style={{
                                                 width: '50px',
                                                 height: '50px',
                                                 background: 'linear-gradient(135deg, #FFB800 0%, #FF8C00 100%)',
-                                                borderRadius: '12px'
+                                                borderRadius: '12px',
+                                                boxShadow: '0 4px 15px rgba(255, 184, 0, 0.3)'
                                             }}
                                         >
-                                            <Icon className="text-white" style={{ fontSize: '1.25rem' }} />
+                                            <Icon className="text-dark" style={{ fontSize: '1.25rem' }} />
                                         </div>
                                         <div className="serviceInfo">
-                                            <h6 className="fw-semibold mb-1">{service.name}</h6>
+                                            <h6 className="fw-semibold mb-1" style={{ color: '#fff' }}>{service.name}</h6>
                                             {service.description && (
-                                                <p className="text-muted text-sm mb-0">{service.description}</p>
+                                                <p className="text-sm mb-0" style={{ color: 'rgba(255,255,255,0.5)' }}>{service.description}</p>
                                             )}
                                         </div>
                                     </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-import { FaStar, FaRegStar, FaCircleUser } from 'react-icons/fa6'
+import { FaStar, FaRegStar, FaCircleUser, FaComments } from 'react-icons/fa6'
 import Select from 'react-select'
 
 interface Review {
@@ -45,6 +45,67 @@ const sampleReviews: Review[] = [
     }
 ]
 
+// Dark card styles
+const darkCardStyle = {
+    background: 'linear-gradient(145deg, #1e1e1e 0%, #151515 100%)',
+    border: '1px solid rgba(255, 184, 0, 0.15)',
+    borderRadius: '16px',
+    overflow: 'hidden'
+}
+
+const darkCardHeaderStyle = {
+    background: 'linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(255, 140, 0, 0.1) 100%)',
+    borderBottom: '1px solid rgba(255, 184, 0, 0.2)',
+    padding: '16px 20px'
+}
+
+const darkInputStyle = {
+    background: 'rgba(255,255,255,0.05)',
+    border: '1px solid rgba(255,255,255,0.15)',
+    color: '#fff',
+    padding: '12px 16px',
+    borderRadius: '10px'
+}
+
+// Custom styles for react-select in dark mode
+const darkSelectStyles = {
+    control: (base: any) => ({
+        ...base,
+        background: 'rgba(255,255,255,0.05)',
+        borderColor: 'rgba(255,255,255,0.15)',
+        borderRadius: '10px',
+        padding: '4px 8px',
+        '&:hover': {
+            borderColor: 'rgba(255, 184, 0, 0.5)'
+        }
+    }),
+    menu: (base: any) => ({
+        ...base,
+        background: '#1e1e1e',
+        border: '1px solid rgba(255,255,255,0.15)'
+    }),
+    option: (base: any, state: any) => ({
+        ...base,
+        background: state.isFocused ? 'rgba(255, 184, 0, 0.2)' : 'transparent',
+        color: '#fff',
+        '&:hover': {
+            background: 'rgba(255, 184, 0, 0.2)'
+        }
+    }),
+    singleValue: (base: any) => ({
+        ...base,
+        color: '#fff'
+    }),
+    placeholder: (base: any) => ({
+        ...base,
+        color: 'rgba(255,255,255,0.5)'
+    }),
+    input: (base: any) => ({
+        ...base,
+        color: '#fff'
+    })
+}
+
 export default function Reviews({ listingId: _listingId }: ReviewsProps) {
     // TODO: Fetch reviews from database when review system is implemented
     // listingId will be used to fetch reviews for specific listing
@@ -63,9 +124,9 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
         const stars = []
         for (let i = 1; i <= 5; i++) {
             if (i <= rating) {
-                stars.push(<FaStar key={i} className="text-sm text-warning" />)
+                stars.push(<FaStar key={i} className="text-sm" style={{ color: '#FFB800' }} />)
             } else {
-                stars.push(<FaRegStar key={i} className="text-sm text-muted" />)
+                stars.push(<FaRegStar key={i} className="text-sm" style={{ color: 'rgba(255,255,255,0.3)' }} />)
             }
         }
         return stars
@@ -77,8 +138,8 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
     }
 
     return (
-        <div className="listingSingleblock mb-4" id="reviews">
-            <div className="SingleblockHeader">
+        <div className="mb-4" id="reviews" style={darkCardStyle}>
+            <div style={darkCardHeaderStyle}>
                 <Link
                     data-bs-toggle="collapse"
                     data-parent="#review"
@@ -86,20 +147,21 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
                     aria-controls="review"
                     to="#"
                     aria-expanded="false"
-                    className="collapsed"
+                    className="collapsed text-decoration-none d-flex align-items-center gap-2"
                 >
-                    <h4 className="listingcollapseTitle">Customer Reviews</h4>
+                    <FaComments style={{ color: '#FFB800', fontSize: '1.25rem' }} />
+                    <h4 className="mb-0 fw-semibold" style={{ color: '#FFB800' }}>Customer Reviews</h4>
                 </Link>
             </div>
 
             <div id="review" className="panel-collapse collapse show">
-                <div className="card-body p-4 pt-2">
+                <div className="p-4">
                     <div className="allreviewsWrapper">
-                        <div className="reviewsTitle d-flex align-items-center justify-content-between mb-3">
-                            <h5 className="mb-0">{reviews.length} Reviews</h5>
+                        <div className="reviewsTitle d-flex align-items-center justify-content-between mb-4 pb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                            <h5 className="mb-0" style={{ color: '#fff' }}>{reviews.length} Reviews</h5>
                             {reviews.length > 0 && (
                                 <div className="d-flex align-items-center gap-2">
-                                    <span className="text-muted">Average:</span>
+                                    <span style={{ color: 'rgba(255,255,255,0.5)' }}>Average:</span>
                                     <div className="d-flex align-items-center gap-1">
                                         {renderStars(Math.round(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length))}
                                     </div>
@@ -109,32 +171,57 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
 
                         {loading ? (
                             <div className="text-center py-4">
-                                <div className="spinner-border spinner-border-sm text-primary" role="status">
+                                <div className="spinner-border spinner-border-sm" style={{ color: '#FFB800' }} role="status">
                                     <span className="visually-hidden">Loading...</span>
                                 </div>
                             </div>
                         ) : reviews.length === 0 ? (
                             <div className="text-center py-4">
-                                <p className="text-muted mb-0">No reviews yet. Be the first to leave a review!</p>
+                                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.5)' }}>No reviews yet. Be the first to leave a review!</p>
                             </div>
                         ) : (
                             <div className="allreviewsLists mb-4">
-                                {reviews.map((review) => (
-                                    <div className="singlereviews" key={review.id}>
+                                {reviews.map((review, index) => (
+                                    <div
+                                        className="singlereviews p-3 rounded-3 mb-3"
+                                        key={review.id}
+                                        style={{
+                                            background: 'rgba(255,255,255,0.03)',
+                                            border: '1px solid rgba(255,255,255,0.08)'
+                                        }}
+                                    >
                                         <div className="d-flex align-items-start justify-content-between flex-wrap gap-3">
                                             <div className="reviewerThumb">
-                                                <div className="square--60 circle overflow-hidden bg-light d-flex align-items-center justify-content-center">
-                                                    <FaCircleUser className="text-muted" style={{ fontSize: '3rem' }} />
+                                                <div
+                                                    className="d-flex align-items-center justify-content-center"
+                                                    style={{
+                                                        width: '50px',
+                                                        height: '50px',
+                                                        borderRadius: '50%',
+                                                        background: 'linear-gradient(135deg, rgba(255, 184, 0, 0.2) 0%, rgba(255, 140, 0, 0.1) 100%)',
+                                                        border: '1px solid rgba(255, 184, 0, 0.3)'
+                                                    }}
+                                                >
+                                                    <FaCircleUser style={{ color: '#FFB800', fontSize: '1.5rem' }} />
                                                 </div>
                                             </div>
                                             <div className="reviewerMessage flex-grow-1">
                                                 <div className="d-flex align-items-start justify-content-between gap-3 mb-2">
                                                     <div className="reviewerInfo">
-                                                        <h6 className="mb-0">{review.reviewer_name}</h6>
-                                                        <p className="text-md text-muted mb-0">
+                                                        <h6 className="mb-0" style={{ color: '#fff' }}>{review.reviewer_name}</h6>
+                                                        <p className="text-sm mb-0" style={{ color: 'rgba(255,255,255,0.5)' }}>
                                                             {formatDate(review.created_at)}
                                                             {review.project_type && (
-                                                                <span className="ms-2 badge bg-light text-dark">{review.project_type}</span>
+                                                                <span
+                                                                    className="ms-2 badge"
+                                                                    style={{
+                                                                        background: 'rgba(255, 184, 0, 0.15)',
+                                                                        color: '#FFB800',
+                                                                        border: '1px solid rgba(255, 184, 0, 0.3)'
+                                                                    }}
+                                                                >
+                                                                    {review.project_type}
+                                                                </span>
                                                             )}
                                                         </p>
                                                     </div>
@@ -145,7 +232,7 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
                                                     </div>
                                                 </div>
                                                 <div className="messageDescription">
-                                                    <p className="mb-0">{review.comment}</p>
+                                                    <p className="mb-0" style={{ color: 'rgba(255,255,255,0.75)', lineHeight: '1.6' }}>{review.comment}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,13 +241,24 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
                             </div>
                         )}
 
-                        <div className="reviewssubmition">
-                            <h6 className="mb-3">Leave a Review</h6>
+                        <div
+                            className="reviewssubmition p-4 rounded-3"
+                            style={{
+                                background: 'rgba(255,255,255,0.02)',
+                                border: '1px solid rgba(255,255,255,0.08)'
+                            }}
+                        >
+                            <h6 className="mb-3" style={{ color: '#FFB800' }}>Leave a Review</h6>
                             <div className="formRow">
                                 <div className="row align-items-start gx-3">
                                     <div className="col-xl-6 col-lg-6 col-md-12">
                                         <div className="form-group mb-3">
-                                            <input type="text" className="form-control" placeholder="Your Name" />
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                placeholder="Your Name"
+                                                style={darkInputStyle}
+                                            />
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-12">
@@ -168,13 +266,18 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
                                             <Select
                                                 placeholder="Select Rating"
                                                 options={options}
-                                                className="categories"
+                                                styles={darkSelectStyles}
                                             />
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="form-group mb-3">
-                                            <input type="text" className="form-control" placeholder="Project type (e.g., Attic Insulation, Crawl Space)" />
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                placeholder="Project type (e.g., Attic Insulation, Crawl Space)"
+                                                style={darkInputStyle}
+                                            />
                                         </div>
                                     </div>
                                     <div className="col-12">
@@ -182,15 +285,20 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
                                             <textarea
                                                 className="form-control"
                                                 placeholder="Share your experience with this company..."
-                                                style={{ height: '120px' }}
+                                                style={{ ...darkInputStyle, height: '120px' }}
                                             ></textarea>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <button
                                             type="button"
-                                            className="btn fw-medium px-5"
-                                            style={{ background: '#FFB800', color: '#000', border: 'none' }}
+                                            className="btn fw-semibold px-5 py-3"
+                                            style={{
+                                                background: 'linear-gradient(135deg, #FFB800 0%, #FF9500 100%)',
+                                                color: '#000',
+                                                border: 'none',
+                                                borderRadius: '10px'
+                                            }}
                                         >
                                             Submit Review
                                         </button>

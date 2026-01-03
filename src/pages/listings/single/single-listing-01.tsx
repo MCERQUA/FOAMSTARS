@@ -303,7 +303,10 @@ export default function SingleListing1() {
         </div>
         <FeatureNav/>
 
-        <section className="gray-simple pt-4 pt-xl-5">
+        <section className="pt-4 pt-xl-5 pb-5" style={{
+            background: 'linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%)',
+            minHeight: '100vh'
+        }}>
             <div data-bs-spy="scroll" data-bs-target="#scrollphyNav" data-bs-smooth-scroll="true" className="scrollspy-example" tabIndex={0}>
                 <div className="container">
                     <div className="row align-items-start gx-xl-5 g-4">
