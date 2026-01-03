@@ -13,14 +13,6 @@ interface ProjectPortfolioProps {
     businessName?: string;
 }
 
-// Placeholder project images for companies without galleries
-const placeholderProjects = [
-    '/img/spray-foam-residential.jpg',
-    '/img/spray-foam-commercial.jpg',
-    '/img/spray-foam-attic.jpg',
-    '/img/concrete-lifting.jpg'
-]
-
 // Dark card styles
 const darkCardStyle = {
     background: 'linear-gradient(145deg, #1e1e1e 0%, #151515 100%)',
@@ -39,10 +31,10 @@ export default function ProjectPortfolio({ images, businessName }: ProjectPortfo
     const [lightboxOpen, setLightboxOpen] = useState(false)
     const [lightboxIndex, setLightboxIndex] = useState(0)
 
-    // Use provided images or placeholders
-    const projectImages = images && images.length > 0 ? images : placeholderProjects
+    // Only show if company has actual portfolio images - no placeholders
+    const projectImages = images && images.length > 0 ? images : []
 
-    // Only show if there are images
+    // Don't render if no images
     if (projectImages.length === 0) {
         return null
     }

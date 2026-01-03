@@ -5,16 +5,6 @@ import { BsImages } from 'react-icons/bs'
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-// Default placeholder images for spray foam work
-import img1 from '../../assets/img/gal-1.jpg'
-import img2 from '../../assets/img/gal-2.jpg'
-import img3 from '../../assets/img/gal-3.jpg'
-import img4 from '../../assets/img/gal-4.jpg'
-import img5 from '../../assets/img/gal-5.jpg'
-import img6 from '../../assets/img/gal-6.jpg'
-
-const defaultImages = [img1, img2, img3, img4, img5, img6]
-
 interface GalleriesProps {
     images?: string[];
 }
@@ -37,8 +27,8 @@ export default function Galleries({ images }: GalleriesProps) {
     const [isOpen, setisOpen] = useState<boolean>(false);
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
-    // Use provided images or fall back to defaults
-    const displayImages = images && images.length > 0 ? images : defaultImages;
+    // Only show gallery if company has actual images - no placeholders
+    const displayImages = images && images.length > 0 ? images : [];
 
     const handleImageClick = (index: number) => {
         setCurrentImageIndex(index);
