@@ -183,6 +183,7 @@ export default function SingleListing1() {
             position: 'relative',
             overflow: 'hidden',
             minHeight: '500px',
+            paddingTop: '120px',
             display: 'flex',
             alignItems: 'center'
         }}>
