@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { BsBrowserChrome, BsEnvelope, BsFacebook, BsInstagram, BsSuitHeart, BsTwitterX, BsWhatsapp, BsTelephoneFill, BsClock } from 'react-icons/bs'
+import { BsBrowserChrome, BsEnvelope, BsFacebook, BsInstagram, BsSuitHeart, BsTwitterX, BsWhatsapp, BsTelephoneFill, BsClock, BsShieldFillCheck } from 'react-icons/bs'
 import { FaLocationDot } from 'react-icons/fa6'
 import { FiSend } from 'react-icons/fi'
 
@@ -81,6 +81,53 @@ export default function SingleSidebarOne({ listing }: SingleSidebarOneProps) {
 
     return (
         <div className="sidebarGroups d-flex flex-column gap-4">
+
+            {/* Insurance Verification Badge */}
+            <a
+                href="#insurance"
+                className="text-decoration-none"
+                style={{
+                    background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(22, 163, 74, 0.1) 100%)',
+                    border: '1px solid rgba(34, 197, 94, 0.3)',
+                    borderRadius: '16px',
+                    padding: '16px 20px',
+                    display: 'block'
+                }}
+            >
+                <div className="d-flex align-items-center gap-3">
+                    <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                            width: '50px',
+                            height: '50px',
+                            borderRadius: '50%',
+                            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                            flexShrink: 0
+                        }}
+                    >
+                        <BsShieldFillCheck style={{ color: '#fff', fontSize: '1.25rem' }} />
+                    </div>
+                    <div>
+                        <div className="d-flex align-items-center gap-2 mb-1">
+                            <span className="fw-semibold" style={{ color: '#22c55e' }}>Verified Insured</span>
+                            <span
+                                className="badge"
+                                style={{
+                                    background: '#22c55e',
+                                    color: '#fff',
+                                    fontSize: '0.65rem',
+                                    padding: '2px 6px'
+                                }}
+                            >
+                                ACTIVE
+                            </span>
+                        </div>
+                        <p className="mb-0 text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                            Covered by SprayFoamInsurance.com
+                        </p>
+                    </div>
+                </div>
+            </a>
 
             {/* Contact Information Card */}
             <div style={darkCardStyle}>

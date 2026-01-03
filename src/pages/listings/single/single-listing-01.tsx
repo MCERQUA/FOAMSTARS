@@ -15,6 +15,7 @@ import Descriptions from '../../../components/list-detail/descriptions'
 import Services from '../../../components/list-detail/services'
 import ProjectPortfolio from '../../../components/list-detail/project-portfolio'
 import Certifications from '../../../components/list-detail/certifications'
+import InsuranceVerification from '../../../components/list-detail/insurance-verification'
 import Galleries from '../../../components/list-detail/galleries'
 import Maps from '../../../components/list-detail/maps'
 import Reviews from '../../../components/list-detail/reviews'
@@ -318,6 +319,8 @@ export default function SingleListing1() {
                             <ProjectPortfolio images={listing?.gallery_images} businessName={listing?.business_name || undefined} />
 
                             <Certifications certifications={listing?.certifications} />
+
+                            <InsuranceVerification businessName={listing?.business_name || undefined} isVerified={listing?.is_verified} />
 
                             <Galleries images={listing?.gallery_images} />
 

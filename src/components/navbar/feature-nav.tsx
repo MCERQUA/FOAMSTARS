@@ -1,4 +1,4 @@
-import { BsBuilding, BsGeoAlt, BsImage, BsStarHalf, BsTools, BsPatchCheck, BsFolderSymlink } from 'react-icons/bs'
+import { BsBuilding, BsGeoAlt, BsImage, BsStarHalf, BsTools, BsPatchCheck, BsFolderSymlink, BsShieldFillCheck } from 'react-icons/bs'
 
 export default function FeatureNav() {
   return (
@@ -93,6 +93,27 @@ export default function FeatureNav() {
                         }}
                     >
                         <BsPatchCheck className="me-2" style={{ color: '#FFB800' }}/>Credentials
+                    </a>
+                </li>
+                <li className="nav-item">
+                    <a
+                        className="nav-link d-flex align-items-center px-3 py-2 rounded-pill"
+                        href="#insurance"
+                        style={{
+                            color: 'rgba(255,255,255,0.7)',
+                            background: 'transparent',
+                            transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.color = '#22c55e'
+                            e.currentTarget.style.background = 'rgba(34, 197, 94, 0.1)'
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.color = 'rgba(255,255,255,0.7)'
+                            e.currentTarget.style.background = 'transparent'
+                        }}
+                    >
+                        <BsShieldFillCheck className="me-2" style={{ color: '#22c55e' }}/>Insurance
                     </a>
                 </li>
                 <li className="nav-item">
