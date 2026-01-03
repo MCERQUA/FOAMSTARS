@@ -182,10 +182,8 @@ export default function SingleListing1() {
             background: '#000000',
             position: 'relative',
             overflow: 'hidden',
-            minHeight: '500px',
             paddingTop: '120px',
-            display: 'flex',
-            alignItems: 'center'
+            paddingBottom: '60px'
         }}>
             {/* Spray worker images */}
             <img src="/backgorund mike spray.png" alt="" className="hero-spray-worker hero-spray-left" />
