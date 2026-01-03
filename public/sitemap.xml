@@ -3,61 +3,61 @@
   <!-- Static Pages -->
   <url>
     <loc>https://foamstars.netlify.app/</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/list</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/map</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/about-us</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contact-us</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/blog</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/faq</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/pricing</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/help-center</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/privacy-policy</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -65,301 +65,301 @@
   <!-- State Landing Pages -->
   <url>
     <loc>https://foamstars.netlify.app/contractors/alabama</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/alaska</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/arizona</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/arkansas</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/california</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/colorado</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/connecticut</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/delaware</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/florida</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/georgia</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/hawaii</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/idaho</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/illinois</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/indiana</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/iowa</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/kansas</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/kentucky</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/louisiana</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/maine</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/maryland</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/massachusetts</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/michigan</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/minnesota</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/mississippi</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/missouri</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/montana</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/nebraska</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/nevada</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/new-hampshire</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/new-jersey</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/new-mexico</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/new-york</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/north-carolina</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/north-dakota</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/ohio</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/oklahoma</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/oregon</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/pennsylvania</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/rhode-island</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/south-carolina</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/south-dakota</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/tennessee</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/texas</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/utah</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/vermont</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/virginia</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/washington</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/west-virginia</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/wisconsin</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://foamstars.netlify.app/contractors/wyoming</loc>
-    <lastmod>2026-01-01</lastmod>
+    <lastmod>2026-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

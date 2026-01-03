@@ -181,7 +181,7 @@ export default function Reviews({ listingId: _listingId }: ReviewsProps) {
                             </div>
                         ) : (
                             <div className="allreviewsLists mb-4">
-                                {reviews.map((review, index) => (
+                                {reviews.map((review) => (
                                     <div
                                         className="singlereviews p-3 rounded-3 mb-3"
                                         key={review.id}
